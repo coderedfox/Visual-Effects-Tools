@@ -7,8 +7,7 @@
 
 ### Contribution guidelines ###
 
-* Read Only Please
-* Feel free to edit to you liking
+* Feel free to edit / clone to you liking
 
 ### Who do I talk to? ###
 
