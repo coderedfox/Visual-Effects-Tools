@@ -1,0 +1,424 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1917" h="1020" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1254" stretch="1"/>
+            <splitter orientation="2">
+                <split size="402"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="580"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name //gun3/Assets/4_Software/Nuke/plugins/plugins/MOTools/Rebuilds/Rebuild_Arnold_Direct.nk
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting
+ tile_color 0x7171c600
+ label "Arnold Diffuse\n\n"
+ note_font_size 42
+ selected true
+ xpos -318
+ ypos -132
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting1
+ tile_color 0x7171c600
+ label "Arnold Coat\n\n"
+ note_font_size 42
+ selected true
+ xpos 318
+ ypos -132
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting2
+ tile_color 0x7171c600
+ label "Arnold Specular\n\n\n"
+ note_font_size 42
+ selected true
+ xpos 953
+ ypos -132
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting3
+ tile_color 0x7171c600
+ label "Arnold Transmission"
+ note_font_size 42
+ selected true
+ xpos 1586
+ ypos -132
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting4
+ tile_color 0x7171c600
+ label "Arnold Emission\n"
+ note_font_size 42
+ selected true
+ xpos 2228
+ ypos -132
+ bdwidth 614
+ bdheight 767
+}
+Dot {
+ inputs 0
+ name Dot1
+ selected true
+ xpos -293
+ ypos -19
+}
+set Nc1e31000 [stack 0]
+Dot {
+ name Dot3
+ selected true
+ xpos -138
+ ypos -19
+}
+set Nc1e30c00 [stack 0]
+Dot {
+ name Dot6
+ selected true
+ xpos 104
+ ypos -19
+}
+set Ncfb5dc00 [stack 0]
+Dot {
+ name Dot4
+ selected true
+ xpos 486
+ ypos -19
+}
+set Nc1e30800 [stack 0]
+Dot {
+ name Dot9
+ selected true
+ xpos 764
+ ypos -19
+}
+set Ncfb5c000 [stack 0]
+Dot {
+ name Dot8
+ selected true
+ xpos 1112
+ ypos -19
+}
+set Nc1e30400 [stack 0]
+Dot {
+ name Dot7
+ selected true
+ xpos 1396
+ ypos -19
+}
+set Nc1d81800 [stack 0]
+Dot {
+ name Dot10
+ selected true
+ xpos 1869
+ ypos -19
+}
+set Nc1e30000 [stack 0]
+Dot {
+ name Dot12
+ selected true
+ xpos 2511
+ ypos -19
+}
+set Nc1e7dc00 [stack 0]
+Dot {
+ name Dot13
+ selected true
+ xpos 2906
+ ypos -19
+}
+push $Nc1e7dc00
+add_layer {emission emission.red emission.green emission.blue}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 emission
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 emission.red 0 0 rgba.red 0 0 emission.green 0 1 rgba.green 0 1 emission.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Emission
+ selected true
+ xpos 2479
+ ypos 2
+}
+Unpremult {
+ name Unpremult12
+ selected true
+ xpos 2479
+ ypos 26
+}
+push $Nc1e30000
+add_layer {transmission transmission.red transmission.green transmission.blue}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 transmission
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 transmission.red 0 0 rgba.red 0 0 transmission.green 0 1 rgba.green 0 1 transmission.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Transmission
+ selected true
+ xpos 1835
+ ypos 2
+}
+Unpremult {
+ name Unpremult11
+ selected true
+ xpos 1835
+ ypos 26
+}
+push $Nc1d81800
+add_layer {specular specular.red specular.green specular.blue}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 specular
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 specular.red 0 0 rgba.red 0 0 specular.green 0 1 rgba.green 0 1 specular.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Specular_Indirect
+ selected true
+ xpos 1362
+ ypos 3
+}
+Unpremult {
+ name Unpremult4
+ selected true
+ xpos 1362
+ ypos 27
+}
+push $Nc1e30400
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 specular
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 specular.red 0 0 rgba.red 0 0 specular.green 0 1 rgba.green 0 1 specular.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Specular_Direct
+ selected true
+ xpos 1078
+ ypos 2
+}
+Unpremult {
+ name Unpremult10
+ selected true
+ xpos 1078
+ ypos 26
+}
+Merge2 {
+ inputs 2
+ operation screen
+ name Merge4
+ selected true
+ xpos 1202
+ ypos 174
+}
+push $Ncfb5c000
+add_layer {coat coat.red coat.green coat.blue}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 coat
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 coat.red 0 0 rgba.red 0 0 coat.green 0 1 rgba.green 0 1 coat.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Coat_Indirect
+ selected true
+ xpos 730
+ ypos 15
+}
+Unpremult {
+ name Unpremult3
+ selected true
+ xpos 730
+ ypos 39
+}
+push $Nc1e30800
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 coat
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 coat.red 0 0 rgba.red 0 0 coat.green 0 1 rgba.green 0 1 coat.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Coat_Direct
+ selected true
+ xpos 452
+ ypos 2
+}
+Unpremult {
+ name Unpremult8
+ selected true
+ xpos 452
+ ypos 26
+}
+Merge2 {
+ inputs 2
+ operation screen
+ name Merge2
+ selected true
+ xpos 574
+ ypos 183
+}
+push $Ncfb5dc00
+add_layer {diffuse diffuse.red diffuse.green diffuse.blue diffuse.alpha}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 diffuse
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 diffuse.red 0 0 rgba.red 0 0 diffuse.green 0 1 rgba.green 0 1 diffuse.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Diffuse_Indirect
+ selected true
+ xpos 70
+ ypos 15
+}
+Unpremult {
+ name Unpremult2
+ selected true
+ xpos 70
+ ypos 42
+}
+push $Nc1e30c00
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 diffuse
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 diffuse.red 0 0 rgba.red 0 0 diffuse.green 0 1 rgba.green 0 1 diffuse.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Diffuse_Direct
+ selected true
+ xpos -172
+ ypos 2
+}
+Unpremult {
+ name Unpremult1
+ selected true
+ xpos -172
+ ypos 29
+}
+Merge2 {
+ inputs 2
+ operation screen
+ name Merge1
+ selected true
+ xpos -54
+ ypos 183
+}
+push $Nc1e31000
+Remove {
+ channels rgba
+ name Remove1
+ selected true
+ xpos -327
+ ypos 303
+}
+Dot {
+ name Dot5
+ selected true
+ xpos -293
+ ypos 559
+}
+Merge2 {
+ inputs 2
+ operation screen
+ name Merge17
+ selected true
+ xpos -51
+ ypos 556
+}
+Merge2 {
+ inputs 2
+ operation screen
+ name Merge3
+ selected true
+ xpos 574
+ ypos 557
+}
+Merge2 {
+ inputs 2
+ operation screen
+ name Merge6
+ selected true
+ xpos 1200
+ ypos 557
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge7
+ selected true
+ xpos 1835
+ ypos 557
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge8
+ selected true
+ xpos 2477
+ ypos 554
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Apply_Alpha1
+ selected true
+ xpos 2872
+ ypos 548
+}
+Premult {
+ name Premult2
+ selected true
+ xpos 2872
+ ypos 602
+}
+Dot {
+ name Dot2
+ selected true
+ xpos 3063
+ ypos 605
+}

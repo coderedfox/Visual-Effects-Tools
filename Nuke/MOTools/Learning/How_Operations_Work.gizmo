@@ -1,0 +1,515 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ inputs 0
+ addUserKnob {20 User}
+ addUserKnob {19 AColor l "A Color" R -10 10}
+ AColor {1 0.5 0 1}
+ addUserKnob {6 AColor_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {41 disable_3 l "Disable Premult" -STARTLINE T Premult2.disable}
+ addUserKnob {41 operation l Operation T Merge1.operation}
+ addUserKnob {19 BColor l "B Color" R -2 2}
+ BColor {0 0.7 0.5 0.8}
+ addUserKnob {6 BColor_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {41 disable_4 l "Disable Premult" -STARTLINE T Premult3.disable}
+ addUserKnob {26 ""}
+ addUserKnob {41 disable_1 l "Enable Checkboard" T Remove1.disable}
+ addUserKnob {41 disable_2 l "Disable Clamping" -STARTLINE T Clamp1.disable}
+ addUserKnob {20 OperationsGroup l "Operation Discriptions" n 1}
+ OperationsGroup 0
+ addUserKnob {26 _1 l "" +STARTLINE T "atop\t\t= AB+B(1-A)\naverage\t\t= (A+B)/2)\ncolor-burn\t= Darken B towards A\ncolor-dodge\t= brighten B towards A\nconjoint-over\t= A+B(1-a/b), A if a>b\ncopy\t\t= A\ndifference\t= abs(A-B)\ndisjoint-over\t= A+B(1-a)/b, A+B if a+b<1\ndivide\t\t= A/B, 0 if A<0 and B<0\nexclusion\t\t= A+B-2AB\nfrom\t\t= B-A\ngeometric\t= 2AB/(A+B)\nhard-light\t\t= multiply if A<0.5, screen if A>0.5\nhypot\t\t= sqrt (A*A+B*B)\nin\t\t= Ab\nmask\t\t= Ba\nmatte\t\t= Aa+B(1-a)\nmax\t\t= max (A,B)\nmin\t\t= min (A,B)\nminus\t\t= A-B\nmultiply\t\t= AB, A if A<0 and B<0\nout\t\t= A(1-b)\nover\t\t= A+B(1-a)\noverlay\t\t= multiply if B<0.5, screen if B>0.5\nplus\t\t= A+B\nscreen\t\t= A or B ≤1? A+B-AB: max(A,B)\nsoft-light\t\t= Image B gets lit up.\nstencil\t\t= B(1-a)\nunder\t\t= A(1-b)+B\nxor\t\t= A(1-b)+B(1-a)"}
+ addUserKnob {20 endGroup n -1}
+}
+ Constant {
+  inputs 0
+  format "1024 1024 0 0 1024 1024 1 square_1K"
+  name Constant1
+  xpos -700
+  ypos -489
+ }
+set Na2802400 [stack 0]
+ Dot {
+  name Dot11
+  xpos -341
+  ypos -462
+ }
+set Na2806800 [stack 0]
+ Dot {
+  name Dot6
+  xpos -166
+  ypos -462
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "R : \[sample GetBColor R this.width/2 this.height/2]\nG : \[sample GetBColor G this.width/2 this.height/2]\nB : \[sample GetBColor B this.width/2 this.height/2]\nA : \[sample GetBColor A this.width/2 this.height/2]"
+  old_message {{82 32 58 32 48 10 71 32 58 32 48 46 55 10 66 32 58 32 48 46 53 10 65 32 58 32 48 46 56}
+    }
+  old_expression_markers {{4 4 10 12 18 20 26 28}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  font_size_values {{0 100 1 100 2 100 3 100 0 50 1 50 2 50 3 50}
+    }
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text5
+  xpos -200
+  ypos -81
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "B Color"
+  old_message {{66 32 67 111 108 111 114}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  font_size_values {{0 100 0 50}
+    }
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text2
+  xpos -200
+  ypos -9
+ }
+ Expression {
+  expr0 r(x-(width/15),y)
+  expr1 g(x-(width/15),y)
+  expr2 b(x-(width/15),y)
+  channel3 alpha
+  expr3 a(x-(width/15),y)
+  name Expression5
+  xpos -200
+  ypos 124
+ }
+ set Ca23fd400 [stack 0]
+push $Na2802400
+ Expression {
+  temp_name0 posX
+  temp_expr0 (width/2)
+  temp_name1 posY
+  temp_expr1 height/2
+  temp_name2 radius
+  temp_expr2 width/2.5
+  temp_name3 dist
+  temp_expr3 "sqrt((x - posX)**2 + (y - posY)**2)"
+  channel0 alpha
+  expr0 "clamp(1 - dist/radius, 0, 1)"
+  channel1 none
+  channel2 none
+  name Expression1
+  xpos -700
+  ypos -393
+ }
+ Expression {
+  channel0 alpha
+  expr0 "0 < a ? 1:0"
+  name Expression2
+  xpos -700
+  ypos -345
+ }
+set Na23fcc00 [stack 0]
+push $Na2806800
+ Expression {
+  inputs 1+1
+  temp_expr0 0
+  temp_expr1 1
+  temp_expr2 0
+  temp_expr3 .5
+  expr0 BColor.r
+  expr1 BColor.g
+  expr2 BColor.b
+  channel3 alpha
+  expr3 BColor.a
+  enable_mix_luminance false
+  name Expression10
+  xpos -375
+  ypos -345
+ }
+ Premult {
+  name Premult3
+  selected true
+  xpos -375
+  ypos -297
+  disable true
+ }
+clone $Ca23fd400 {
+  xpos -375
+  ypos -225
+  selected false
+ }
+ Dot {
+  name Dot4
+  xpos -327
+  ypos -133
+ }
+set Nad033c00 [stack 0]
+ NoOp {
+  name GetBColor
+  xpos -361
+  ypos -81
+ }
+ DropShadow {
+  inputs 2
+  name DropShadow2
+  note_font Verdana
+  xpos -361
+  ypos 123
+  color {0 0 0}
+  opacity 1
+  softness 10
+  size 1
+ }
+ Dot {
+  name Dot3
+  xpos -327
+  ypos 234
+ }
+push $Na2802400
+ Dot {
+  name Dot7
+  xpos -1465
+  ypos -231
+ }
+set Na5999c00 [stack 0]
+ Expression {
+  channel0 alpha
+  expr0 "a+x>width/2 ? 0.25:0.75 && a+y>height/2 ? 0.25:0.75"
+  channel1 none
+  name Expression7
+  xpos -1419
+  ypos -105
+ }
+push $Na5999c00
+ Expression {
+  channel0 alpha
+  expr0 "x<width/2 ? .25:0.75 && y<height/2 ? 0.25:0.75"
+  channel1 none
+  name Expression6
+  xpos -1552
+  ypos -105
+ }
+ Merge2 {
+  inputs 2
+  operation average
+  name Merge6
+  xpos -1490
+  ypos -45
+ }
+ Expression {
+  channel0 rgba
+  expr0 a
+  name Expression4
+  xpos -1490
+  ypos -21
+ }
+ Expression {
+  channel0 alpha
+  expr0 1
+  name Expression8
+  xpos -1490
+  ypos 3
+ }
+ Dot {
+  name Dot8
+  xpos -1456
+  ypos 168
+ }
+ Remove {
+  name Remove1
+  xpos -1189
+  ypos 159
+  disable true
+ }
+ Dot {
+  name Dot9
+  xpos -776
+  ypos 168
+ }
+set Na2821c00 [stack 0]
+ Merge2 {
+  inputs 2
+  name Merge4
+  xpos -480
+  ypos 231
+ }
+push $Na2802400
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "R : \[sample GetABColor R this.width/2 this.height/2]\nG : \[sample GetABColor G this.width/2 this.height/2]\nB : \[sample GetABColor B this.width/2 this.height/2]\nA : \[sample GetABColor A this.width/2 this.height/2]"
+  old_message {{82 32 58 32 49 10 71 32 58 32 49 46 50 10 66 32 58 32 48 46 53 10 65 32 58 32 49 46 56}
+    }
+  old_expression_markers {{4 4 10 12 18 20 26 28}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  font_size_values {{0 100 1 100 2 100 3 100 0 50 1 50 2 50 3 50}
+    }
+  cursor_position 211
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text4
+  xpos -557
+  ypos 47
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "Operation = \[value Merge1.operation]"
+  old_message {{79 112 101 114 97 116 105 111 110 32 61 32 112 108 117 115}
+    }
+  old_expression_markers {{12 15}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  font_size_values {{0 100 0 50}
+    }
+  cursor_position 36
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text6
+  xpos -557
+  ypos 95
+ }
+push $Nad033c00
+push $Na23fcc00
+push $Na2802400
+ Dot {
+  name Dot10
+  xpos -967
+  ypos -462
+ }
+set Na2820c00 [stack 0]
+ Expression {
+  inputs 1+1
+  channel0 {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+  expr0 AColor.r
+  expr1 AColor.g
+  expr2 AColor.b
+  channel3 alpha
+  expr3 AColor.a
+  name AColorexp
+  xpos -1000
+  ypos -345
+ }
+ Premult {
+  name Premult2
+  xpos -1000
+  ypos -297
+  disable true
+ }
+set Na2820400 [stack 0]
+ Expression {
+  expr0 r(x+(width/15),y)
+  expr1 g(x+(width/15),y)
+  expr2 b(x+(width/15),y)
+  channel3 alpha
+  expr3 a(x+(width/15),y)
+  name Expression3
+  xpos -1000
+  ypos -201
+ }
+ set Ca2820000 [stack 0]
+ Dot {
+  name Dot2
+  xpos -966
+  ypos -133
+ }
+set Na289dc00 [stack 0]
+ Merge2 {
+  inputs 2
+  operation plus
+  maskChannelMask rgba.red
+  name Merge1
+  xpos -692
+  ypos -136
+ }
+ Clamp {
+  name Clamp1
+  xpos -692
+  ypos -15
+  disable true
+ }
+ NoOp {
+  name GetABColor
+  xpos -692
+  ypos 47
+ }
+ DropShadow {
+  inputs 2
+  name DropShadow4
+  note_font Verdana
+  xpos -692
+  ypos 94
+  color {0 0 0}
+  opacity 1
+  softness 10
+  size 1
+ }
+push $Na2821c00
+ Merge2 {
+  inputs 2
+  name Merge3
+  xpos -692
+  ypos 165
+ }
+ set Ca7cf7800 [stack 0]
+push $Na2820c00
+ Dot {
+  name Dot5
+  xpos -1170
+  ypos -462
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "R : \[sample GetAColor R this.width/2 this.height/2]\nG : \[sample GetAColor G this.width/2 this.height/2]\nB : \[sample GetAColor B this.width/2 this.height/2]\nA : \[sample GetAColor A this.width/2 this.height/2]"
+  old_message {{82 32 58 32 49 10 71 32 58 32 48 46 53 10 66 32 58 32 48 10 65 32 58 32 49}
+    }
+  old_expression_markers {{4 4 10 12 18 18 24 24}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  font_size_values {{0 100 1 100 2 100 3 100 0 50 1 50 2 50 3 50}
+    }
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text8
+  xpos -1204
+  ypos -81
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "A Color"
+  old_message {{65 32 67 111 108 111 114}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  font_size_values {{0 100 0 50}
+    }
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text7
+  xpos -1204
+  ypos -21
+ }
+clone $Ca2820000 {
+  xpos -1204
+  ypos 111
+  selected false
+ }
+push $Na289dc00
+ NoOp {
+  name GetAColor
+  xpos -1000
+  ypos -81
+ }
+ DropShadow {
+  inputs 2
+  name DropShadow5
+  note_font Verdana
+  xpos -1000
+  ypos 110
+  color {0 0 0}
+  opacity 1
+  softness 10
+  size 1
+ }
+ Dot {
+  name Dot1
+  xpos -966
+  ypos 234
+ }
+push $Na2821c00
+clone $Ca7cf7800 {
+  inputs 2
+  xpos -810
+  ypos 231
+  selected false
+ }
+ ContactSheet {
+  inputs 3
+  width {{width*3}}
+  height {{height}}
+  rows 1
+  columns 3
+  name ContactSheet1
+  xpos -692
+  ypos 231
+ }
+ Output {
+  name Output1
+  xpos -692
+  ypos 303
+ }
+push $Na2820400
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  xpos -370
+  ypos 584
+ }
+end_group

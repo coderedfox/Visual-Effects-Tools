@@ -1,0 +1,1102 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="-1" y="-6" w="1920" h="1028" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1257" stretch="1"/>
+            <splitter orientation="2">
+                <split size="358"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                    <page id="Viewer.2"/>
+                </dock>
+                <split size="632"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                    <page id="DAG.2"/>
+                    <page id="DAG.3"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name //gun3/Assets/4_Software/Nuke/plugins/plugins/TGD/Templates/Template_Maple_Advanced.nk
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode1
+ tile_color 0x7171c600
+ label "REVIEWING ONLY"
+ note_font_size 42
+ selected true
+ xpos -360
+ ypos -217
+ bdwidth 643
+ bdheight 393
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x8e8e3800
+ label "AOV's and setting frame size"
+ note_font_size 20
+ selected true
+ xpos -3880
+ ypos -2418
+ bdwidth 349
+ bdheight 406
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode3
+ tile_color 0x7171c600
+ label "ABXY\n"
+ note_font_size 42
+ selected true
+ xpos -1226
+ ypos -1841
+ bdwidth 921
+ bdheight 373
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode31
+ label "Color correction on the RGBA Beauty\n"
+ note_font_size 20
+ selected true
+ xpos -818
+ ypos -1387
+ bdwidth 490
+ bdheight 502
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode32
+ label "Background and Shadows\n"
+ note_font_size 20
+ selected true
+ xpos -1455
+ ypos -860
+ bdwidth 903
+ bdheight 398
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode33
+ tile_color 0x217f15ff
+ label "WRITE OUT\n"
+ selected true
+ xpos -895
+ ypos -450
+ bdwidth 519
+ bdheight 629
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting
+ tile_color 0x7171c600
+ label "Diffuse passes\n\n"
+ note_font_size 42
+ selected true
+ xpos -3463
+ ypos -2652
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting1
+ tile_color 0x7171c600
+ label "Coat  passes\n\n"
+ note_font_size 42
+ selected true
+ xpos -2837
+ ypos -2654
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting2
+ tile_color 0x7171c600
+ label "Specular passes\n\n\n"
+ note_font_size 42
+ selected true
+ xpos -2208
+ ypos -2652
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting3
+ tile_color 0x7171c600
+ label "Transmission passes"
+ note_font_size 42
+ selected true
+ xpos -1575
+ ypos -2652
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting4
+ tile_color 0x7171c600
+ label "Emission passes\n"
+ note_font_size 42
+ selected true
+ xpos -933
+ ypos -2652
+ bdwidth 614
+ bdheight 767
+}
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read4
+ label "Ground AO\n\n\n\n"
+ selected true
+ xpos -1011
+ ypos -597
+}
+set Nc7170400 [stack 0]
+Dot {
+ name Dot3
+ selected true
+ xpos -977
+ ypos -187
+}
+push $Nc7170400
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read21
+ label "Shadow Pass\n\n\n"
+ selected true
+ xpos -1200
+ ypos -759
+}
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read10
+ label "ABXY Specular\n\n\n"
+ selected true
+ xpos -1178
+ ypos -1561
+}
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read8
+ label Emission
+ selected true
+ xpos -684
+ ypos -2570
+}
+Saturation {
+ name Saturation2
+ label "Saturation \[value channels] channel"
+ selected true
+ xpos -684
+ ypos -2259
+}
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read7
+ label Transmission
+ selected true
+ xpos -1326
+ ypos -2570
+}
+Grade {
+ name Grade2
+ label "Pre grade the \[value channels] channel"
+ selected true
+ xpos -1326
+ ypos -2259
+}
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read9
+ label "Specular Key light\n\n\n\n"
+ selected true
+ xpos -1802
+ ypos -2439
+}
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read6
+ label "Specular\n\n\n"
+ selected true
+ xpos -1960
+ ypos -2559
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge9
+ selected true
+ xpos -1960
+ ypos -2409
+}
+HueCorrect {
+ name HueCorrect2
+ label "Hue correct the \[value channels] channel"
+ selected true
+ xpos -1960
+ ypos -2247
+}
+Dot {
+ name Dot8
+ selected true
+ xpos -1927
+ ypos -2075
+}
+set Ncce38400 [stack 0]
+Dot {
+ name Dot7
+ label "Use cryptomatte to get ABXY alpha"
+ selected true
+ xpos -1790
+ ypos -2017
+}
+push 0
+push $Ncce38400
+add_layer {specular_direct specular_direct.red specular_direct.green specular_direct.blue}
+Merge2 {
+ inputs 2+1
+ Achannels specular_direct
+ Bchannels none
+ output specular_direct
+ name Merge26
+ label "Remove ABXY spec\nA is let blank to make it black\n"
+ selected true
+ xpos -1961
+ ypos -2040
+}
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read5
+ label "Coat\n\n\n"
+ selected true
+ xpos -2581
+ ypos -2572
+}
+ColorCorrect {
+ name ColorCorrect2
+ label "Color correcting the \[value channels] channel"
+ selected true
+ xpos -2581
+ ypos -2242
+}
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read2
+ label "Cryptomatte\n\n"
+ selected true
+ xpos -3870
+ ypos -2173
+}
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read1
+ label "RGBA\nWe use the RGBA only to set the frame size\n\n"
+ selected true
+ xpos -3682
+ ypos -2338
+}
+add_layer {crypto_object00 crypto_object00.red crypto_object00.green crypto_object00.blue crypto_object00.alpha}
+Shuffle2 {
+ inputs 2
+ fromInput1 {{0} B A}
+ out1 crypto_object00
+ fromInput2 {{0} B A}
+ mappings "4 rgba.red 0 0 crypto_object00.red 0 0 rgba.green 0 1 crypto_object00.green 0 1 rgba.blue 0 2 crypto_object00.blue 0 2 black -1 -1 crypto_object00.alpha 0 3"
+ name Shuffle6
+ label "Shuffle \[value in1] into \[value out1]"
+ selected true
+ xpos -3682
+ ypos -2149
+}
+add_layer {UVW UVW.red UVW.green UVW.blue UVW.alpha UVW.X UVW.Y UVW.Z}
+Remove {
+ operation keep
+ channels crypto_object00
+ channels2 alpha
+ channels3 {UVW.red UVW.green UVW.blue none}
+ name Remove1
+ label "This removes the RGBA as we are recombinding them below\n"
+ selected true
+ xpos -3682
+ ypos -2113
+}
+Dot {
+ name Dot6
+ selected true
+ xpos -3648
+ ypos -1961
+}
+Dot {
+ name Dot2
+ selected true
+ xpos -3492
+ ypos -1961
+}
+set Nca656400 [stack 0]
+Dot {
+ name Dot1
+ selected true
+ xpos -3492
+ ypos -2224
+}
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read13
+ label "Diffuse\n\n"
+ selected true
+ xpos -3196
+ ypos -2571
+}
+Channel_ReColor {
+ inputs 2
+ name Channel_ReColor2
+ selected true
+ xpos -3196
+ ypos -2227
+ Diffuse_Import rgb
+ output rgb
+ disable_5 true
+ disable_2 true
+ master 1
+ shadows 1
+ midtones 1
+ highlights 1
+ disable_3 true
+}
+push $Nca656400
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge17
+ selected true
+ xpos -3196
+ ypos -1964
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge3
+ selected true
+ xpos -2581
+ ypos -1965
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge6
+ selected true
+ xpos -1961
+ ypos -1963
+}
+set Nc7156400 [stack 0]
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge7
+ selected true
+ xpos -1326
+ ypos -1963
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge8
+ selected true
+ xpos -684
+ ypos -1963
+}
+Dot {
+ name Dot10
+ label "All the passes have been merged into a RGBA Beauty"
+ selected true
+ xpos -650
+ ypos -1870
+}
+Dot {
+ name Dot5
+ selected true
+ xpos -650
+ ypos -1698
+}
+set Nbe806000 [stack 0]
+Dot {
+ name Dot4
+ label "Use cryptomatte to get ABXY alpha"
+ selected true
+ xpos -492
+ ypos -1528
+}
+push $Nbe806000
+add_layer {specular specular.red specular.green specular.blue}
+Group {
+ inputs 3
+ name ABXY_Switcher1
+ selected true
+ xpos -684
+ ypos -1531
+ addUserKnob {20 User}
+ addUserKnob {4 Switcher M {"1: Send to channel, for later comping" "2: Apply the ABXY Spec, no extra channel" "" ""}}
+ addUserKnob {26 ""}
+ addUserKnob {26 option0_1 l "" +STARTLINE T "Option 1, what channel would you like the Spec to go into\n"}
+ addUserKnob {41 out1 l Channel? T Shuffle1.out1}
+ addUserKnob {26 ""}
+ addUserKnob {26 option0 l "" t "Normally you will use a plus or screen for specular" +STARTLINE T "Option 2: If applying, what merge type"}
+ addUserKnob {41 operation T Merge10.operation}
+}
+ Input {
+  inputs 0
+  name Alpha
+  label "Alpha\n"
+  xpos -376
+  ypos -423
+  number 1
+ }
+ Dot {
+  name Dot4
+  label "Use cryptomatte to get ABXY alpha"
+  note_font_size 20
+  xpos -342
+  ypos -290
+ }
+ Input {
+  inputs 0
+  name Spec
+  label "Spec\n"
+  xpos -588
+  ypos -423
+  number 2
+ }
+set Nccdf4400 [stack 0]
+ Input {
+  inputs 0
+  name Pipe
+  label "Pipe\n"
+  xpos -485
+  ypos -423
+ }
+set Nbe620800 [stack 0]
+ Merge2 {
+  inputs 2+1
+  operation plus
+  name Merge10
+  label "Merge over ABXY Spec\n"
+  xpos -485
+  ypos -299
+ }
+push $Nccdf4400
+push $Nbe620800
+ Shuffle2 {
+  inputs 2
+  fromInput1 {{1} B A}
+  out1 specular
+  fromInput2 {{0} B A}
+  mappings "3 rgba.red 0 0 specular.red 0 0 rgba.green 0 1 specular.green 0 1 rgba.blue 0 2 specular.blue 0 2"
+  name Shuffle1
+  xpos -588
+  ypos -289
+ }
+ Switch {
+  inputs 2
+  which {{Switcher}}
+  name Switch1
+  xpos -546
+  ypos -185
+ }
+ Output {
+  name Output1
+  xpos -546
+  ypos -138
+ }
+end_group
+Premult {
+ name Premult1
+ label "This pulls the matte"
+ selected true
+ xpos -684
+ ypos -1456
+}
+Dot {
+ name Dot9
+ selected true
+ xpos -650
+ ypos -1407
+}
+ColorLookup {
+ name ColorLookup1
+ selected true
+ xpos -683
+ ypos -1281
+}
+ColorCorrect {
+ name ColorCorrect3
+ selected true
+ xpos -683
+ ypos -1161
+}
+Grade {
+ name Grade4
+ selected true
+ xpos -683
+ ypos -1031
+}
+Dot {
+ name Dot11
+ selected true
+ xpos -649
+ ypos -798
+}
+set Nccc53400 [stack 0]
+Remove {
+ name Remove2
+ label "Removes all the RGBA to get a clean background\n"
+ selected true
+ xpos -869
+ ypos -814
+}
+Dot {
+ name Dot12
+ selected true
+ xpos -1369
+ ypos -798
+}
+Group {
+ name XBox_MSGray
+ label "\n"
+ selected true
+ xpos -1403
+ ypos -681
+ postage_stamp true
+ addUserKnob {20 User}
+ addUserKnob {4 colorchoices l Colors M {"Custom sRGB (Inputs below)" "MS Gray (230,230,230)" "XBox Green (16, 124, 16)" "XBox Slate Gray (58, 58, 58)" "Microft Brand Orange (242,80,34)" "Microft Brand Green (127,186,0)" "Microft Brand Blue (0,164,239)" "Microft Brand Yellow (255,185,0)" "Microft Brand Orange (115,115,115)" "" "" "" "" "" "" ""}}
+ colorchoices "MS Gray (230,230,230)"
+ addUserKnob {20 CustomRGB l "Custom sRGB" n 1}
+ CustomRGB 0
+ addUserKnob {41 colorspace_in l ColorSpace T Colorspace1.colorspace_in}
+ addUserKnob {41 temp_expr0 l Red T Expression1.temp_expr0}
+ addUserKnob {41 temp_expr1 l Green T Expression1.temp_expr1}
+ addUserKnob {41 temp_expr2 l Blue T Expression1.temp_expr2}
+ addUserKnob {41 expr0 l Alpha T ALPHA.expr0}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {26 text l "" +STARTLINE T "Reference:\nMS Gray | sRGB ( 230 , 230 , 230 )\nMS Gray | Nuke Viewer ( 201 , 201 , 201 )\nMS Gray | Nuke RGB ( 0.78741 , 0.78741 ,  0.78741 )"}
+}
+ Expression {
+  inputs 0
+  channel0 alpha
+  expr0 1
+  channel1 none
+  channel2 none
+  name ALPHA
+  xpos -670
+  ypos 470
+ }
+ Input {
+  inputs 0
+  name Optional_BGInfo
+  selected true
+  xpos -515
+  ypos -286
+ }
+ Remove {
+  name Remove1
+  xpos -515
+  ypos -215
+ }
+set Ncce15400 [stack 0]
+ Dot {
+  name Dot1
+  xpos -481
+  ypos -133
+ }
+set Nccd7c000 [stack 0]
+ Dot {
+  name Dot4
+  xpos -226
+  ypos -133
+ }
+set Nc43fe400 [stack 0]
+ Expression {
+  expr0 .17144
+  expr1 .17144
+  expr2 .17144
+  expr3 1
+  name Microsoft_Brand_GREY
+  xpos 23
+  ypos -57
+ }
+push $Nc43fe400
+ Expression {
+  expr0 1
+  expr1 .48515
+  expr2 0
+  expr3 1
+  name Microsoft_Brand_YELLOW
+  xpos -120
+  ypos -57
+ }
+push $Nc43fe400
+ Expression {
+  expr0 0
+  expr1 0.37124
+  expr2 .82198
+  expr3 1
+  name Microsoft_Brand_BLUE
+  xpos -260
+  ypos -57
+ }
+push $Nc43fe400
+ Expression {
+  expr0 0.21223
+  expr1 .49102
+  expr2 0
+  expr3 1
+  name Microsoft_Brand_GREEN
+  xpos -402
+  ypos -57
+ }
+push $Nc43fe400
+ Expression {
+  expr0 0.88792
+  expr1 0.08022
+  expr2 0.01600
+  expr3 1
+  name Microsoft_Brand_Orange
+  xpos -560
+  ypos -57
+ }
+push $Nccd7c000
+ Dot {
+  name Dot5
+  xpos -826
+  ypos -134
+ }
+set Nc4401c00 [stack 0]
+ Expression {
+  expr0 .04231
+  expr1 .04231
+  expr2 .04231
+  expr3 1
+  name XBox_SlateGray
+  xpos -810
+  ypos -64
+ }
+push $Nc4401c00
+ Expression {
+  expr0 .00518
+  expr1 .20155
+  expr2 .00518
+  expr3 1
+  name XBox_Green
+  xpos -937
+  ypos -64
+ }
+push $Nc4401c00
+ Dot {
+  name Dot2
+  xpos -1051
+  ypos -134
+ }
+set Ncce0d800 [stack 0]
+ Expression {
+  expr0 0.78741
+  expr1 0.78741
+  expr2 0.78741
+  expr3 1
+  name MSGray
+  xpos -1085
+  ypos -60
+ }
+ Dot {
+  name Dot3
+  xpos -1051
+  ypos 234
+ }
+push $Ncce0d800
+ Dot {
+  name Dot6
+  xpos -1326
+  ypos -134
+ }
+ Expression {
+  temp_name0 OR_Red
+  temp_expr0 127
+  temp_name1 OR_Green
+  temp_expr1 186
+  temp_name2 OR_Blue
+  temp_expr2 0
+  expr0 OR_Red/256
+  expr1 OR_Green/256
+  expr2 OR_Blue/256
+  name Expression1
+  xpos -1360
+  ypos -57
+ }
+ Colorspace {
+  colorspace_in sRGB
+  name Colorspace1
+  xpos -1360
+  ypos 63
+ }
+ set Cccc77800 [stack 0]
+ Dot {
+  name Dot7
+  xpos -1328
+  ypos 282
+ }
+ Switch {
+  inputs 9
+  which {{colorchoices}}
+  name Switch1
+  xpos -560
+  ypos 279
+ }
+ Dot {
+  name Dot8
+  xpos -526
+  ypos 378
+ }
+ ChannelMerge {
+  inputs 2
+  B none
+  name ChannelMerge1
+  xpos -560
+  ypos 457
+ }
+ Output {
+  name Output1
+  xpos -560
+  ypos 534
+ }
+clone $Cccc77800 {
+  inputs 0
+  xpos -378
+  ypos 389
+  selected false
+ }
+ Sampler {
+  sampler {{width/2} {height/2}}
+  lut {red {curve 1 1}
+    green {curve 0 0}
+    blue {curve 0 0}}
+  name Sampler_sRGB
+  xpos -378
+  ypos 427
+  disable true
+ }
+push $Ncce15400
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  xpos -229
+  ypos -209
+ }
+end_group
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge4
+ selected true
+ xpos -1200
+ ypos -655
+ disable true
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge5
+ selected true
+ xpos -1011
+ ypos -655
+ disable true
+}
+Dot {
+ name Dot45
+ selected true
+ xpos -816
+ ypos -652
+}
+set Nc7236400 [stack 0]
+Dot {
+ name Dot64
+ selected true
+ xpos -816
+ ypos -258
+}
+push $Nccc53400
+Dot {
+ name Dot13
+ label "Use this if you want to seperate\nRGBA and background\n"
+ selected true
+ xpos -583
+ ypos -662
+}
+push $Nccc53400
+push $Nc7236400
+Merge2 {
+ inputs 2
+ name Merge2
+ label "Use this if you want to merge RGBA and Background\n"
+ selected true
+ xpos -742
+ ypos -661
+}
+Switch {
+ inputs 2
+ name Switch1
+ selected true
+ xpos -683
+ ypos -585
+}
+Dot {
+ name Dot46
+ selected true
+ xpos -649
+ ypos -540
+}
+set Nc86f4800 [stack 0]
+push $Nc86f4800
+CopyMetaData {
+ inputs 2
+ name CopyMetaData2
+ label "This adds Cryptomatte Metadata back in"
+ selected true
+ xpos -683
+ ypos -427
+}
+add_layer {diffuse diffuse.red diffuse.green diffuse.blue}
+Remove {
+ operation keep
+ channels rgba
+ channels2 diffuse
+ name Remove3
+ label "Strips out everything but \nRGBA & Cryptomatte\n"
+ selected true
+ xpos -683
+ ypos -371
+}
+add_layer {Background Background.red Background.green Background.blue Background.alpha}
+Shuffle2 {
+ inputs 2
+ fromInput1 {{0} B A}
+ in1 none
+ out1 none
+ fromInput2 {{1} B A}
+ in2 rgba
+ out2 Background
+ mappings "4 rgba.red 1 0 Background.red 1 0 rgba.green 1 1 Background.green 1 1 rgba.blue 1 2 Background.blue 1 2 rgba.alpha 1 3 Background.alpha 1 3"
+ name Shuffle7
+ label "Adds Background as a pass\n"
+ selected true
+ xpos -683
+ ypos -267
+}
+add_layer {ao ao.red ao.green ao.blue ao.alpha}
+add_layer {AO_Ground AO_Ground.red AO_Ground.green AO_Ground.blue AO_Ground.alpha}
+Shuffle2 {
+ inputs 2
+ fromInput1 {{0} B A}
+ in1 none
+ out1 none
+ fromInput2 {{1} B A}
+ in2 ao
+ out2 AO_Ground
+ mappings "4 ao.red 1 0 AO_Ground.red 1 0 ao.green 1 1 AO_Ground.green 1 1 ao.blue 1 2 AO_Ground.blue 1 2 ao.alpha 1 3 AO_Ground.alpha 1 3"
+ name Shuffle9
+ label "Adds Background AO as a pass\n"
+ selected true
+ xpos -683
+ ypos -196
+}
+Write {
+ channels all
+ file_type exr
+ datatype "32 bit float"
+ metadata "all metadata"
+ noprefix true
+ first_part rgba
+ name Write_EXR
+ label "Must be saves as a 32bit \nif you want cryptomatte"
+ selected true
+ xpos -683
+ ypos 47
+}
+set Nc8729400 [stack 0]
+Write {
+ file_type png
+ checkHashOnRead false
+ name Write_PNG
+ selected true
+ xpos -683
+ ypos 111
+}
+Read {
+ inputs 0
+ file_type exr
+ localizationPolicy on
+ format "8000 8000 0 0 8000 8000 1 rws"
+ origset true
+ version 4
+ name Read3
+ label "Review PSD\n"
+ selected true
+ xpos -4
+ ypos -118
+}
+push $Nc8729400
+push $Nc8729400
+Merge2 {
+ inputs 2
+ Bchannels Background
+ name Merge1
+ label "Takes the RGBA and Background for display\n"
+ selected true
+ xpos -257
+ ypos 61
+ disable true
+}
+ContactSheet {
+ inputs 2
+ rows 2
+ columns 2
+ name ContactSheet2
+ label "This node will side by side your \nimages"
+ selected true
+ xpos -4
+ ypos 54
+}
+Constant {
+ inputs 0
+ channels rgb
+ color {0.006512090098 0.3231431842 0.7304606438 0}
+ format "256 256 0 0 256 256 1 square_256"
+ name X
+ selected true
+ xpos -1076
+ ypos -1760
+}
+Constant {
+ inputs 0
+ channels rgb
+ color {0.1946177632 0.5028864145 0.07618537545 0}
+ format "256 256 0 0 256 256 1 square_256"
+ name A
+ selected true
+ xpos -1076
+ ypos -1689
+}
+Constant {
+ inputs 0
+ channels rgb
+ color {0.6795424223 0.03189602867 0.02955682762 0}
+ format "256 256 0 0 256 256 1 square_256"
+ name B
+ selected true
+ xpos -990
+ ypos -1689
+}
+Constant {
+ inputs 0
+ channels rgb
+ color {0.5906187296 0.5028864145 0.0009105809731 0}
+ format "256 256 0 0 256 256 1 square_256"
+ name Y
+ selected true
+ xpos -990
+ ypos -1761
+}
+push $Nc7156400
+Viewer {
+ frame_range 1-100
+ name Viewer1
+ selected true
+ xpos -4
+ ypos 104
+}

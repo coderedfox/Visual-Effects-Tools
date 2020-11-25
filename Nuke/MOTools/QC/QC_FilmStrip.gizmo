@@ -1,0 +1,94 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ addUserKnob {20 User}
+ addUserKnob {3 filmstrip_amount l "Filmstrip Amount"}
+ filmstrip_amount 4
+ addUserKnob {7 filmstrip_scale l Scale -STARTLINE R 0.1 1}
+ filmstrip_scale 1
+ addUserKnob {41 global_font_scale l "Font Scale" T Text2.global_font_scale}
+ addUserKnob {41 disable_1 l disable -STARTLINE T Text2.disable}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 507
+  ypos -219
+ }
+ Reformat {
+  type scale
+  scale {{filmstrip_scale}}
+  resize fit
+  pbb true
+  name Reformat1
+  selected true
+  xpos 507
+  ypos -177
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\[frame] f"
+  old_message {{49 56 49 32 102}
+    }
+  old_expression_markers {{0 2}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  global_font_scale 0.5
+  center {640 360}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 720}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 640 360 0 0 1 1 0 0 0 0}
+    }
+  name Text2
+  xpos 507
+  ypos -119
+ }
+ Retime {
+  input.last 240
+  output.last 5
+  speed {{(last_frame/filmstrip_amount)}}
+  filter none
+  time ""
+  name Retime1
+  xpos 507
+  ypos -81
+ }
+ ContactSheet {
+  width {{this.width*columns}}
+  height {{this.height}}
+  rows 1
+  columns {{filmstrip_amount+1}}
+  gap 5
+  roworder TopBottom
+  splitinputs true
+  startframe {{this.first_frame}}
+  endframe {{filmstrip_amount+1}}
+  name ContactSheet2
+  xpos 507
+  ypos -42
+ }
+set Ndf3b7400 [stack 0]
+ Viewer {
+  frame 25
+  frame_range 1-240
+  viewerProcess TGD_RGB_PS
+  name Viewer1
+  xpos 719
+  ypos 63
+ }
+push $Ndf3b7400
+ Output {
+  name Output1
+  xpos 507
+  ypos 6
+ }
+end_group

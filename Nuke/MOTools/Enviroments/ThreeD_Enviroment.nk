@@ -1,0 +1,771 @@
+#! C:/Program Files/Nuke10.5v1/nuke-10.5.1.dll -nx
+version 10.5 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="3840" h="2160" fullscreen="1" screen="0">
+        <splitter orientation="1">
+            <split size="52"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="2990" stretch="1"/>
+            <splitter orientation="2">
+                <split size="2133"/>
+                <dock id="" activePageId="DAG.2" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                    <page id="DAG.2"/>
+                </dock>
+            </splitter>
+            <split size="790"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+    <window x="3840" y="0" w="2560" h="1440" fullscreen="1" screen="1">
+        <splitter orientation="2">
+            <split size="1440"/>
+            <dock id="" activePageId="Viewer.1">
+                <page id="Viewer.1"/>
+                <page id="Viewer.2"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name //peabody/Software/nuke/plugins/scripts/Enviroments/3d_Enviroment.nk
+ frame 34
+ fps 30
+ format "2112 1188 0 0 2112 1188 1 Overscan 10"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ proxy_scale 0.25
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+ addUserKnob {20 Deadline}
+ addUserKnob {1 FrameListMode l frameListMode}
+ addUserKnob {1 CustomFrameList l customFrameList}
+ addUserKnob {1 Department l department}
+ addUserKnob {1 Pool l pool}
+ addUserKnob {1 SecondaryPool l secondaryPool}
+ addUserKnob {1 Group l group}
+ addUserKnob {1 Priority l priority}
+ addUserKnob {1 MachineLimit l machineLimit}
+ addUserKnob {1 IsBlacklist l isBlacklist}
+ addUserKnob {1 MachineList l machineList}
+ addUserKnob {1 LimitGroups l limitGroups}
+ addUserKnob {1 SubmitSuspended l submitSuspended}
+ addUserKnob {1 ChunkSize l chunkSize}
+ addUserKnob {1 ConcurrentTasks l concurrentTasks}
+ addUserKnob {1 LimitConcurrentTasks l limitConcurrentTasks}
+ addUserKnob {1 Threads l threads}
+ addUserKnob {1 SubmitScene l submitScene}
+ addUserKnob {1 BatchMode l batchMode}
+ addUserKnob {1 ContinueOnError l continueOnError}
+ addUserKnob {1 UseNodeRange l useNodeRange}
+ addUserKnob {1 UseGpu l useGpu}
+ addUserKnob {1 EnforceRenderOrder l enforceRenderOrder}
+ addUserKnob {1 DeadlineRenderMode l deadlineRenderMode}
+ addUserKnob {1 PerformanceProfiler l performanceProfiler}
+ addUserKnob {1 ReloadPlugin l reloadPlugin}
+ addUserKnob {1 PerformanceProfilerPath l performanceProfilerPath}
+ addUserKnob {1 CreateUploadMovie l createUploadMovie}
+ addUserKnob {1 CreateUploadFilmStrip l createUploadFilmStrip}
+ addUserKnob {1 UseDraft l useDraft}
+ addUserKnob {1 DraftQuick l draftQuick}
+ addUserKnob {1 DraftCodec l draftCodec}
+ addUserKnob {1 DraftFormat l draftFormat}
+ addUserKnob {1 DraftFrameRate l draftFrameRate}
+ addUserKnob {1 DraftResolution l draftResolution}
+ addUserKnob {1 DraftQuality l draftQuality}
+ addUserKnob {1 DraftTemplate l draftTemplate}
+ addUserKnob {1 DraftUser l draftUser}
+ addUserKnob {1 DraftEntity l draftEntity}
+ addUserKnob {1 DraftVersion l draftVersion}
+ addUserKnob {1 DraftExtraArgs l draftExtraArgs}
+ addUserKnob {1 ProjectManagement l projectManagement}
+ addUserKnob {1 DeadlineSGData l shotgunKVPs}
+ addUserKnob {1 DeadlineFTData l ftrackKVPs}
+ addUserKnob {1 DeadlineNIMData l nimKVPs}
+ addUserKnob {1 ProxyMode l proxyMode}
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode2
+ tile_color 0x388e8e00
+ label "3D Background"
+ note_font_size 42
+ xpos -1464
+ ypos -949
+ bdwidth 666
+ bdheight 570
+}
+Read {
+ inputs 0
+ file //peabody/Library/_Vault/Models/Environments/Universal_Environment/Clo_Maps/clo_front_alpha.jpg
+ format "1024 1024 0 0 1024 1024 1 square_1K"
+ origset true
+ name Read6
+ xpos -944
+ ypos -507
+}
+Read {
+ inputs 0
+ file //peabody/Library/_Vault/Models/Environments/Universal_Environment/Clo_Maps/clo_front.tga
+ format "1024 1024 0 0 1024 1024 1 square_1K"
+ origset true
+ name Read7
+ xpos -1054
+ ypos -576
+}
+Copy {
+ inputs 2
+ from0 rgba.red
+ to0 rgba.alpha
+ name Copy1
+ xpos -1054
+ ypos -483
+}
+Dot {
+ name Dot3
+ xpos -1131
+ ypos -473
+}
+Read {
+ inputs 0
+ file //peabody/Library/_Vault/Models/Environments/Universal_Environment/Clo_Maps/clo_05_alpha.jpg
+ format "4096 4096 0 0 4096 4096 1 "
+ origset true
+ name Read8
+ xpos -944
+ ypos -639
+}
+Constant {
+ inputs 0
+ channels rgb
+ color {1 1 1 1}
+ format "4096 4096 0 0 4096 4096 1 "
+ name Constant1
+ xpos -1054
+ ypos -687
+}
+Copy {
+ inputs 2
+ from0 rgba.red
+ to0 rgba.alpha
+ name Copy5
+ xpos -1054
+ ypos -615
+}
+Dot {
+ name Dot7
+ xpos -1130
+ ypos -605
+}
+Read {
+ inputs 0
+ file //peabody/Library/_Vault/Models/Environments/Universal_Environment/Clo_Maps/clo_back_1_alpha.jpg
+ format "8000 1024 0 0 8000 1024 1 "
+ origset true
+ name Read9
+ xpos -943
+ ypos -750
+}
+Read {
+ inputs 0
+ file //peabody/Library/_Vault/Models/Environments/Universal_Environment/Clo_Maps/clo_back_1.jpg
+ format "8000 1024 0 0 8000 1024 1 "
+ origset true
+ name Read10
+ xpos -1053
+ ypos -812
+}
+Copy {
+ inputs 2
+ from0 rgba.red
+ to0 rgba.alpha
+ name Copy6
+ xpos -1053
+ ypos -726
+}
+Dot {
+ name Dot8
+ xpos -1120
+ ypos -716
+}
+Read {
+ inputs 0
+ file //peabody/library/_Vault/Maps/Environments/Environments_backs/AKZ_background-sunset_Fixed.png
+ format "4669 2988 0 0 4669 2988 1 "
+ origset true
+ auto_alpha true
+ name Read11
+ xpos -1271
+ ypos -869
+}
+Axis {
+ inputs 0
+ useMatrix true
+ matrix {
+     {1 0 0 0}
+     {0 0 1 0}
+     {0 -1 0 0}
+     {0 0 0 1}
+   }
+ name Axis_MaxtoNuke_Correction2
+ xpos -1442
+ ypos -857
+}
+Camera2 {
+ rotate {90 0 0}
+ focal 35
+ haperture 65
+ far 100000
+ name Camera2
+ xpos -1442
+ ypos -747
+}
+Dot {
+ name Dot9
+ xpos -1418
+ ypos -605
+}
+Group {
+ inputs 5
+ name Teague_Backgroud1
+ selected true
+ xpos -1271
+ ypos -609
+ addUserKnob {20 User}
+ addUserKnob {13 pos}
+ pos {{curve} 0 0}
+ addUserKnob {7 CloudsTravel l "Clouds Travel Speed" R 0.25 3}
+ CloudsTravel 1
+ addUserKnob {7 Master_Position_Z l "Master Height" R -2000 2000}
+ addUserKnob {20 Backgound}
+ addUserKnob {6 BackgroundBool l Disable +STARTLINE}
+ addUserKnob {6 BackgroundPreMult l "Disable Pre Multiply" -STARTLINE}
+ BackgroundPreMult true
+ addUserKnob {7 BackgroundRotation l Rotation R 0 360}
+ BackgroundRotation 20
+ addUserKnob {7 BackgroundOpacity l Opacity}
+ BackgroundOpacity 1
+ addUserKnob {7 BackgroundTile l "Horizontal Tile" R 1 6}
+ BackgroundTile 3
+ addUserKnob {20 Horizon}
+ addUserKnob {6 HorizonBool l Disabled -STARTLINE}
+ HorizonBool true
+ addUserKnob {6 HorizonPreM l "Disable Pre Multiply" -STARTLINE}
+ addUserKnob {7 HorizonRotation l Rotation R 0 360}
+ addUserKnob {7 HorizonOpacity l Opacity}
+ HorizonOpacity 1
+ addUserKnob {20 Ground}
+ addUserKnob {6 GroundBool l Disabled +STARTLINE}
+ GroundBool true
+ addUserKnob {6 GroundPreMultiply l "Disable Pre Multiply" -STARTLINE}
+ addUserKnob {7 GroundRotation l Rotation R 0 360}
+ GroundRotation 60
+ addUserKnob {7 GroundOpacity l Opacity}
+ GroundOpacity 0.854
+ addUserKnob {20 Clouds}
+ addUserKnob {6 CloudsPreMultiply l "Disable Pre Multiply" -STARTLINE}
+ addUserKnob {26 CloudClose l "Clouds Close"}
+ addUserKnob {6 CloudsCloseBool l Disabled +STARTLINE}
+ CloudsCloseBool true
+ addUserKnob {7 CloudCloseRotation l Rotation R 0 360}
+ CloudCloseRotation 92.5
+ addUserKnob {7 CloudCloseOpacity l Opacity}
+ CloudCloseOpacity 0.95
+ addUserKnob {26 CloudFarA l "Cloud Far A"}
+ addUserKnob {6 CloudsFarABool l Disabled +STARTLINE}
+ CloudsFarABool true
+ addUserKnob {7 CloudsFarRotationA l Rotation R 0 360}
+ CloudsFarRotationA 90
+ addUserKnob {7 CloudFarAOpacity l Opacity}
+ CloudFarAOpacity 0.95
+ addUserKnob {26 CloudFarB l "Cloud Far B"}
+ addUserKnob {6 CloudsFarBBool l Disabled +STARTLINE}
+ CloudsFarBBool true
+ addUserKnob {7 CloudFarBRotation l Rotation R 0 360}
+ CloudFarBRotation 99
+ addUserKnob {7 CloudFarBOpacity l Opacity}
+ CloudFarBOpacity 0.95
+ addUserKnob {26 CloudFarC l "Cloud Far C"}
+ addUserKnob {6 CloudsFarCBool l Disabled +STARTLINE}
+ CloudsFarCBool true
+ addUserKnob {7 CloudFarCRotation l Rotation R 0 360}
+ CloudFarCRotation 270
+ addUserKnob {7 CloudFarCOpacity l Opacity}
+ CloudFarCOpacity 0.95
+}
+ Input {
+  inputs 0
+  name BG
+  xpos 243
+  ypos -1138
+  number 1
+ }
+ Reformat {
+  type "to box"
+  format "8192 4096 0 0 8192 4096 1 BG"
+  box_width 15000
+  box_height 3750
+  box_fixed true
+  resize distort
+  name Reformat1
+  xpos 243
+  ypos -1053
+ }
+ set C75639c00 [stack 0]
+ Tile {
+  columns {{BackgroundTile}}
+  name Tile1
+  xpos 243
+  ypos -1021
+ }
+set N75639400 [stack 0]
+ Viewer {
+  frame_range 1-100
+  fps 30
+  viewerProcess None
+  name Viewer1
+  xpos -77
+  ypos -757
+ }
+ Input {
+  inputs 0
+  name Camera_Input
+  xpos 295
+  ypos -116
+ }
+ Dot {
+  name Dot11
+  label "\[value cam.x]"
+  xpos 499
+  ypos -112
+ }
+ Cylinder {
+  inputs 0
+  translate {{"\[value RayRender_Clouds.input1.translate.x]"} {"\[value RayRender_Clouds.input1.translate.y]"} {"\[value RayRender_Clouds.input1.translate.z]"}}
+  name Cylinder1
+  xpos 468
+  ypos -475
+ }
+ TransformGeo {
+  translate {{curve} 0 0}
+  scaling {0.25 0.25 0.25}
+  name Transform_Position1
+  xpos 656
+  ypos -475
+  disable true
+ }
+ Input {
+  inputs 0
+  name Clouds
+  xpos 797
+  ypos -1084
+  number 4
+ }
+ Premult {
+  name Premult1
+  xpos 797
+  ypos -1031
+  disable {{parent.CloudsPreMultiply}}
+ }
+ Dot {
+  name Dot7
+  xpos 831
+  ypos -969
+ }
+set N42379c00 [stack 0]
+ Dot {
+  name Dot5
+  xpos 1157
+  ypos -969
+ }
+ Dot {
+  name Dot3
+  xpos 1157
+  ypos -902
+ }
+set N42379400 [stack 0]
+ Dot {
+  name Dot9
+  xpos 1018
+  ypos -902
+ }
+push 0
+ Merge2 {
+  inputs 2
+  mix {{parent.CloudFarAOpacity}}
+  name Merge5
+  xpos 984
+  ypos -835
+ }
+ ReadGeo2 {
+  file //peabody/Software/nuke/plugins/python/VrayCamera/objects/EXAMPLE.FBX
+  version 7
+  fbx_node_name {{2} ENV_CloudsBG ENV_CloudsHhorizon ENV_CloudsC ENV_CloudsA ENV_CloudsB ENV_CloudsClose ENV_CloudsGround}
+  read_on_each_frame true
+  selectable false
+  cast_shadow false
+  receive_shadow false
+  name ReadGeo7
+  xpos 984
+  ypos -749
+  disable {{parent.CloudsFarABool}}
+ }
+ TransformGeo {
+  rotate {0 {parent.CloudsFarRotationA} 0}
+  scaling {0.25 0.25 0.25}
+  name TransformGeo7
+  xpos 984
+  ypos -701
+ }
+ Dot {
+  name Dot6
+  xpos 1018
+  ypos -648
+ }
+push $N42379400
+push 0
+ Merge2 {
+  inputs 2
+  mix {{parent.CloudFarBOpacity}}
+  name Merge6
+  xpos 1121
+  ypos -836
+ }
+ ReadGeo2 {
+  file //peabody/Software/nuke/plugins/python/VrayCamera/objects/EXAMPLE.FBX
+  version 7
+  fbx_node_name {{3} ENV_CloudsBG ENV_CloudsHhorizon ENV_CloudsC ENV_CloudsA ENV_CloudsB ENV_CloudsClose ENV_CloudsGround}
+  read_on_each_frame true
+  selectable false
+  cast_shadow false
+  receive_shadow false
+  name ReadGeo2
+  xpos 1123
+  ypos -751
+  disable {{parent.CloudsFarBBool}}
+ }
+ TransformGeo {
+  rotate {0 {parent.CloudFarBRotation} 0}
+  scaling {0.25 0.25 0.25}
+  name TransformGeo1
+  xpos 1123
+  ypos -700
+ }
+push $N42379400
+ Dot {
+  name Dot10
+  xpos 1297
+  ypos -902
+ }
+push 0
+ Merge2 {
+  inputs 2
+  mix {{parent.CloudFarCOpacity}}
+  name Merge7
+  xpos 1263
+  ypos -839
+ }
+ ReadGeo2 {
+  file //peabody/Software/nuke/plugins/python/VrayCamera/objects/EXAMPLE.FBX
+  version 7
+  fbx_node_name {{4} ENV_CloudsBG ENV_CloudsHhorizon ENV_CloudsC ENV_CloudsA ENV_CloudsB ENV_CloudsClose ENV_CloudsGround}
+  read_on_each_frame true
+  selectable false
+  cast_shadow false
+  receive_shadow false
+  name ReadGeo8
+  xpos 1263
+  ypos -760
+  disable {{parent.CloudsFarCBool}}
+ }
+ TransformGeo {
+  rotate {0 {parent.CloudFarCRotation} 0}
+  scaling {0.25 0.25 0.25}
+  name TransformGeo8
+  xpos 1263
+  ypos -701
+ }
+ Dot {
+  name Dot8
+  xpos 1297
+  ypos -646
+ }
+ MergeGeo {
+  inputs 3
+  name MergeGeo3
+  xpos 1123
+  ypos -597
+ }
+push $N42379c00
+push 0
+ Merge2 {
+  inputs 2
+  mix {{parent.CloudCloseOpacity}}
+  name Merge4
+  xpos 797
+  ypos -839
+ }
+ ReadGeo2 {
+  file //peabody/Software/nuke/plugins/python/VrayCamera/objects/EXAMPLE.FBX
+  version 7
+  fbx_node_name {{5} ENV_CloudsBG ENV_CloudsHhorizon ENV_CloudsC ENV_CloudsA ENV_CloudsB ENV_CloudsClose ENV_CloudsGround}
+  read_on_each_frame true
+  selectable false
+  cast_shadow false
+  receive_shadow false
+  name ReadGeo10
+  xpos 797
+  ypos -754
+  disable {{parent.CloudsCloseBool}}
+ }
+ TransformGeo {
+  rotate {0 {parent.CloudCloseRotation} 0}
+  scaling {0.25 0.25 0.25}
+  name TransformGeo10
+  xpos 797
+  ypos -676
+ }
+ Input {
+  inputs 0
+  name Ground
+  xpos 510
+  ypos -1059
+  number 3
+ }
+push 0
+ Merge2 {
+  inputs 2
+  mix {{parent.GroundOpacity}}
+  name Merge3
+  xpos 510
+  ypos -999
+ }
+ Premult {
+  name Premult7
+  xpos 510
+  ypos -925
+  disable {{parent.GroundPreMultiply}}
+ }
+ ReadGeo2 {
+  file //peabody/Software/nuke/plugins/python/VrayCamera/objects/EXAMPLE.FBX
+  version 7
+  fbx_node_name {{6} ENV_CloudsBG ENV_CloudsHhorizon ENV_CloudsC ENV_CloudsA ENV_CloudsB ENV_CloudsClose ENV_CloudsGround}
+  read_on_each_frame true
+  selectable false
+  cast_shadow false
+  receive_shadow false
+  name ReadGeo9
+  xpos 510
+  ypos -839
+  disable {{parent.GroundBool}}
+ }
+ TransformGeo {
+  rotate {0 {parent.GroundRotation} 0}
+  scaling {0.25 0.25 0.25}
+  name TransformGeo9
+  xpos 510
+  ypos -737
+ }
+ Dot {
+  name Dot2
+  xpos 544
+  ypos -698
+ }
+ Input {
+  inputs 0
+  name Horizon
+  xpos 378
+  ypos -1057
+  number 2
+ }
+push 0
+ Merge2 {
+  inputs 2
+  mix {{parent.HorizonOpacity}}
+  name Merge2
+  xpos 378
+  ypos -1000
+ }
+ Premult {
+  name Premult2
+  xpos 378
+  ypos -920
+  disable {{parent.HorizonPreM}}
+ }
+ ReadGeo2 {
+  file //peabody/Software/nuke/plugins/python/VrayCamera/objects/EXAMPLE.FBX
+  version 7
+  fbx_node_name {{1} ENV_CloudsBG ENV_CloudsHhorizon ENV_CloudsC ENV_CloudsA ENV_CloudsB ENV_CloudsClose ENV_CloudsGround}
+  read_on_each_frame true
+  selectable false
+  cast_shadow false
+  receive_shadow false
+  name ReadGeo1
+  xpos 378
+  ypos -836
+  disable {{parent.HorizonBool}}
+ }
+ TransformGeo {
+  rotate {0 {parent.HorizonRotation} 0}
+  scaling {0.25 0.25 0.25}
+  name TransformGeo4
+  xpos 378
+  ypos -766
+ }
+push $N75639400
+ CheckerBoard2 {
+  inputs 0
+  format "8192 4096 0 0 8192 4096 1 BG"
+  boxsize {{root.width/100}}
+  color1_panelDropped true
+  name CheckerBoard1
+  xpos 105
+  ypos -1136
+ }
+clone $C75639c00 {
+  xpos 105
+  ypos -1052
+  selected false
+ }
+ Expression {
+  channel0 alpha
+  expr0 1
+  channel1 none
+  channel2 none
+  name Expression1
+  xpos 105
+  ypos -967
+ }
+ Merge2 {
+  inputs 2
+  mix {{parent.BackgroundOpacity}}
+  name Merge1
+  xpos 243
+  ypos -969
+ }
+ Premult {
+  name Premult3
+  xpos 243
+  ypos -886
+  disable {{parent.BackgroundPreMult x23 0}}
+ }
+ ReadGeo2 {
+  file //peabody/Software/nuke/plugins/python/VrayCamera/objects/EXAMPLE.FBX
+  version 7
+  read_on_each_frame true
+  selectable false
+  cast_shadow false
+  receive_shadow false
+  name ReadGeo3
+  xpos 243
+  ypos -837
+  disable {{parent.BackgroundBool x23 1}}
+ }
+ TransformGeo {
+  rotate {0 {BackgroundRotation} 0}
+  scaling {0.25 0.25 0.25}
+  name TransformGeo3
+  xpos 243
+  ypos -755
+ }
+ Dot {
+  name Dot1
+  xpos 277
+  ypos -698
+ }
+ MergeGeo {
+  inputs 3
+  name MergeGeo4
+  xpos 378
+  ypos -702
+ }
+ Dot {
+  name Dot4
+  xpos 412
+  ypos -593
+ }
+ MergeGeo {
+  inputs 3
+  name MergeGeo5
+  xpos 797
+  ypos -597
+ }
+ MergeGeo {
+  inputs 2
+  name MergeGeo1
+  xpos 797
+  ypos -475
+ }
+ TransformGeo {
+  translate {{frame*(CloudsTravel*10)} 0 0}
+  name Transform_Flying
+  xpos 797
+  ypos -364
+ }
+ TransformGeo {
+  translate {0 {Master_Position_Z} 0}
+  name Transform_Position
+  label "\n"
+  xpos 797
+  ypos -287
+ }
+ Constant {
+  inputs 0
+  name Constant1
+  xpos 647
+  ypos -228
+ }
+add_layer {AOV_Velocity AOV_Velocity.X AOV_Velocity.Y AOV_Velocity.Z}
+ RayRender {
+  inputs 3
+  triangle_intersection_epsilon 4e-006
+  interpolate_animation false
+  output_shader_vectors true
+  remove_from_beauty false
+  AOV_Motion AOV_Velocity
+  name RayRenderClouds
+  xpos 797
+  ypos -116
+ }
+ Output {
+  name Output1
+  xpos 797
+  ypos 272
+ }
+end_group
+set N8d596400 [stack 0]
+Dot {
+ name Dot10
+ label "Out to merge node\n"
+ xpos -1328
+ ypos -503
+}
+Merge2 {
+ name Merge2
+ xpos -1456
+ ypos -507
+}
+push $N8d596400
+Viewer {
+ frame 34
+ frame_range 1-100
+ fps 30
+ viewerProcess None
+ name Viewer1
+ xpos -40
+ ypos -10
+}

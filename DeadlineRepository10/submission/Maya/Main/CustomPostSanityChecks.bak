@@ -1,0 +1,40 @@
+// TGD Custom post sanity check
+// This returns whether or not the job can be submitted
+
+global proc CustomPostSanityCheck()
+{
+	print ("--------------------------------\n");
+	print ("Begining of the TGD Sanity check\n");
+	print ("--------------------------------\n");
+
+	// Check if render is set to Arnold
+	if( GetCurrentRenderer() == "arnold" )
+		print( "    PASSED : Render set to " + GetCurrentRenderer() + "\n" );
+	else
+		print( "    WARNING : Render set to " + GetCurrentRenderer() + "\n" );
+		
+	// Check on file type
+	if( getAttr( "defaultArnoldDriver.ai_translator") == "exr" )
+		print( "    PASSED : Image Format is " + getAttr( "defaultArnoldDriver.ai_translator") + "\n");
+	else
+		print( "    WARNING : Image Format is " + getAttr( "defaultArnoldDriver.ai_translator") + "\n");
+		
+	// Correct EXR compression
+	if( getAttr( "defaultArnoldDriver.ai_translator") == "exr")
+	{
+			if (getAttr( "defaultArnoldDriver.halfPrecision" ) == 1 ) print( "    PASSED : EXR Precision is off \n" );
+			else print( "    WARNING : EXR Precision is on \n");
+			
+			if (getAttr( "defaultArnoldDriver.exrTiled" ) == 0 ) print( "    PASSED : EXR Tited is off \n" );
+			else print( "    WARNING : EXR EXR Tited is on \n");
+			
+			if (getAttr( "defaultArnoldDriver.autocrop" ) == 1 ) print( "    PASSED : EXR AutoCrop is on \n" );
+			else print( "    WARNING : EXR AutoCrop is off \n");
+		
+	}
+		
+		
+	print ("--------------------------------\n");
+	print ("Finished the TGD Sanity check\n");
+	print ("--------------------------------\n");
+}

@@ -1,0 +1,379 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1917" h="1020" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1254" stretch="1"/>
+            <splitter orientation="2">
+                <split size="576"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="406"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name //gun3/Assets/4_Software/Nuke/plugins/plugins/MOTools/Compositing/Rebuild_Vray_Raw.nk
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting5
+ tile_color 0x7171c600
+ label "Vray Lighting\n"
+ note_font_size 42
+ xpos -3377
+ ypos -1322
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Reflect
+ tile_color 0xaaaaaa00
+ label "Vray Reflect, Refraction & Spec\n"
+ note_font_size 42
+ xpos -2740
+ ypos -1322
+ bdwidth 701
+ bdheight 768
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_SelfIllumination
+ tile_color 0x71c67100
+ label "Vray Self Illumination\n"
+ note_font_size 42
+ xpos -1623
+ ypos -1323
+ bdwidth 472
+ bdheight 781
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Specular
+ tile_color 0x8e8e3800
+ label "Vray Specular"
+ note_font_size 42
+ xpos -2018
+ ypos -1323
+ bdwidth 382
+ bdheight 771
+}
+Dot {
+ inputs 0
+ name Dot6
+ label "File Input\n"
+ xpos -3464
+ ypos -1242
+}
+Dot {
+ name Dot52
+ xpos -3256
+ ypos -1242
+}
+set N1129f800 [stack 0]
+Dot {
+ name Dot45
+ xpos -3112
+ ypos -1242
+}
+set N1129f400 [stack 0]
+Dot {
+ name Dot48
+ xpos -2928
+ ypos -1242
+}
+set N1129f000 [stack 0]
+Dot {
+ name Dot14
+ xpos -2655
+ ypos -1242
+}
+set N1129ec00 [stack 0]
+Dot {
+ name Dot15
+ xpos -2489
+ ypos -1242
+}
+set N1129e800 [stack 0]
+Dot {
+ name Dot16
+ xpos -2312
+ ypos -1243
+}
+set N1129e400 [stack 0]
+Dot {
+ name Dot17
+ xpos -2146
+ ypos -1243
+}
+set N1129e000 [stack 0]
+Dot {
+ name Dot51
+ xpos -1845
+ ypos -1243
+}
+set N112b3c00 [stack 0]
+Dot {
+ name Dot20
+ xpos -1419
+ ypos -1243
+}
+set N112b3800 [stack 0]
+Dot {
+ name Dot39
+ xpos -1085
+ ypos -1243
+}
+push $N112b3800
+add_layer {Element_SelfIllumination Element_SelfIllumination.red Element_SelfIllumination.green Element_SelfIllumination.blue}
+Shuffle {
+ in Element_SelfIllumination
+ in2 alpha
+ alpha red2
+ name SelfIllumination
+ xpos -1452
+ ypos -1225
+}
+push $N112b3c00
+add_layer {Element_Specular Element_Specular.red Element_Specular.green Element_Specular.blue Element_Specular.alpha}
+Shuffle {
+ in Element_Specular
+ in2 alpha
+ alpha red2
+ name Specular
+ xpos -1879
+ ypos -1225
+}
+push $N1129e000
+add_layer {Element_RefractionFilter Element_RefractionFilter.red Element_RefractionFilter.green Element_RefractionFilter.blue}
+Shuffle {
+ in Element_RefractionFilter
+ in2 alpha
+ alpha red2
+ name Refraction_Filter
+ xpos -2180
+ ypos -1225
+}
+Unpremult {
+ name Unpremult7
+ xpos -2180
+ ypos -1199
+}
+push $N1129e400
+add_layer {Element_RawRefraction Element_RawRefraction.red Element_RawRefraction.green Element_RawRefraction.blue}
+Shuffle {
+ in Element_RawRefraction
+ in2 alpha
+ alpha red2
+ name RawRefraction
+ xpos -2346
+ ypos -1225
+}
+Unpremult {
+ name Unpremult6
+ xpos -2346
+ ypos -1199
+}
+Dot {
+ name Dot18
+ xpos -2312
+ ypos -724
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge25
+ xpos -2180
+ ypos -728
+}
+push $N1129e800
+add_layer {Element_ReflectionFilter Element_ReflectionFilter.red Element_ReflectionFilter.green Element_ReflectionFilter.blue}
+Shuffle {
+ in Element_ReflectionFilter
+ in2 alpha
+ alpha red2
+ name Reflection_Filter
+ xpos -2523
+ ypos -1224
+}
+Unpremult {
+ name Unpremult5
+ xpos -2523
+ ypos -1198
+}
+push $N1129ec00
+add_layer {Element_RawReflection Element_RawReflection.red Element_RawReflection.green Element_RawReflection.blue}
+Shuffle {
+ in Element_RawReflection
+ in2 alpha
+ alpha red2
+ name RawReflection
+ xpos -2689
+ ypos -1224
+}
+Unpremult {
+ name Unpremult4
+ xpos -2689
+ ypos -1198
+}
+Dot {
+ name Dot19
+ xpos -2655
+ ypos -726
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge18
+ xpos -2523
+ ypos -730
+}
+push $N1129f800
+add_layer {Element_RawGlobalIllumination Element_RawGlobalIllumination.red Element_RawGlobalIllumination.green Element_RawGlobalIllumination.blue}
+Shuffle {
+ in Element_RawGlobalIllumination
+ in2 alpha
+ alpha red2
+ name RawGI
+ xpos -3290
+ ypos -1224
+}
+Unpremult {
+ name Unpremult2
+ xpos -3290
+ ypos -1197
+}
+push $N1129f400
+add_layer {Element_Diffuse Element_Diffuse.red Element_Diffuse.green Element_Diffuse.blue}
+Shuffle {
+ in Element_Diffuse
+ in2 alpha
+ alpha red2
+ name Diffuse
+ xpos -3146
+ ypos -1224
+}
+Unpremult {
+ name Unpremult3
+ xpos -3146
+ ypos -1198
+}
+Dot {
+ name Dot21
+ xpos -3112
+ ypos -727
+}
+set N11304800 [stack 0]
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge15
+ xpos -3290
+ ypos -731
+}
+push $N1129f000
+add_layer {Element_RawLighting Element_RawLighting.red Element_RawLighting.green Element_RawLighting.blue}
+Shuffle {
+ in Element_RawLighting
+ in2 alpha
+ alpha red2
+ name RawLightingSun
+ xpos -2962
+ ypos -1224
+}
+Unpremult {
+ name Unpremult9
+ xpos -2962
+ ypos -1198
+}
+push $N11304800
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge16
+ xpos -2962
+ ypos -731
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge1
+ xpos -3139
+ ypos -630
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge20
+ xpos -2523
+ ypos -630
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge26
+ xpos -2180
+ ypos -631
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge27
+ xpos -1879
+ ypos -631
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge28
+ xpos -1452
+ ypos -631
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Apply_Alpha
+ xpos -1119
+ ypos -637
+}
+Premult {
+ name Premult1
+ xpos -1119
+ ypos -588
+}
+Dot {
+ name Dot22
+ xpos -904
+ ypos -584
+}

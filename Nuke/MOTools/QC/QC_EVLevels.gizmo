@@ -1,0 +1,224 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ addUserKnob {20 User}
+ addUserKnob {7 ev_offset l EV_Offset R -5 5}
+ addUserKnob {7 EV_Spread l "EV Spread" R 0.1 5}
+ EV_Spread 2
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {7 text_size l "Text Size" R 0.1 10}
+ text_size 1
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 320
+  ypos -273
+ }
+set N9a94a000 [stack 0]
+ EXPTool {
+  mode Stops
+  red {{(EV_Spread*2)+ev_offset x1 0.1388888955}}
+  green {{(EV_Spread*2)+ev_offset x1 0.1388888955}}
+  blue {{(EV_Spread*2)+ev_offset x1 0.1388888955}}
+  name Exposure_Up02
+  xpos 620
+  ypos -90
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "EV + \[value Exposure_Up02.red]"
+  old_message {{69 86 32 43 32 52}
+    }
+  old_expression_markers {{5 5}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 25
+  global_font_scale {{text_size}}
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 3456}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  name Text5
+  selected true
+  xpos 620
+  ypos -57
+ }
+push $N9a94a000
+ EXPTool {
+  mode Stops
+  red {{EV_Spread+ev_offset}}
+  green {{EV_Spread+ev_offset}}
+  blue {{EV_Spread+ev_offset}}
+  name Exposure_Up01
+  xpos 503
+  ypos -91
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "EV + \[value Exposure_Up01.red]"
+  old_message {{69 86 32 43 32 50}
+    }
+  old_expression_markers {{5 5}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 30
+  global_font_scale {{text_size}}
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 3456}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  name Text4
+  xpos 503
+  ypos -57
+ }
+push $N9a94a000
+ EXPTool {
+  mode Stops
+  red {{EV_offset x1 0}}
+  green {{EV_offset x1 0}}
+  blue {{EV_offset x1 0}}
+  name Exposure_Offset
+  xpos 320
+  ypos -177
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "EV \[value ev_offset]"
+  old_message {{69 86 32 48}
+    }
+  old_expression_markers {{3 3}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 10
+  global_font_scale {{text_size}}
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 3456}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+  xpos 320
+  ypos -93
+ }
+push $N9a94a000
+ EXPTool {
+  mode Stops
+  red {{-EV_Spread+ev_offset x1 -1}}
+  green {{-EV_Spread+ev_offset x1 -2}}
+  blue {{-EV_Spread+ev_offset x1 -2}}
+  name Exposure_Down01
+  xpos 184
+  ypos -89
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "EV \[value Exposure_Down01.red]"
+  old_message {{69 86 32 45 50}
+    }
+  old_expression_markers {{3 4}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 3
+  global_font_scale {{text_size}}
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 3456}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  name Text2
+  xpos 184
+  ypos -49
+ }
+push $N9a94a000
+ EXPTool {
+  mode Stops
+  red {{(-EV_Spread*2)+ev_offset}}
+  green {{(-EV_Spread*2)+ev_offset}}
+  blue {{(-EV_Spread*2)+ev_offset}}
+  name Exposure_Down02
+  xpos 39
+  ypos -86
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "EV \[value Exposure_Down02.red]"
+  old_message {{69 86 32 45 52}
+    }
+  old_expression_markers {{3 4}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 3
+  global_font_scale {{text_size}}
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 3456}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  name Text3
+  xpos 39
+  ypos -57
+ }
+ ContactSheet {
+  inputs 5
+  width {{this.width*columns}}
+  height {{this.height}}
+  rows 1
+  columns 5
+  name ContactSheet1
+  xpos 320
+  ypos 26
+ }
+ Output {
+  name Output1
+  xpos 320
+  ypos 135
+ }
+end_group

@@ -1,0 +1,469 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ inputs 0
+ addUserKnob {20 User}
+ addUserKnob {19 AColor l Color}
+ AColor {1 0 0.5 0.5}
+ addUserKnob {6 AColor_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {4 Options l "Multiplication Type" M {"Premult Alpha" "Unpremult Alpha" "" ""}}
+ addUserKnob {20 info l Explanation n 1}
+ addUserKnob {26 _1 l "" +STARTLINE T "Premultiplied Alpha\nThe RGB is multipled against the Alpha\n\nRed * Alpha = Red\nGreen * Alpha = Green\nBlue * Alpha = Blue\nAlpha = Alpha"}
+ addUserKnob {26 ""}
+ addUserKnob {26 _2 l "" +STARTLINE T "Unmultipled Alpha\nThe RGB is divided against the Alpha\n\nRed / Alpha = Red\nGreen / Alpha = Green\nBlue / Alpha = Blue\nAlpha = Alpha"}
+ addUserKnob {26 ""}
+ addUserKnob {26 Straight l "" +STARTLINE +INVISIBLE T "Straight Alpha RGBA\nThe RGB is NOT multipled against the Alpha\n\nRed = Red\nGreen = Green\nBlue = Blue\nAlpha = Alpha"}
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0xaaaaaa00
+  note_font_size 42
+  xpos 436
+  ypos 101
+  bdheight 110
+ }
+ Constant {
+  inputs 0
+  color {0 0 0 0}
+  color_panelDropped true
+  format "1024 1024 0 0 1024 1024 1 square_1K"
+  name Constant1
+  xpos -60
+  ypos -297
+ }
+set N99388800 [stack 0]
+ Reformat {
+  type "to box"
+  box_width {{this.width}}
+  box_height {{this.width}}
+  box_fixed true
+  resize distort
+  name Reformat1
+  xpos -60
+  ypos -164
+ }
+set N99388400 [stack 0]
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "     R : \[sample GetMultColor R this.box.x this.box.y]\n     G : \[sample GetMultColor G this.box.x this.box.y]\n     B : \[sample GetMultColor B this.box.x this.box.y]\n     A : \[sample GetMultColor A this.box.x this.box.y]\n*"
+  old_message {{32 32 32 32 32 82 32 58 32 48 46 48 48 54 55 52 49 53 50 10 32 32 32 32 32 71 32 58 32 48 10 32 32 32 32 32 66 32 58 32 48 46 48 48 51 51 55 48 55 54 10 32 32 32 32 32 65 32 58 32 48 46 48 53 56 48 53 56 51 10 42}
+    }
+  old_expression_markers {{9 18 29 29 40 49 60 68}
+    }
+  box {{this.width/4} {this.height-(this.height/4)} {width} {height}}
+  yjustify bottom
+  transforms {{0 2}
+    }
+  font_size_values {{8 100 22 100 28 100 8 50 22 50 28 50}
+    }
+  cursor_position 165
+  global_font_scale 0.5
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text5
+  xpos 581
+  ypos 87
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "     R : \[sample GetMultColor R this.box.x this.box.y]\n     G : \[sample GetMultColor G this.box.x this.box.y]\n     B : \[sample GetMultColor B this.box.x this.box.y]\n     A : \[sample GetMultColor A this.box.x this.box.y]\n*"
+  old_message {{32 32 32 32 32 82 32 58 32 48 46 53 10 32 32 32 32 32 71 32 58 32 48 10 32 32 32 32 32 66 32 58 32 48 46 50 53 10 32 32 32 32 32 65 32 58 32 48 46 53 10 42}
+    }
+  old_expression_markers {{9 11 22 22 33 36 47 49}
+    }
+  box {{this.width/2} {height/2} {width} {height}}
+  yjustify bottom
+  transforms {{0 2}
+    }
+  font_size_values {{15 100 21 100 24 100 15 50 21 50 24 50}
+    }
+  cursor_position 219
+  global_font_scale 0.5
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text3
+  xpos 581
+  ypos 119
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "     R : \[sample GetMultColor R this.box.x this.box.y]\n     G : \[sample GetMultColor G this.box.x this.box.y]\n     B : \[sample GetMultColor B this.box.x this.box.y]\n     A : \[sample GetMultColor A this.box.x this.box.y]\n*"
+  old_message {{32 32 32 32 32 82 32 58 32 48 46 48 48 54 55 52 49 53 50 10 32 32 32 32 32 71 32 58 32 48 10 32 32 32 32 32 66 32 58 32 48 46 48 48 51 51 55 48 55 54 10 32 32 32 32 32 65 32 58 32 48 46 48 53 56 48 53 56 51 10 42}
+    }
+  old_expression_markers {{9 18 29 29 40 49 60 68}
+    }
+  box {{(width-width)+this.width/4} {(width-width)+this.width/4} {width} {height}}
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 219
+  global_font_scale 0.5
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text6
+  xpos 581
+  ypos 149
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\[value Options]"
+  old_message {{80 114 101 109 117 108 116 32 65 108 112 104 97}
+    }
+  old_expression_markers {{0 12}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 5
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text4
+  xpos 581
+  ypos 182
+ }
+push $N99388800
+ Expression {
+  temp_name0 posX
+  temp_expr0 width/2
+  temp_name1 posY
+  temp_expr1 height/2
+  temp_name2 radius
+  temp_expr2 width/2.5
+  temp_name3 dist
+  temp_expr3 "sqrt((x - posX)**2 + (y - posY)**2)"
+  channel0 alpha
+  expr0 "clamp(1 - dist/radius, 0, 1)"
+  channel1 none
+  channel2 none
+  name Expression1
+  xpos -170
+  ypos -201
+ }
+ Expression {
+  channel0 alpha
+  expr0 "0.75 < a ? 1:a"
+  name Expression2
+  xpos -170
+  ypos -153
+ }
+push $N99388800
+ Dot {
+  name Dot1
+  xpos -336
+  ypos -270
+ }
+ Dot {
+  name Dot2
+  xpos -336
+  ypos -78
+ }
+set N993ec400 [stack 0]
+ Expression {
+  inputs 1+1
+  channel0 {rgba.red -rgba.green -rgba.blue -rgba.alpha}
+  expr0 AColor.r
+  expr1 AColor.g
+  expr2 AColor.b
+  channel3 alpha
+  expr3 AColor.a
+  name AColorExp
+  xpos -170
+  ypos -81
+ }
+set N993ec000 [stack 0]
+ Dot {
+  name Dot5
+  xpos 93
+  ypos -78
+ }
+set N993edc00 [stack 0]
+ Dot {
+  name Dot3
+  xpos 478
+  ypos -198
+ }
+ Premult {
+  name Premult1
+  xpos 444
+  ypos -141
+  disable {{"Options == 0 ? 0 : 1"}}
+ }
+ Unpremult {
+  name Unpremult1
+  xpos 444
+  ypos -93
+  disable {{"Options == 1 ? 0 : 1" x1 1}}
+ }
+ Dot {
+  name GetMultColor
+  xpos 480
+  ypos 84
+ }
+ DropShadow {
+  inputs 2
+  name DropShadow2
+  note_font Verdana
+  xpos 446
+  ypos 181
+  color {0 0 0}
+  opacity 1
+  softness 5
+  size 1.5
+ }
+push $N993ec400
+ Dot {
+  name Dot7
+  xpos -432
+  ypos -6
+ }
+set Nb98f0000 [stack 0]
+ Expression {
+  channel0 alpha
+  expr0 "a+x>width/2 ? 0.25:0.75 && a+y>height/2 ? 0.25:0.75"
+  channel1 none
+  name Expression7
+  xpos -358
+  ypos 29
+ }
+push $Nb98f0000
+ Expression {
+  channel0 alpha
+  expr0 "x<width/2 ? .25:0.75 && y<height/2 ? 0.25:0.75"
+  channel1 none
+  name Expression6
+  xpos -570
+  ypos 29
+ }
+ Merge2 {
+  inputs 2
+  operation average
+  name Merge6
+  xpos -468
+  ypos 29
+ }
+ Expression {
+  channel0 rgba
+  expr0 a
+  name Expression4
+  xpos -468
+  ypos 53
+ }
+ Expression {
+  channel0 alpha
+  expr0 0
+  name Expression8
+  xpos -468
+  ypos 77
+ }
+ Merge2 {
+  inputs 2
+  Bchannels rgb
+  name Merge4
+  xpos 194
+  ypos 183
+ }
+set Nb9918800 [stack 0]
+push $N99388400
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "A : \[sample GetAColor A this.width/2 this.height/2]"
+  old_message {{65 32 58 32 48 46 53}
+    }
+  old_expression_markers {{4 6}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 51
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+  xpos 167
+  ypos 15
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message Alpha
+  old_message {{65 108 112 104 97}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 5
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text2
+  xpos 167
+  ypos 60
+ }
+push $N993edc00
+ Shuffle2 {
+  fromInput1 {{0} B}
+  fromInput2 {{0} B}
+  mappings "4 rgba.alpha 0 3 rgba.alpha 0 3 rgba.alpha 0 3 rgba.blue 0 2 rgba.alpha 0 3 rgba.green 0 1 rgba.alpha 0 3 rgba.red 0 0"
+  name Shuffle1
+  xpos 59
+  ypos 26
+ }
+ DropShadow {
+  inputs 2
+  name DropShadow1
+  note_font Verdana
+  xpos 57
+  ypos 59
+  color {0 0 0}
+  opacity 1
+  softness 10
+  size 1
+ }
+push $N99388400
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "R : \[sample GetAColor R this.width/2 this.height/2]\nG : \[sample GetAColor G this.width/2 this.height/2]\nB : \[sample GetAColor B this.width/2 this.height/2]"
+  old_message {{82 32 58 32 49 10 71 32 58 32 48 10 66 32 58 32 48 46 53}
+    }
+  old_expression_markers {{4 4 10 10 16 18}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  font_size_values {{0 100 1 100 2 100 3 100 0 50 1 50 2 50 3 50}
+    }
+  cursor_position 155
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text8
+  xpos -60
+  ypos 12
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\nColor"
+  old_message {{10 67 111 108 111 114}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 6
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  name Text7
+  xpos -60
+  ypos 50
+ }
+push $N993ec000
+ Dot {
+  name GetAColor
+  xpos -136
+  ypos 7
+ }
+ DropShadow {
+  inputs 2
+  name DropShadow5
+  note_font Verdana
+  xpos -170
+  ypos 49
+  color {0 0 0}
+  opacity 1
+  softness 10
+  size 1
+ }
+ ContactSheet {
+  inputs 3
+  width {{this.width*3}}
+  height {{this.height}}
+  rows 1
+  columns 3
+  roworder TopBottom
+  name ContactSheet1
+  xpos -170
+  ypos 182
+ }
+ Output {
+  name Output1
+  xpos -170
+  ypos 351
+ }
+push $Nb9918800
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  xpos -381
+  ypos 329
+ }
+end_group

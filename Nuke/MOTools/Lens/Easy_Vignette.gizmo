@@ -1,0 +1,89 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ addUserKnob {20 User}
+ addUserKnob {16 vignetteSize l Size}
+ vignetteSize 1.5
+ addUserKnob {41 softness -STARTLINE T Radial1.softness}
+ addUserKnob {41 mix T Merge5.mix}
+ addUserKnob {41 operation -STARTLINE T Merge5.operation}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -41
+  ypos 121
+ }
+ Dot {
+  name Dot43
+  xpos -7
+  ypos 244
+ }
+set N2aa6ac00 [stack 0]
+ Remove {
+  name Remove1
+  xpos 47
+  ypos 235
+ }
+ Radial {
+  area {{(this.width-this.width) x1 0} {(this.height-this.height) x1 0} {this.width} {this.height}}
+  softness 0.75
+  name Radial1
+  xpos 180
+  ypos 241
+ }
+ Transform {
+  scale {{vignetteSize}}
+  center {{this.width/2} {this.height/2}}
+  name Transform_scale
+  selected true
+  xpos 180
+  ypos 265
+ }
+set Nfb03d000 [stack 0]
+ Invert {
+  name Invert1
+  xpos 180
+  ypos 324
+ }
+push $N2aa6ac00
+ Remove {
+  name Remove7
+  xpos -164
+  ypos 235
+ }
+ Expression {
+  expr0 0
+  channel2 alpha
+  expr2 1
+  name Expression1
+  xpos -164
+  ypos 271
+ }
+push $N2aa6ac00
+ Merge2 {
+  inputs 2+1
+  operation multiply
+  mix 0.5
+  name Merge5
+  xpos -41
+  ypos 330
+ }
+ Output {
+  name Output1
+  xpos -41
+  ypos 385
+ }
+ Output {
+  name Output1
+  xpos -41
+  ypos 485
+ }
+push $Nfb03d000
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  xpos -41
+  ypos 145
+ }
+end_group

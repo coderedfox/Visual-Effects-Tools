@@ -1,0 +1,123 @@
+#! C:/Program Files/Nuke9.0v7/nuke-9.0.7.dll -nx
+version 9.0 v7
+Gizmo {
+ addUserKnob {20 User}
+ addUserKnob {7 Amount R 0.1 10}
+ Amount 2
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -356
+  ypos -109
+ }
+set N5ae67400 [stack 0]
+ Dot {
+  name Dot5
+  xpos -322
+  ypos -52
+ }
+set N5ae67000 [stack 0]
+ Remove {
+  name Remove1
+  xpos -479
+  ypos -62
+ }
+ Radial {
+  output alpha
+  area {0 0 {width} {height}}
+  name Radial1
+  xpos -479
+  ypos -24
+ }
+ Invert {
+  name Invert1
+  xpos -479
+  ypos 14
+ }
+push $N5ae67000
+add_layer {chromatic chromatic.u chromatic.v none}
+ Copy {
+  inputs 2
+  from0 rgba.alpha
+  to0 chromatic.u
+  from1 rgba.alpha
+  to1 chromatic.v
+  name Copy1
+  xpos -356
+  ypos 7
+ }
+ Dot {
+  name Dot4
+  xpos -322
+  ypos 87
+ }
+set N57713c00 [stack 0]
+ IDistort {
+  channels rgb
+  uv chromatic
+  uv_scale {{-Amount}}
+  name IDistort2
+  xpos -263
+  ypos 83
+ }
+ Dot {
+  name Dot1
+  xpos -229
+  ypos 237
+ }
+push $N57713c00
+ IDistort {
+  channels rgb
+  uv chromatic
+  uv_scale {{Amount}}
+  name IDistort1
+  xpos -469
+  ypos 83
+ }
+ Dot {
+  name Dot2
+  xpos -435
+  ypos 189
+ }
+push $N57713c00
+ Dot {
+  name Dot3
+  xpos -322
+  ypos 141
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  Achannels {-rgba.red -rgba.green rgba.blue rgba.alpha}
+  Bchannels {-rgba.red rgba.green -rgba.blue rgba.alpha}
+  maskChannelInput -depth.Z
+  name Merge1
+  xpos -356
+  ypos 185
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  Achannels {rgba.red -rgba.green -rgba.blue rgba.alpha}
+  Bchannels {-rgba.red rgba.green rgba.blue rgba.alpha}
+  maskChannelInput -depth.Z
+  name Merge2
+  xpos -356
+  ypos 233
+ }
+ Output {
+  name Output1
+  xpos -356
+  ypos 294
+ }
+push $N5ae67400
+ Viewer {
+  frame_range 0-150
+  fps 30
+  viewerProcess None
+  name Viewer1
+  xpos -356
+  ypos 59
+ }
+end_group

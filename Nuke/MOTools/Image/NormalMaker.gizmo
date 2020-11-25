@@ -1,0 +1,227 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ lock_connections {{curve x1 0}}
+ addUserKnob {20 User}
+ addUserKnob {16 Seperation_Amount l Seperation}
+ Seperation_Amount 2
+ addUserKnob {41 InvertU l "Invert U" -STARTLINE T Invert_Red.disable}
+ addUserKnob {41 InvertV l "Invert V" -STARTLINE T Invert_green.disable}
+ addUserKnob {41 Blur T Blur_pre.size}
+ addUserKnob {41 Sharpen -STARTLINE T Sharpen1.size}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 530
+  ypos -641
+ }
+ Invert {
+  channels {rgba.red -rgba.green -rgba.blue}
+  name Invert_Red
+  xpos 530
+  ypos -575
+ }
+ Invert {
+  channels {-rgba.red rgba.green -rgba.blue none}
+  name Invert_green
+  selected true
+  xpos 530
+  ypos -519
+ }
+ Sharpen {
+  size 0.02
+  name Sharpen1
+  xpos 530
+  ypos -388
+ }
+ Blur {
+  name Blur_pre
+  xpos 530
+  ypos -327
+ }
+ Dot {
+  name Dot2
+  xpos 564
+  ypos -246
+ }
+set Nb1bf800 [stack 0]
+ Dot {
+  name Dot8
+  xpos 712
+  ypos -246
+ }
+set N7007dc00 [stack 0]
+ Dot {
+  name Dot6
+  xpos 903
+  ypos -246
+ }
+ Expression {
+  expr0 r(x-Seperation_Amount,y)
+  expr1 g(x-Seperation_Amount,y)
+  expr2 b(x-Seperation_Amount,y)
+  name right
+  xpos 869
+  ypos -129
+ }
+ Dot {
+  name Dot1
+  xpos 903
+ }
+push $N7007dc00
+ Expression {
+  expr0 r(x,y+Seperation_Amount)
+  expr1 g(x,y+Seperation_Amount)
+  expr2 b(x,y+Seperation_Amount)
+  name Bottom
+  xpos 678
+  ypos -129
+ }
+ Shuffle2 {
+  inputs 2
+  fromInput1 {{0} B A}
+  fromInput2 {{1} B A}
+  in2 rgb
+  mappings "4 black -1 -1 rgba.blue 0 2 rgba.green 0 1 rgba.green 0 1 black -1 -1 rgba.alpha 0 3 rgba.red 1 0 rgba.red 0 0"
+  name Shuffle5
+  label "B : \[value in1] to \[value out1]\nA : \[value in2] to \[value out2]"
+  xpos 678
+  ypos -16
+ }
+ Grade {
+  channels {rgba.red rgba.green -rgba.blue none}
+  black 0.5
+  name Grade8
+  xpos 678
+  ypos 69
+ }
+push $Nb1bf800
+ Dot {
+  name Dot7
+  xpos 468
+  ypos -246
+ }
+set Nb93a6000 [stack 0]
+ Expression {
+  expr0 r(x+Seperation_Amount,y)
+  expr1 g(x+Seperation_Amount,y)
+  expr2 b(x+Seperation_Amount,y)
+  name Left
+  xpos 434
+  ypos -129
+ }
+push $Nb93a6000
+ Dot {
+  name Dot3
+  xpos 324
+  ypos -246
+ }
+ Expression {
+  expr0 r(x,y-Seperation_Amount)
+  expr1 g(x,y-Seperation_Amount)
+  expr2 b(x,y-Seperation_Amount)
+  name Top
+  xpos 290
+  ypos -129
+ }
+ Dot {
+  name Dot4
+  xpos 324
+  ypos -6
+ }
+ Shuffle2 {
+  inputs 2
+  fromInput1 {{0} B A}
+  fromInput2 {{1} B A}
+  in2 rgba
+  mappings "4 black -1 -1 rgba.blue 0 2 black -1 -1 rgba.alpha 0 3 rgba.green 0 1 rgba.green 0 1 rgba.red 1 0 rgba.red 0 0"
+  name Shuffle4
+  label "B : \[value in1] to \[value out1]\nA : \[value in2] to \[value out2]"
+  xpos 434
+  ypos -22
+ }
+ Grade {
+  channels {rgba.red rgba.green -rgba.blue none}
+  blackpoint 1
+  whitepoint 0
+  white 0.5
+  name Grade7
+  xpos 434
+  ypos 69
+ }
+ Merge2 {
+  inputs 2
+  operation average
+  Achannels rgb
+  Bchannels rgb
+  output rgb
+  name Merge4
+  label "A : \[value Achannels]\nB : \[value Bchannels]\nOut : \[value Bchannels]"
+  xpos 568
+  ypos 49
+ }
+ Dot {
+  name Dot5
+  xpos 602
+  ypos 175
+ }
+set N42070800 [stack 0]
+ Expression {
+  channel0 rgb
+  expr0 (r+g+b)
+  channel1 none
+  channel2 none
+  name Expression2
+  xpos 703
+  ypos 172
+ }
+ Blur {
+  size {{Blur_pre.size*2}}
+  name Blur1
+  xpos 703
+  ypos 249
+ }
+push $N42070800
+ Shuffle2 {
+  inputs 2
+  fromInput1 {{0} B A}
+  fromInput2 {{1} B A}
+  in2 rgb
+  mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 black -1 -1 rgba.alpha 0 3 rgba.blue 1 2 rgba.blue 0 2"
+  name Shuffle1
+  label "B : \[value in1] to \[value out1]\nA : \[value in2] to \[value out2]"
+  xpos 568
+  ypos 242
+ }
+ Clamp {
+  name Clamp1
+  xpos 568
+  ypos 321
+ }
+ Crop {
+  box {{this.x} {this.y} {this.width} {this.height}}
+  reformat true
+  crop false
+  name Crop1
+  xpos 568
+  ypos 369
+ }
+ Output {
+  name Output1
+  xpos 568
+  ypos 479
+ }
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  xpos 778
+  ypos 341
+ }
+ Switch {
+  inputs 0
+  name Switch1
+  xpos 180
+  ypos -288
+ }
+end_group

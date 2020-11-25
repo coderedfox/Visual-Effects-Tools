@@ -1,0 +1,115 @@
+#! C:/Program Files/Nuke9.0v7/nuke-9.0.7.dll -nx
+version 9.0 v7
+Gizmo {
+ addUserKnob {20 User}
+ addUserKnob {7 Amount R 0.1 10}
+ Amount 10
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -683
+  ypos 137
+ }
+ Expression {
+  temp_name0 center
+  temp_expr0 "\[sample this z width/2 height/2]"
+  channel0 depth
+  expr0 "z <= center ? ((center - z ) + center)-center  : z-center"
+  channel1 none
+  channel2 none
+  name camera_focus
+  xpos -683
+  ypos 190
+ }
+ Dot {
+  name Dot18
+  xpos -649
+  ypos 220
+ }
+set N72bc2c00 [stack 0]
+ Dot {
+  name Dot22
+  xpos -539
+  ypos 220
+ }
+add_layer {chromatic chromatic.u chromatic.v}
+ Shuffle {
+  in depth
+  out chromatic
+  name Shuffle2
+  xpos -572
+  ypos 253
+ }
+ IDistort {
+  channels rgb
+  uv chromatic
+  uv_scale {{Amount}}
+  name IDistort2
+  xpos -573
+  ypos 308
+ }
+ Dot {
+  name Dot19
+  xpos -539
+  ypos 408
+ }
+push $N72bc2c00
+ Dot {
+  name Dot15
+  xpos -759
+  ypos 220
+ }
+ Shuffle {
+  in depth
+  out chromatic
+  name Shuffle1
+  xpos -793
+  ypos 253
+ }
+ IDistort {
+  channels rgb
+  uv chromatic
+  uv_scale {{-(Amount)}}
+  maskChannel -depth.Z
+  name IDistort1
+  xpos -793
+  ypos 308
+ }
+ Dot {
+  name Dot16
+  xpos -759
+  ypos 360
+ }
+push $N72bc2c00
+ Dot {
+  name Dot20
+  xpos -649
+  ypos 312
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  Achannels {-rgba.red -rgba.green rgba.blue rgba.alpha}
+  Bchannels {-rgba.red rgba.green -rgba.blue rgba.alpha}
+  maskChannelInput -depth.Z
+  name Merge10
+  xpos -683
+  ypos 356
+ }
+ Merge2 {
+  inputs 2
+  operation screen
+  Achannels {rgba.red -rgba.green -rgba.blue rgba.alpha}
+  Bchannels {-rgba.red rgba.green rgba.blue rgba.alpha}
+  maskChannelInput -depth.Z
+  name Merge11
+  xpos -683
+  ypos 404
+ }
+ Output {
+  name Output1
+  xpos -683
+  ypos 455
+ }
+end_group

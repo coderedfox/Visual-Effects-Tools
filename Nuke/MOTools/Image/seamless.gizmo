@@ -1,0 +1,380 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ inputs 2
+ addUserKnob {20 User}
+ addUserKnob {6 UseImage +STARTLINE}
+ addUserKnob {7 YBlend R 1 5}
+ YBlend 1.73
+ addUserKnob {7 XBlend R 1 5}
+ XBlend 1.71
+ addUserKnob {7 XOffset R -0.25 0.25}
+ XOffset -0.061
+ addUserKnob {7 YOffset R -0.25 0.25}
+ YOffset 0.081
+ addUserKnob {41 operation T Merge3.operation}
+}
+ Input {
+  inputs 0
+  name Mask
+  xpos 105
+  ypos 309
+  number 1
+ }
+ Reformat {
+  type "to box"
+  box_width {{Input1.width}}
+  box_height {{Input1.height}}
+  box_fixed true
+  resize distort
+  filter Impulse
+  name Reformat5
+  xpos 302
+  ypos 309
+ }
+set N54731400 [stack 0]
+ Invert {
+  channels alpha
+  name Invert2
+  xpos 745
+  ypos 190
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos 389
+  ypos -537
+ }
+ Crop {
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.h}}
+  reformat true
+  crop false
+  name Crop2
+  xpos 389
+  ypos -470
+ }
+ Dot {
+  name Dot6
+  xpos 423
+  ypos -377
+ }
+set N6beedc00 [stack 0]
+ Expression {
+  channel0 alpha
+  expr0 0
+  channel1 none
+  channel2 none
+  name Expression1
+  xpos 533
+  ypos -380
+ }
+ Dot {
+  name Dot4
+  xpos 635
+  ypos -377
+ }
+set N6beed400 [stack 0]
+ Dot {
+  name Dot2
+  xpos 1066
+  ypos -377
+ }
+ Reformat {
+  type scale
+  scale {3 1}
+  resize distort
+  center false
+  name Reformat2
+  xpos 1032
+  ypos -268
+ }
+ Tile {
+  columns 3
+  filter Impulse
+  name Tile2
+  xpos 1032
+  ypos -227
+ }
+ Expression {
+  expr0 "r(x+-(height*XOffset), y)"
+  expr1 "g(x+-(height*XOffset), y)"
+  expr2 "b(x+-(height*XOffset), y)"
+  channel3 {none none none -rgba.alpha}
+  name Offset1
+  xpos 1032
+  ypos -153
+ }
+set N4663dc00 [stack 0]
+ Expression {
+  channel0 alpha
+  expr0 "1-(y / height*2)*XBlend"
+  channel1 none
+  channel2 none
+  channel3 none
+  name Create_ramp1
+  xpos 1170
+  ypos -153
+ }
+set N78a97800 [stack 0]
+ Reformat {
+  type scale
+  scale {1 1}
+  resize distort
+  center false
+  flip true
+  name Reformat4
+  xpos 1271
+  ypos -153
+ }
+push $N78a97800
+ Merge2 {
+  inputs 2
+  operation screen
+  name Merge1
+  xpos 1198
+  ypos -79
+ }
+ Clamp {
+  name Clamp1
+  xpos 1198
+  ypos -40
+ }
+push $N4663dc00
+ Expression {
+  expr0 "y>height/2 ? r(x,y-(height/2)) :  r(x,y+(height/2))"
+  expr1 "y>height/2 ? g(x,y-(height/2)) :  g(x,y+(height/2))"
+  expr2 "y>height/2 ? b(x,y-(height/2)) : b(x,y+(height/2))"
+  name Expression2
+  xpos 1032
+  ypos -117
+ }
+ Shuffle2 {
+  inputs 2
+  fromInput1 {{0} B A}
+  fromInput2 {{1} B A}
+  in2 alpha
+  mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+  name Shuffle2
+  label "B : \[value in1] to \[value out1]\nA : \[value in2] to \[value out2]"
+  xpos 1032
+  ypos -47
+ }
+ Crop {
+  box {{0+(bbox.r/3)} {bbox.y} {bbox.r-(bbox.r/3)} {bbox.t}}
+  reformat true
+  crop false
+  name Crop4
+  xpos 1032
+  ypos 27
+ }
+set N73877400 [stack 0]
+ Shuffle2 {
+  inputs 2
+  fromInput1 {{0} B A}
+  fromInput2 {{1} B A}
+  in2 alpha
+  mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+  name Shuffle4
+  label "B : \[value in1] to \[value out1]\nA : \[value in2] to \[value out2]"
+  xpos 912
+  ypos 107
+ }
+ Premult {
+  name Premult4
+  xpos 912
+  ypos 157
+ }
+push 0
+push $N54731400
+ Invert {
+  channels alpha
+  name Invert1
+  xpos 510
+  ypos 195
+ }
+push $N6beed400
+ Reformat {
+  type scale
+  scale {1 3}
+  resize distort
+  center false
+  name Reformat3
+  xpos 601
+  ypos -268
+ }
+ Tile {
+  rows 3
+  filter Impulse
+  name Tile1
+  xpos 601
+  ypos -227
+ }
+ Expression {
+  expr0 "r(x, y+-(height*XOffset))"
+  expr1 "g(x, y+-(height*XOffset))"
+  expr2 "b(x, y+-(height*XOffset))"
+  channel3 {none none none -rgba.alpha}
+  name Offset
+  xpos 601
+  ypos -153
+ }
+set N720f9400 [stack 0]
+ Expression {
+  channel0 alpha
+  expr0 "1-(x / width*2)*XBlend"
+  channel1 none
+  channel2 none
+  channel3 none
+  name Create_ramp
+  xpos 739
+  ypos -153
+ }
+set N5e7fc800 [stack 0]
+ Reformat {
+  type scale
+  scale {1 1}
+  resize distort
+  center false
+  flop true
+  name Reformat1
+  xpos 840
+  ypos -153
+ }
+push $N5e7fc800
+ Merge2 {
+  inputs 2
+  operation screen
+  name Merge4
+  xpos 767
+  ypos -79
+ }
+ Clamp {
+  name Clamp3
+  xpos 767
+  ypos -40
+ }
+push $N720f9400
+ Expression {
+  expr0 "x>width/2 ? r(x-(width/2),y) :  r(x+(width/2),y)"
+  expr1 "x>width/2 ? g(x-(width/2),y) :  g(x+(width/2),y)"
+  expr2 "x>width/2 ? b(x-(width/2),y) :  b(x+(width/2),y)"
+  name Expression3
+  xpos 601
+  ypos -117
+ }
+ Shuffle2 {
+  inputs 2
+  fromInput1 {{0} B A}
+  fromInput2 {{1} B A}
+  in2 alpha
+  mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+  name Shuffle1
+  label "B : \[value in1] to \[value out1]\nA : \[value in2] to \[value out2]"
+  xpos 601
+  ypos -47
+ }
+ Crop {
+  box {{bbox.x} {bbox.t/3} {bbox.r} {height-(height/3)}}
+  reformat true
+  crop false
+  name Crop1
+  xpos 601
+  ypos 39
+ }
+set N2685fc00 [stack 0]
+ Shuffle2 {
+  inputs 2
+  fromInput1 {{0} B A}
+  fromInput2 {{1} B A}
+  in2 alpha
+  mappings "4 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+  name Shuffle3
+  label "B : \[value in1] to \[value out1]\nA : \[value in2] to \[value out2]"
+  xpos 601
+  ypos 122
+ }
+ Premult {
+  name Premult2
+  xpos 601
+  ypos 172
+ }
+push $N6beedc00
+ Dot {
+  name Dot1
+  xpos 423
+  ypos -126
+ }
+ Expression {
+  channel0 alpha
+  expr0 1
+  channel1 none
+  channel2 none
+  name Expression7
+  xpos 389
+  ypos 120
+ }
+ Dot {
+  name Dot5
+  xpos 423
+  ypos 234
+ }
+set N81085000 [stack 0]
+ Merge2 {
+  inputs 3+1
+  operation atop
+  bbox B
+  name Merge2
+  label "A : \[value Achannels]\nB : \[value Bchannels]\nOut : \[value Bchannels]"
+  xpos 626
+  ypos 318
+ }
+push $N73877400
+ Premult {
+  name Premult1
+  xpos 1032
+  ypos 69
+ }
+push 0
+push $N2685fc00
+ Premult {
+  name Premult3
+  xpos 706
+  ypos 72
+ }
+push $N81085000
+ Merge2 {
+  inputs 3+1
+  operation atop
+  bbox B
+  name Merge3
+  label "A : \[value Achannels]\nB : \[value Bchannels]\nOut : \[value Bchannels]"
+  xpos 921
+  ypos 235
+ }
+ Switch {
+  inputs 2
+  which {{UseImage}}
+  name Switch2
+  selected true
+  xpos 730
+  ypos 438
+ }
+ Crop {
+  box {{width-width} {height-height} {width} {height}}
+  crop false
+  name Crop3
+  xpos 730
+  ypos 606
+ }
+ Output {
+  name Output1
+  xpos 730
+  ypos 663
+ }
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  xpos 1119
+  ypos 313
+ }
+end_group

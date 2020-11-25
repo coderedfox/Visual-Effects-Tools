@@ -1,0 +1,116 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ label "\[value this.RepeatAmount.u] x \[value this.RepeatAmount.v]"
+ addUserKnob {20 User}
+ addUserKnob {41 channels T STMap1.channels}
+ addUserKnob {41 filter l Filter -STARTLINE T STMap1.filter}
+ addUserKnob {30 RepeatAmount l Repeat}
+ RepeatAmount {2 2}
+ addUserKnob {4 tileType l Type -STARTLINE M {Tile Expand "" ""}}
+ tileType Expand
+ addUserKnob {41 mirrorRows l mirror T Tile_mirror.mirrorRows}
+ addUserKnob {41 mirrorCols l mirror T Tile_mirror.mirrorCols}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -252
+  ypos -1041
+ }
+ Dot {
+  name Dot1
+  xpos -218
+  ypos -910
+ }
+set N70afe800 [stack 0]
+ Remove {
+  name Remove3
+  xpos -161
+  ypos -919
+ }
+ Dot {
+  name Dot7
+  xpos -22
+  ypos -910
+ }
+set N70aff800 [stack 0]
+ Reformat {
+  type scale
+  scale {{RepeatAmount.u} {RepeatAmount.v}}
+  resize none
+  name Reformat3
+  xpos 95
+  ypos -913
+ }
+push $N70aff800
+ Switch {
+  inputs 2
+  which {{tileType}}
+  name Switch1
+  xpos -56
+  ypos -793
+ }
+ Expression {
+  expr0 x/width
+  expr1 y/height
+  name Expression1
+  label "square uv map"
+  xpos -56
+  ypos -718
+ }
+ Tile {
+  rows 2
+  columns 2
+  filter Impulse
+  name Tile_mirror
+  xpos -56
+  ypos -616
+ }
+ Tile {
+  rows {{RepeatAmount.u}}
+  columns {{RepeatAmount.v}}
+  filter Impulse
+  name Tile
+  xpos -56
+  ypos -533
+ }
+set N78b0b400 [stack 0]
+push $N70afe800
+ Dot {
+  name Dot5
+  xpos -218
+  ypos -294
+ }
+ STMap {
+  inputs 2
+  channels rgba
+  uv rgb
+  blur_scale 0
+  filter Impulse
+  name STMap1
+  selected true
+  xpos -56
+  ypos -297
+ }
+ Crop {
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  reformat true
+  name Crop1
+  xpos -56
+  ypos -273
+ }
+ Output {
+  name Output1
+  xpos -56
+  ypos -177
+ }
+push $N78b0b400
+ Viewer {
+  frame_range 1-4
+  fps 30
+  name Viewer1
+  xpos -210
+  ypos 319
+ }
+end_group

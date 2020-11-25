@@ -1,0 +1,216 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+add_layer {coat coat.red coat.green coat.blue}
+Gizmo {
+ inputs 2
+ addUserKnob {20 ReColor l Re-Color}
+ addUserKnob {41 Diffuse_Import l "Master Channel" T masterChannel.in}
+ addUserKnob {41 disable_4 l "Disabled Unpremult In" T Unpremult1.disable}
+ addUserKnob {41 disable_1 l "Disabled Premult Out" -STARTLINE T Premult1.disable}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {6 Diffuse_Color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ Diffuse_Color_panelDropped true
+ addUserKnob {41 disable_5 l disable T reColor.disable}
+ addUserKnob {6 Coat_Color_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
+ Coat_Color_panelDropped true
+ addUserKnob {41 operation T reColor.operation}
+ addUserKnob {41 mix -STARTLINE T reColor.mix}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {18 Diffuse_Color l Constant}
+ Diffuse_Color {0.79 0 0}
+ addUserKnob {20 ColorCorrection l "Color Correction"}
+ addUserKnob {41 disable_2 l disable T ColorCorrect1.disable}
+ addUserKnob {41 mix_1 l mix -STARTLINE T ColorCorrect1.mix}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {20 master l "@b;master" n 1}
+ addUserKnob {41 saturation T ColorCorrect1.saturation}
+ addUserKnob {41 saturation_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.saturation_panelDropped}
+ addUserKnob {41 contrast T ColorCorrect1.contrast}
+ addUserKnob {41 contrast_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.contrast_panelDropped}
+ addUserKnob {41 gamma T ColorCorrect1.gamma}
+ addUserKnob {41 gamma_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.gamma_panelDropped}
+ addUserKnob {41 gain T ColorCorrect1.gain}
+ addUserKnob {41 gain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.gain_panelDropped}
+ addUserKnob {41 offset T ColorCorrect1.offset}
+ addUserKnob {41 offset_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.offset_panelDropped}
+ addUserKnob {20 shadows l "@b;shadows" n 1}
+ addUserKnob {41 shadows.saturation l saturation T ColorCorrect1.shadows.saturation}
+ addUserKnob {41 shadows.saturation_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.shadows.saturation_panelDropped}
+ addUserKnob {41 shadows.contrast l contrast T ColorCorrect1.shadows.contrast}
+ addUserKnob {41 shadows.contrast_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.shadows.contrast_panelDropped}
+ addUserKnob {41 shadows.gamma l gamma T ColorCorrect1.shadows.gamma}
+ addUserKnob {41 shadows.gamma_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.shadows.gamma_panelDropped}
+ addUserKnob {41 shadows.gain l gain T ColorCorrect1.shadows.gain}
+ addUserKnob {41 shadows.gain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.shadows.gain_panelDropped}
+ addUserKnob {41 shadows.offset l offset T ColorCorrect1.shadows.offset}
+ addUserKnob {41 shadows.offset_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.shadows.offset_panelDropped}
+ addUserKnob {20 midtones l "@b;midtones" n 1}
+ addUserKnob {41 midtones.saturation l saturation T ColorCorrect1.midtones.saturation}
+ addUserKnob {41 midtones.saturation_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.midtones.saturation_panelDropped}
+ addUserKnob {41 midtones.contrast l contrast T ColorCorrect1.midtones.contrast}
+ addUserKnob {41 midtones.contrast_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.midtones.contrast_panelDropped}
+ addUserKnob {41 midtones.gamma l gamma T ColorCorrect1.midtones.gamma}
+ addUserKnob {41 midtones.gamma_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.midtones.gamma_panelDropped}
+ addUserKnob {41 midtones.gain l gain T ColorCorrect1.midtones.gain}
+ addUserKnob {41 midtones.gain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.midtones.gain_panelDropped}
+ addUserKnob {41 midtones.offset l offset T ColorCorrect1.midtones.offset}
+ addUserKnob {41 midtones.offset_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.midtones.offset_panelDropped}
+ addUserKnob {20 highlights l "@b;highlights" n 1}
+ addUserKnob {41 highlights.saturation l saturation T ColorCorrect1.highlights.saturation}
+ addUserKnob {41 highlights.saturation_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.highlights.saturation_panelDropped}
+ addUserKnob {41 highlights.contrast l contrast T ColorCorrect1.highlights.contrast}
+ addUserKnob {41 highlights.contrast_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.highlights.contrast_panelDropped}
+ addUserKnob {41 highlights.gamma l gamma T ColorCorrect1.highlights.gamma}
+ addUserKnob {41 highlights.gamma_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.highlights.gamma_panelDropped}
+ addUserKnob {41 highlights.gain l gain T ColorCorrect1.highlights.gain}
+ addUserKnob {41 highlights.gain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.highlights.gain_panelDropped}
+ addUserKnob {41 highlights.offset l offset T ColorCorrect1.highlights.offset}
+ addUserKnob {41 highlights.offset_panelDropped l "panel dropped state" -STARTLINE +HIDDEN T ColorCorrect1.highlights.offset_panelDropped}
+ addUserKnob {6 Reflection_Color_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
+ Reflection_Color_panelDropped true
+ addUserKnob {20 HueControl l "Hue Control"}
+ addUserKnob {41 disable_3 l disable T HueShift1.disable}
+ addUserKnob {41 mix_2 l mix -STARTLINE T HueShift1.mix}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 ingray l "input graypoint" T HueShift1.ingray}
+ addUserKnob {6 Refraction_Color_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
+ Refraction_Color_panelDropped true
+ addUserKnob {41 outgray l "output graypoint" T HueShift1.outgray}
+ addUserKnob {41 saturation_1 l "overall saturation" T HueShift1.saturation}
+ addUserKnob {41 color l "color axis" T HueShift1.color}
+ addUserKnob {41 color_saturation l "saturation along axis" T HueShift1.color_saturation}
+ addUserKnob {41 hue_rotation l "hue rotation" T HueShift1.hue_rotation}
+ addUserKnob {41 brightness T HueShift1.brightness}
+ addUserKnob {6 Emission_Color_panelDropped l "panel dropped state" +HIDDEN +STARTLINE}
+ Emission_Color_panelDropped true
+}
+ Input {
+  inputs 0
+  name Alpha
+  label Alpha
+  xpos 230
+  ypos 28
+  number 1
+ }
+set Nc43fb800 [stack 0]
+ Input {
+  inputs 0
+  name Input1
+  label "Input\n"
+  xpos -314
+  ypos -54
+ }
+ Dot {
+  name Dot2
+  xpos -91
+  ypos -45
+ }
+set Nc44bac00 [stack 0]
+ Remove {
+  name Remove1
+  xpos -125
+  ypos 82
+ }
+ Expression {
+  expr0 Diffuse_Color.r
+  expr1 Diffuse_Color.g
+  expr2 Diffuse_Color.b
+  name Expression1
+  xpos -125
+  ypos 157
+ }
+push $Nc43fb800
+push $Nc44bac00
+ Dot {
+  name Dot4
+  xpos 52
+  ypos -45
+ }
+set Nc43fac00 [stack 0]
+ Shuffle {
+  in coat
+  in2 alpha
+  name masterChannel
+  xpos 18
+  ypos -23
+  disable {{reColor.disable}}
+ }
+ ChannelMerge {
+  inputs 2
+  B -rgba.alpha
+  name ChannelMerge2
+  xpos 15
+  ypos 21
+ }
+ Unpremult {
+  name Unpremult1
+  xpos 18
+  ypos 93
+  disable true
+ }
+set N39170c00 [stack 0]
+ Merge2 {
+  inputs 2
+  operation screen
+  name reColor
+  xpos 18
+  ypos 157
+ }
+ ColorCorrect {
+  name ColorCorrect1
+  xpos 18
+  ypos 222
+  disable true
+ }
+ HueShift {
+  name HueShift1
+  xpos 18
+  ypos 284
+  disable true
+ }
+push 0
+ Merge2 {
+  inputs 2
+  operation plus
+  Achannels rgb
+  name Merge10
+  xpos 18
+  ypos 430
+ }
+ ChannelMerge {
+  inputs 2
+  B -rgba.alpha
+  name ChannelMerge1
+  xpos 230
+  ypos 417
+ }
+ Premult {
+  name Premult1
+  xpos 230
+  ypos 471
+ }
+push $Nc43fac00
+ Dot {
+  name Dot1
+  xpos 432
+  ypos -45
+ }
+ Merge2 {
+  inputs 2
+  name Merge1
+  xpos 398
+  ypos 471
+ }
+ Output {
+  name Output1
+  xpos 620
+  ypos 471
+ }
+push $N39170c00
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  xpos 262
+  ypos -99
+ }
+end_group

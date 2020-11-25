@@ -1,0 +1,324 @@
+#! C:/Program Files/Nuke12.0v4/nuke-12.0.4.dll -nx
+version 12.0 v4
+add_layer {diffuse diffuse.red diffuse.green diffuse.blue}
+add_layer {coat coat.red coat.green coat.blue}
+add_layer {specular specular.red specular.green specular.blue}
+add_layer {transmission transmission.red transmission.green transmission.blue}
+add_layer {emission emission.red emission.green emission.blue}
+Gizmo {
+ inputs 2
+ addUserKnob {20 ReColor}
+ addUserKnob {26 TopCase_Channels l Channels}
+ addUserKnob {6 Diffuse_Enable l "" +STARTLINE +STARTLINE}
+ Diffuse_Enable true
+ addUserKnob {41 Diffuse_Import l "" -STARTLINE T Shuffle1.in}
+ addUserKnob {41 operation l "" -STARTLINE T Merge5.operation}
+ addUserKnob {18 Diffuse_Color l "" -STARTLINE}
+ Diffuse_Color {1 1 1}
+ addUserKnob {6 Diffuse_Color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ Diffuse_Color_panelDropped true
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {6 Coat_Enable l "" +STARTLINE +STARTLINE}
+ Coat_Enable true
+ addUserKnob {41 Coat_Import l "" -STARTLINE T Shuffle3.in}
+ addUserKnob {41 operation_1 l "" -STARTLINE T Merge2.operation}
+ addUserKnob {18 Coat_Color l "" -STARTLINE}
+ Coat_Color {1 1 0}
+ addUserKnob {6 Coat_Color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ Coat_Color_panelDropped true
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {6 Reflection_Enable l "" +STARTLINE +STARTLINE}
+ Reflection_Enable true
+ addUserKnob {41 Reflection_Import l "" -STARTLINE T Shuffle4.in}
+ addUserKnob {41 operation_2 l "" -STARTLINE T Merge3.operation}
+ addUserKnob {18 Reflection_Color l "" -STARTLINE}
+ Reflection_Color {0 1 0}
+ addUserKnob {6 Reflection_Color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ Reflection_Color_panelDropped true
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {6 Refraction_Enable l "" +STARTLINE +STARTLINE}
+ Refraction_Enable true
+ addUserKnob {41 Refraction_Import l "" -STARTLINE T Shuffle2.in}
+ addUserKnob {41 operation_3 l "" -STARTLINE T Merge4.operation}
+ addUserKnob {18 Refraction_Color l "" -STARTLINE}
+ Refraction_Color {0 1 1}
+ addUserKnob {6 Refraction_Color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ Refraction_Color_panelDropped true
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {6 Emission_Enable l "" +STARTLINE +STARTLINE}
+ Emission_Enable true
+ addUserKnob {41 Emission_Import l "" -STARTLINE T Shuffle5.in}
+ addUserKnob {41 operation_4 l "" -STARTLINE T Merge11.operation}
+ addUserKnob {18 Emission_Color l "" -STARTLINE}
+ Emission_Color {0 0 1}
+ addUserKnob {6 Emission_Color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ Emission_Color_panelDropped true
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {20 Help}
+ addUserKnob {26 _1 l "" +STARTLINE T "Hello this is a test help text\n\nmikeoak@tengundesign.com\n"}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -1525
+  ypos -48
+ }
+set Neb361c00 [stack 0]
+ Dot {
+  name Dot2
+  xpos -1491
+  ypos 435
+ }
+ Input {
+  inputs 0
+  name Alpha
+  label Alpha
+  selected true
+  xpos 230
+  ypos 367
+  number 1
+ }
+push $Neb361c00
+ Remove {
+  name Remove1
+  xpos -1360
+  ypos 83
+ }
+set Neb361000 [stack 0]
+ Expression {
+  expr0 Emission_Color.r
+  expr1 Emission_Color.g
+  expr2 Emission_Color.b
+  name Expression5
+  xpos -216
+  ypos 156
+ }
+push $Neb361c00
+ Dot {
+  name Dot4
+  xpos -1183
+  ypos -44
+ }
+set Neb360800 [stack 0]
+ Dot {
+  name Dot5
+  xpos -912
+  ypos -44
+ }
+set Neb360400 [stack 0]
+ Dot {
+  name Dot9
+  xpos -657
+  ypos -44
+ }
+set Neb360000 [stack 0]
+ Dot {
+  name Dot10
+  xpos -336
+  ypos -44
+ }
+set Neb385c00 [stack 0]
+ Dot {
+  name Dot11
+  xpos -196
+  ypos -44
+ }
+ Dot {
+  name Dot8
+  xpos -58
+  ypos -44
+ }
+set Neb385400 [stack 0]
+ Shuffle {
+  in emission
+  name Shuffle5
+  xpos -92
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  name Merge11
+  xpos -91
+  ypos 158
+  disable {{Emission_Enable-1 x2 1}}
+ }
+push $Neb361000
+ Expression {
+  expr0 Refraction_Color.r
+  expr1 Refraction_Color.g
+  expr2 Refraction_Color.b
+  name Expression4
+  xpos -495
+  ypos 152
+ }
+push $Neb385c00
+ Shuffle {
+  in transmission
+  name Shuffle2
+  xpos -370
+  ypos -4
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  name Merge4
+  xpos -370
+  ypos 158
+  disable {{Refraction_Enable-1 x2 1}}
+ }
+push $Neb361000
+ Expression {
+  expr0 Reflection_Color.r
+  expr1 Reflection_Color.g
+  expr2 Reflection_Color.b
+  name Expression3
+  xpos -791
+  ypos 154
+ }
+push $Neb360000
+ Shuffle {
+  in specular
+  name Shuffle4
+  xpos -691
+  ypos -14
+ }
+set Neb3b3800 [stack 0]
+ Merge2 {
+  inputs 2
+  operation multiply
+  name Merge3
+  xpos -687
+  ypos 158
+  disable {{Reflection_Enable-1 x2 1}}
+ }
+push $Neb361000
+ Expression {
+  expr0 Coat_Color.r
+  expr1 Coat_Color.g
+  expr2 Coat_Color.b
+  name Expression2
+  xpos -1066
+  ypos 158
+ }
+push $Neb360400
+ Shuffle {
+  in coat
+  name Shuffle3
+  xpos -944
+  ypos -14
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  name Merge2
+  xpos -944
+  ypos 158
+  disable {{Coat_Enable-1 x2 1}}
+ }
+push $Neb361000
+ Expression {
+  expr0 Diffuse_Color.r
+  expr1 Diffuse_Color.g
+  expr2 Diffuse_Color.b
+  name Expression1
+  xpos -1360
+  ypos 158
+ }
+push $Neb360800
+ Shuffle {
+  in diffuse
+  in2 alpha
+  name Shuffle1
+  xpos -1217
+  ypos -22
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  name Merge5
+  xpos -1217
+  ypos 158
+  disable {{Diffuse_Enable-1 x1 1 1}}
+ }
+push 0
+ Merge2 {
+  inputs 2
+  operation plus
+  Achannels rgb
+  name Merge10
+  xpos -1217
+  ypos 431
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  Achannels rgb
+  name Merge6
+  xpos -938
+  ypos 431
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  Achannels rgb
+  name Merge7
+  xpos -686
+  ypos 431
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge8
+  xpos -370
+  ypos 431
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  Achannels rgb
+  name Merge9
+  xpos -92
+  ypos 431
+ }
+ ChannelMerge {
+  inputs 2
+  B -rgba.alpha
+  name ChannelMerge1
+  selected true
+  xpos 230
+  ypos 417
+ }
+ Premult {
+  name Premult1
+  selected true
+  xpos 230
+  ypos 471
+ }
+push $Neb385400
+ Dot {
+  name Dot1
+  selected true
+  xpos 264
+  ypos -44
+ }
+ Merge2 {
+  inputs 2
+  name Merge1
+  selected true
+  xpos 532
+  ypos 431
+ }
+ Output {
+  name Output1
+  selected true
+  xpos 646
+  ypos 500
+ }
+push $Neb3b3800
+ Viewer {
+  frame_range 0-5
+  name Viewer1
+  xpos -1626
+  ypos 315
+ }
+end_group

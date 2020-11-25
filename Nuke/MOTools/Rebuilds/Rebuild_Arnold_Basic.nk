@@ -1,0 +1,311 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1917" h="1020" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1254" stretch="1"/>
+            <splitter orientation="2">
+                <split size="576"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="406"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name //gun3/Assets/4_Software/Nuke/plugins/plugins/MOTools/Compositing/Rebuild_Arnold_Basic.nk
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting
+ tile_color 0x7171c600
+ label "Arnold Diffuse\n\n"
+ note_font_size 42
+ selected true
+ xpos -1665
+ ypos -908
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting1
+ tile_color 0x7171c600
+ label "Arnold Coat\n\n"
+ note_font_size 42
+ selected true
+ xpos -1029
+ ypos -908
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting2
+ tile_color 0x7171c600
+ label "Arnold Specular\n\n\n"
+ note_font_size 42
+ selected true
+ xpos -394
+ ypos -908
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting3
+ tile_color 0x7171c600
+ label "Arnold Transmission"
+ note_font_size 42
+ selected true
+ xpos 239
+ ypos -908
+ bdwidth 614
+ bdheight 767
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting4
+ tile_color 0x7171c600
+ label "Arnold Emission\n"
+ note_font_size 42
+ selected true
+ xpos 881
+ ypos -908
+ bdwidth 614
+ bdheight 767
+}
+Dot {
+ inputs 0
+ name Dot1
+ selected true
+ xpos -1640
+ ypos -795
+}
+Dot {
+ name Dot3
+ selected true
+ xpos -1364
+ ypos -795
+}
+set N1818ec00 [stack 0]
+Dot {
+ name Dot4
+ selected true
+ xpos -739
+ ypos -795
+}
+set N1818e800 [stack 0]
+Dot {
+ name Dot8
+ selected true
+ xpos -113
+ ypos -795
+}
+set N1818e400 [stack 0]
+Dot {
+ name Dot10
+ selected true
+ xpos 522
+ ypos -795
+}
+set N1818e000 [stack 0]
+Dot {
+ name Dot12
+ selected true
+ xpos 1164
+ ypos -795
+}
+set N1117dc00 [stack 0]
+Dot {
+ name Dot13
+ selected true
+ xpos 1559
+ ypos -795
+}
+push $N1117dc00
+add_layer {emission emission.red emission.green emission.blue}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 emission
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 emission.red 0 0 rgba.red 0 0 emission.green 0 1 rgba.green 0 1 emission.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Emission
+ selected true
+ xpos 1132
+ ypos -774
+}
+Unpremult {
+ name Unpremult12
+ selected true
+ xpos 1132
+ ypos -750
+}
+push $N1818e000
+add_layer {transmission transmission.red transmission.green transmission.blue}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 transmission
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 transmission.red 0 0 rgba.red 0 0 transmission.green 0 1 rgba.green 0 1 transmission.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Transmission
+ selected true
+ xpos 488
+ ypos -774
+}
+Unpremult {
+ name Unpremult11
+ selected true
+ xpos 488
+ ypos -750
+}
+push $N1818e400
+add_layer {specular specular.red specular.green specular.blue}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 specular
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 specular.red 0 0 rgba.red 0 0 specular.green 0 1 rgba.green 0 1 specular.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Specular
+ selected true
+ xpos -143
+ ypos -774
+}
+Unpremult {
+ name Unpremult10
+ selected true
+ xpos -143
+ ypos -750
+}
+push $N1818e800
+add_layer {coat coat.red coat.green coat.blue}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 coat
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 coat.red 0 0 rgba.red 0 0 coat.green 0 1 rgba.green 0 1 coat.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Coat
+ selected true
+ xpos -773
+ ypos -774
+}
+Unpremult {
+ name Unpremult8
+ selected true
+ xpos -773
+ ypos -750
+}
+push $N1818ec00
+add_layer {diffuse diffuse.red diffuse.green diffuse.blue diffuse.alpha}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 diffuse
+ fromInput2 {{0} B}
+ in2 alpha
+ mappings "4 diffuse.red 0 0 rgba.red 0 0 diffuse.green 0 1 rgba.green 0 1 diffuse.blue 0 2 rgba.blue 0 2 rgba.alpha 1 0 rgba.alpha 0 3"
+ name Arnold_Diffuse
+ selected true
+ xpos -1398
+ ypos -774
+}
+Unpremult {
+ name Unpremult1
+ selected true
+ xpos -1398
+ ypos -747
+}
+push 0
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge17
+ selected true
+ xpos -1398
+ ypos -220
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge3
+ selected true
+ xpos -773
+ ypos -219
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge6
+ selected true
+ xpos -147
+ ypos -219
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge7
+ selected true
+ xpos 488
+ ypos -219
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge8
+ selected true
+ xpos 1130
+ ypos -222
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Apply_Alpha1
+ selected true
+ xpos 1525
+ ypos -228
+}
+Premult {
+ name Premult2
+ selected true
+ xpos 1525
+ ypos -174
+}
+Dot {
+ name Dot2
+ selected true
+ xpos 1716
+ ypos -171
+}

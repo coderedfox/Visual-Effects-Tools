@@ -1,0 +1,271 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ inputs 0
+ postage_stamp true
+ addUserKnob {20 User}
+ addUserKnob {4 TypeofLUT l "LUT Type" M {"Color Space" "3d LUT" ""}}
+ addUserKnob {26 _1 l "Color Space"}
+ addUserKnob {41 colorspace_in l in T Colorspace_Changer.colorspace_in}
+ addUserKnob {41 colorspace_out l out T Colorspace_Changer.colorspace_out}
+ addUserKnob {26 _2 l "3d LUT"}
+ addUserKnob {41 vfield_file l "vectorfield file" T Vectorfield1.vfield_file}
+}
+ Constant {
+  inputs 0
+  channels rgb
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant1
+  xpos -530
+  ypos -457
+ }
+ Expression {
+  channel0 rgb
+  expr0 x/width
+  name Expression1
+  xpos -530
+  ypos -321
+ }
+set N80c72400 [stack 0]
+ Vectorfield {
+  version 5
+  file_type cube
+  name Vectorfield1
+  xpos -403
+  ypos -219
+ }
+push $N80c72400
+ Colorspace {
+  colorspace_out sRGB
+  name Colorspace_Changer
+  xpos -530
+  ypos -217
+ }
+ Switch {
+  inputs 2
+  which {{TypeofLUT}}
+  name Switch1
+  xpos -530
+  ypos -144
+ }
+ set C83c8f800 [stack 0]
+set N83c8f800 [stack 0]
+ Expression {
+  expr0 "y==floor(r(x, pos.y)*height*mult)?1:0"
+  expr1 "y==floor(g(x, pos.y)*height*mult)?1:0"
+  expr2 "y==floor(b(x, pos.y)*height*mult)?1:0"
+  channel3 alpha
+  name PlotScanline
+  xpos -530
+  ypos 4
+  addUserKnob {20 User}
+  addUserKnob {12 pos}
+  addUserKnob {7 mult R 0 5}
+  mult 1
+ }
+ Expression {
+  channel0 alpha
+  expr0 r+b+g/3
+  name Expression3
+  xpos -530
+  ypos 28
+ }
+push $N80c72400
+ Dot {
+  name Dot2
+  xpos -804
+  ypos -318
+ }
+ Expression {
+  expr0 "y==floor(r(x, pos.y)*height*mult)?1:0"
+  expr1 "y==floor(g(x, pos.y)*height*mult)?1:0"
+  expr2 "y==floor(b(x, pos.y)*height*mult)?1:0"
+  channel3 alpha
+  name PlotScanline1
+  xpos -838
+  ypos -236
+  addUserKnob {20 User}
+  addUserKnob {12 pos}
+  addUserKnob {7 mult R 0 5}
+  mult 1
+ }
+ Expression {
+  channel0 alpha
+  expr0 r+b+g/3
+  name Expression4
+  xpos -838
+  ypos -201
+ }
+ Grade {
+  white 0.25
+  name Grade2
+  xpos -838
+  ypos -163
+ }
+push $N83c8f800
+ Dot {
+  name Dot1
+  xpos -599
+  ypos -64
+ }
+ DropShadow {
+  inputs 2
+  name DropShadow3
+  note_font Verdana
+  xpos -838
+  ypos -68
+  color {0 0 0}
+  opacity 0
+  dropshadow_distance 1
+ }
+ DropShadow {
+  inputs 2
+  name DropShadow4
+  note_font Verdana
+  xpos -838
+  ypos 27
+  color {0 0 0}
+  opacity 1
+  dropshadow_distance 2
+ }
+ Crop {
+  box {0 0 512 512}
+  reformat true
+  crop false
+  name Crop3
+  xpos -838
+  ypos 53
+ }
+ Crop {
+  box {-100 -100 612 612}
+  reformat true
+  intersect true
+  name Crop_end
+  xpos -838
+  ypos 87
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message 0
+  old_message {{48}
+    }
+  box {{Crop_end.width-Crop_end.width} {Crop_end.height-Crop_end.height} {Crop_end.bbox.x} {Crop_end.bbox.y}}
+  xjustify right
+  transforms {{0 2}
+    }
+  cursor_position 1
+  global_font_scale {{curve x1 0.5}}
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  name Text3
+  xpos -838
+  ypos 135
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "1\n"
+  old_message {{49 10}
+    }
+  box {{Crop_end.bbox.r} {Crop_end.bbox.t} {Crop_end.width} {Crop_end.height}}
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 2
+  global_font_scale {{curve x1 0.5}}
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  name Text4
+  xpos -838
+  ypos 183
+ }
+ Crop {
+  box {0 0 712 712}
+  name Crop2
+  xpos -838
+  ypos 375
+ }
+set N80cd9c00 [stack 0]
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "3D LUT\n\n\[file tail \[knob vfield_file] ]"
+  old_message {{51 68 32 76 85 84 10 10}
+    }
+  old_expression_markers {{8 7}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 39
+  global_font_scale 0.5
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  name Text2
+  xpos -700
+  ypos 375
+ }
+push $N80cd9c00
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "\[value colorspace_in] to \[value colorspace_out]"
+  old_message {{82 71 66 32 116 111 32 115 82 71 66}
+    }
+  old_expression_markers {{0 2 7 10}
+    }
+  box {{width-width} {height-height} {width} {height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  cursor_position 24
+  global_font_scale {{curve x1 0.5}}
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  name Text1
+  xpos -990
+  ypos 375
+ }
+clone $C83c8f800 {
+  inputs 2
+  xpos -826
+  ypos 504
+  selected false
+ }
+ Output {
+  name Output1
+  xpos -826
+  ypos 584
+ }
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  selected true
+  xpos -173
+  ypos -379
+ }
+end_group

@@ -1,0 +1,184 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode7
+  tile_color 0x388e8e00
+  label "Lat/Log to 12x1 for gear VR\n"
+  note_font_size 42
+  xpos -1057
+  ypos -474
+  bdwidth 1018
+  bdheight 449
+ }
+ Input {
+  inputs 0
+  name LatLog
+  xpos -1179
+  ypos -260
+ }
+ Dot {
+  name Dot35
+  xpos -1035
+  ypos -257
+ }
+ Dot {
+  name Dot6
+  xpos -975
+  ypos -257
+ }
+set N983f000 [stack 0]
+ SphericalTransform {
+  input "Lat Long map"
+  output Cube
+  out_rot_order ZYX
+  out_ry 180
+  format "1536 1536 0 0 1536 1536 1 VG_Square"
+  fix true
+  name SphericalTransform9
+  xpos -894
+  ypos -162
+ }
+ Transform {
+  translate {7680 0}
+  scale {-1 1}
+  center {{this.width/2} {this.width/2}}
+  name Transform7
+  xpos -616
+  ypos -156
+ }
+push $N983f000
+ SphericalTransform {
+  input "Lat Long map"
+  output Cube
+  out_rot_order ZYX
+  format "1536 1536 0 0 1536 1536 1 VG_Square"
+  fix true
+  name SphericalTransform8
+  xpos -899
+  ypos -212
+ }
+ Transform {
+  translate {6144 0}
+  scale {-1 1}
+  center {{this.width/2} {this.width/2}}
+  name Transform5
+  xpos -621
+  ypos -206
+ }
+push $N983f000
+ SphericalTransform {
+  input "Lat Long map"
+  output Cube
+  out_rot_order ZYX
+  out_rx -90
+  format "1536 1536 0 0 1536 1536 1 VG_Square"
+  fix true
+  name SphericalTransform7
+  xpos -898
+  ypos -258
+ }
+ Transform {
+  translate {4608 0}
+  scale {-1 1}
+  center {{this.width/2} {this.width/2}}
+  name Transform4
+  xpos -630
+  ypos -252
+ }
+push $N983f000
+ SphericalTransform {
+  input "Lat Long map"
+  output Cube
+  out_rot_order ZYX
+  out_rx 90
+  format "1536 1536 0 0 1536 1536 1 VG_Square"
+  fix true
+  name SphericalTransform6
+  xpos -896
+  ypos -303
+ }
+ Transform {
+  translate {3072 0}
+  scale {-1 1}
+  center {{this.width/2} {this.width/2}}
+  name Transform6
+  xpos -631
+  ypos -297
+ }
+push $N983f000
+ SphericalTransform {
+  input "Lat Long map"
+  output Cube
+  out_rot_order ZYX
+  out_ry -90
+  format "1536 1536 0 0 1536 1536 1 VG_Square"
+  fix true
+  name SphericalTransform4
+  xpos -899
+  ypos -348
+ }
+ Transform {
+  translate {1536 0}
+  scale {-1 1}
+  center {{this.width/2} {this.width/2}}
+  name Transform2
+  xpos -630
+  ypos -342
+ }
+push 0
+push $N983f000
+ SphericalTransform {
+  input "Lat Long map"
+  rot_order ZYX
+  output Cube
+  out_rot_order ZYX
+  out_ry 90
+  format "1536 1536 0 0 1536 1536 1 VG_Square"
+  fix true
+  name SphericalTransform5
+  xpos -905
+  ypos -394
+ }
+ Transform {
+  scale {-1 1}
+  center {{this.width/2} {this.width/2}}
+  name Transform3
+  xpos -627
+  ypos -388
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  format "9216 1536 0 0 9216 1536 1 "
+  name Constant1
+  xpos -493
+  ypos -376
+ }
+ Merge2 {
+  inputs 7+1
+  name Merge2
+  xpos -493
+  ypos -252
+ }
+ Crop {
+  box {0 0 9216 1536}
+  reformat true
+  crop false
+  name Crop4
+  xpos -383
+  ypos -252
+ }
+ Dot {
+  name Dot37
+  xpos -18
+  ypos -249
+ }
+ Output {
+  name Output1
+  xpos -18
+  ypos -149
+ }
+end_group

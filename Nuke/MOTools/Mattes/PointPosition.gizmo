@@ -1,0 +1,121 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+add_layer {P P.red P.green P.blue}
+Gizmo {
+ addUserKnob {20 User}
+ addUserKnob {6 show_pass l "Show Pass" +STARTLINE}
+ show_pass true
+ addUserKnob {41 in1 l "Point Postion Channel" T Shuffle2.in1}
+ addUserKnob {18 pick_Color l Pick}
+ pick_Color {0 0 0}
+ addUserKnob {6 pick_Color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {7 pick_distance l Distance}
+ pick_distance 0.5
+ addUserKnob {7 pick_blur l blur}
+ pick_blur 0.5
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 293
+  ypos -241
+ }
+ Dot {
+  name Dot1
+  xpos 327
+  ypos -102
+ }
+set N5d450800 [stack 0]
+ Shuffle2 {
+  fromInput1 {{0} B}
+  in1 P
+  out1 rgb
+  fromInput2 {{0} B}
+  mappings "3 P.red 0 0 rgba.red 0 0 P.green 0 1 rgba.green 0 1 P.blue 0 2 rgba.blue 0 2"
+  name Shuffle2
+  label "B : \[value in1] to \[value out1]\nA : \[value in2] to \[value out2]"
+  xpos 471
+  ypos -118
+ }
+set N5d44cc00 [stack 0]
+ Expression {
+  channel0 alpha
+  expr0 "(pick_distance- sqrt( (r-pick_Color.r)*(r-pick_Color.r)+(g-pick_Color.g)*(g-pick_Color.g)+(b-pick_Color.b)*(b-pick_Color.b))) * a"
+  channel1 none
+  channel2 none
+  channel3 {none none none -rgba.alpha}
+  name Expression1
+  label "\[value center.r]\n\[value center.g]"
+  xpos 471
+  ypos -14
+  addUserKnob {20 User}
+ }
+ Expression {
+  channel0 alpha
+  expr0 "(pick_blur*10) * a"
+  name Expression3
+  xpos 471
+  ypos 127
+ }
+set N5d42f400 [stack 0]
+ Viewer {
+  frame_range 1-100
+  colour_sample_bbox {-0.1708333343 -0.3000000119 -0.168750003 -0.2979166806}
+  samplepoints {{-0.05833333358 -0.3958333433}
+    }
+  name Viewer1
+  xpos 681
+  ypos 145
+ }
+push $N5d42f400
+push $N5d42f400
+push $N5d450800
+ Dot {
+  name Dot2
+  xpos 172
+  ypos -102
+ }
+ Expression {
+  expr0 1
+  expr1 1
+  expr2 1
+  expr3 0
+  name Expression2
+  xpos 138
+  ypos 127
+ }
+push $N5d44cc00
+push $N5d450800
+ Switch {
+  inputs 2
+  which {{show_pass}}
+  name Switch1
+  xpos 293
+  ypos -1
+ }
+ Merge2 {
+  inputs 2+1
+  name Merge1
+  label "A : \[value Achannels]\nB : \[value Bchannels]\nOut : \[value Bchannels]"
+  xpos 293
+  ypos 107
+ }
+ Shuffle2 {
+  inputs 2
+  fromInput1 {{0} B A}
+  fromInput2 {{1} B A}
+  in2 alpha
+  out2 alpha
+  mappings "5 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2 rgba.alpha 0 3 rgba.alpha 0 3 rgba.alpha 1 0 rgba.alpha 1 0"
+  name Shuffle1
+  label "B : \[value in1] to \[value out1]\nA : \[value in2] to \[value out2]"
+  selected true
+  xpos 293
+  ypos 224
+ }
+ Output {
+  name Output1
+  xpos 293
+  ypos 319
+ }
+end_group

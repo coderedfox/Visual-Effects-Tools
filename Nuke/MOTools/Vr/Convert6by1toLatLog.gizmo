@@ -1,0 +1,168 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ postage_stamp true
+}
+ BackdropNode {
+  inputs 0
+  name BackdropNode1
+  tile_color 0x71c67100
+  label "Convert 6x1 to Lat/Log\n"
+  note_font_size 42
+  xpos -845
+  ypos -431
+  bdwidth 595
+  bdheight 447
+ }
+ Input {
+  inputs 0
+  name SixbyOne
+  xpos -965
+  ypos -188
+ }
+ Dot {
+  name Dot33
+  xpos -792
+  ypos -185
+ }
+ Dot {
+  name Dot1
+  label "Input\n"
+  xpos -739
+  ypos -185
+ }
+set N1721c400 [stack 0]
+ Dot {
+  name Dot12
+  xpos -739
+  ypos -30
+ }
+ Crop {
+  box {3072 0 4608 1536}
+  reformat true
+  crop false
+  name Crop15
+  xpos -605
+  ypos -34
+ }
+ Dot {
+  name Dot3
+  xpos -387
+  ypos -30
+ }
+push $N1721c400
+ Dot {
+  name Dot13
+  xpos -681
+  ypos -99
+ }
+ Crop {
+  box {4608 0 6144 1536}
+  reformat true
+  crop false
+  name Crop14
+  xpos -606
+  ypos -103
+ }
+ Dot {
+  name Dot4
+  xpos -479
+  ypos -99
+ }
+push $N1721c400
+ Dot {
+  name Dot23
+  xpos -682
+  ypos -166
+ }
+ Crop {
+  box {0 0 1536 1536}
+  reformat true
+  crop false
+  name Crop10
+  xpos -605
+  ypos -170
+ }
+ Dot {
+  name Dot17
+  xpos -479
+  ypos -166
+ }
+push $N1721c400
+ Dot {
+  name Dot22
+  xpos -681
+  ypos -226
+ }
+ Crop {
+  box {1536 0 3072 1536}
+  reformat true
+  crop false
+  name Crop11
+  xpos -603
+  ypos -230
+ }
+ Dot {
+  name Dot18
+  xpos -477
+  ypos -226
+ }
+push $N1721c400
+ Dot {
+  name Dot21
+  xpos -685
+  ypos -287
+ }
+ Crop {
+  box {7680 0 9216 1536}
+  reformat true
+  crop false
+  name Crop13
+  xpos -603
+  ypos -291
+ }
+ Dot {
+  name Dot16
+  xpos -471
+  ypos -287
+ }
+push $N1721c400
+ Dot {
+  name Dot19
+  xpos -739
+  ypos -351
+ }
+ Crop {
+  box {6144 0 7680 1536}
+  reformat true
+  crop false
+  name Crop12
+  xpos -600
+  ypos -355
+ }
+ Dot {
+  name Dot15
+  xpos -387
+  ypos -351
+ }
+ SphericalTransform {
+  inputs 6
+  input Cube
+  out_rot_order ZYX
+  filter Mitchell
+  fix true
+  name SphericalTransform2
+  xpos -421
+  ypos -219
+ }
+ Dot {
+  name Dot34
+  xpos -303
+  ypos -209
+ }
+ Output {
+  name LatLog
+  xpos -219
+  ypos -212
+ }
+end_group

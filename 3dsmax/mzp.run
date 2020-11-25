@@ -1,0 +1,13 @@
+name "MOTools Installer"
+description "Installs MOTools by Mike Oakley"
+version 2
+
+copy "MikeOakley-MOTools.ms" to "$userScripts\MOTools\"
+copy "MikeOakley-MOTools_macro.mcr" to "$userScripts\MOTools\"
+copy "MOTools_16i.bmp" to "$userIcons"
+copy "MOTools_24i.bmp" to "$userIcons"
+
+drop "$userScripts\MOTools\MikeOakley-MOTools_macro.mcr"
+run "$userScripts\MOTools\MikeOakley-MOTools_macro.mcr"
+
+clear temp on MAX exit

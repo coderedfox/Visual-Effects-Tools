@@ -1,0 +1,25 @@
+[State]
+Type=Enum
+Items=Global Enabled;Opt-In;Disabled
+Label=State
+Default=Disabled
+Description=How this event plug-in should respond to events. If Global, all jobs and slaves will trigger the events for this plugin. If Opt-In, jobs and slaves can choose to trigger the events for this plugin. If Disabled, no events are triggered for this plugin.
+
+[Extra Info Number]
+Type=Enum
+Items=0;1;2;3;4;5;6;7;8;9
+Category=Configuration
+CategoryOrder=1
+CategoryIndex=0
+Label=Extra Info Number
+Default=1
+Description=Picks which extra info to use
+
+[Software List]
+Type=String
+Category=Configuration
+CategoryOrder=1
+CategoryIndex=0
+Label=Software Title
+Default=Autodesk Maya,Autodesk 3ds Max,Nuke
+Description=Which software title whose version we should report. As seen in the 'Add/remove programs' list. ex Autodesk Maya,Nuke

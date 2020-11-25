@@ -1,0 +1,467 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ inputs 2
+ addUserKnob {20 tonemap l Tonemap t "Adjusts blend between linear colors and full tonemap"}
+ addUserKnob {41 operator l Operator t "Available operators:\nReinhard (Corona; desaturates highlights)\nExponential luma (modo, Maxwell; saturates highlights)\nFilmic (punchier look, darker shadows; more control over look)\nVray (similar to Reinhard)" T Switch1.operator}
+ addUserKnob {41 in1 l "Channel In" T Shuffle1.in1}
+ addUserKnob {41 out1 l "Channel Out" -STARTLINE T Shuffle2.out1}
+ addUserKnob {41 invert_mask l "Invert Alpha" T Merge1.invert_mask}
+ addUserKnob {26 ""}
+ addUserKnob {41 mix l "Tonemap Mix" t "Blends between input and tonemapped image" T Merge1.mix}
+ addUserKnob {20 exposure l "Exposure Adjustment" n 1}
+ exposure 0
+ addUserKnob {41 mode l "Adjust in" T EXPTool1.mode}
+ addUserKnob {41 gang T EXPTool1.gang}
+ addUserKnob {41 red T EXPTool1.red}
+ addUserKnob {41 green T EXPTool1.green}
+ addUserKnob {41 blue T EXPTool1.blue}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {20 exponentialStrength l "Reinhard and Exponential Luma Controls" n 1}
+ addUserKnob {41 mix_1 l Burn T Reinhard_Merge.mix}
+ addUserKnob {20 endGroup_3 l endGroup n -1}
+ addUserKnob {20 filmic_1 l "Filmic Controls" n 1}
+ filmic_1 0
+ addUserKnob {19 Grade1_black l lift t "Lifts blacks" R 0 0.1}
+ Grade1_black 0.005
+ addUserKnob {6 Grade1_black_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {41 shoulderStr l "Shoulder Str." t "Higher values produces brighter highlights" T Expression_Filmic.shoulderStr}
+ addUserKnob {41 linStr l "Linear Str." T Expression_Filmic.linStr}
+ addUserKnob {41 linAngle l "Linear Angle" T Expression_Filmic.linAngle}
+ addUserKnob {41 toeStr l "Toe Str." T Expression_Filmic.toeStr}
+ addUserKnob {41 toeNum l "Toe Num." T Expression_Filmic.toeNum}
+ addUserKnob {41 toeDen l "Toe Denom." T Expression_Filmic.toeDen}
+ addUserKnob {41 whitepoint l INVISIBLE +INVISIBLE T Expression_Filmic.whitepoint}
+ addUserKnob {20 endGroup_1 l endGroup n -1}
+ addUserKnob {20 Vray l "Vray Controls" n 1}
+ Vray 0
+ addUserKnob {41 burn l Burn T Expression_Vray.burn}
+ addUserKnob {20 endGroup_2 l endGroup n -1}
+}
+ BackdropNode {
+  inputs 0
+  name Film_Simulation
+  label "NOT IMPLEMENTED"
+  xpos -663
+  ypos -224
+  bdwidth 141
+  bdheight 196
+ }
+ BackdropNode {
+  inputs 0
+  name Filmic
+  xpos -340
+  ypos -221
+  bdwidth 144
+  bdheight 193
+ }
+ BackdropNode {
+  inputs 0
+  name Luma_modo
+  xpos -171
+  ypos -212
+  bdwidth 274
+  bdheight 190
+ }
+ BackdropNode {
+  inputs 0
+  name Notes
+  label "Filmic tonemap operator is based\non John Hable's work for Unchartered 2:\nhttp://filmicgames.com/archives/75\n\nExponential luma operator is used by \nmodo and Maxwell.\n\nReinhard operator is Reinhard global.\n\nCorona is from the 3ds Max plugin render\nengine Corona.\n\n\nCopyright 2013 Simon Lundberg\nFeel free to re-use, adapt, distribute\nand change tool to suit your needs,\nbut please don't sell it."
+  note_font_size 25
+  xpos 582
+  ypos -307
+  bdwidth 616
+  bdheight 512
+ }
+ BackdropNode {
+  inputs 0
+  name Reinhard
+  xpos 116
+  ypos -215
+  bdwidth 243
+  bdheight 191
+ }
+ BackdropNode {
+  inputs 0
+  name VRay
+  xpos -498
+  ypos -222
+  bdwidth 151
+  bdheight 194
+ }
+ Input {
+  inputs 0
+  name img
+  xpos -920
+  ypos -373
+ }
+set N3fd1b400 [stack 0]
+ Dot {
+  name Dot34
+  xpos -886
+  ypos 306
+ }
+ Input {
+  inputs 0
+  name mask
+  xpos -462
+  ypos -344
+  number 1
+ }
+ Dot {
+  name Dot11
+  xpos 499
+  ypos -341
+ }
+ Dot {
+  name Dot10
+  xpos 499
+  ypos 218
+ }
+push $N3fd1b400
+ Shuffle2 {
+  fromInput1 {{0} B}
+  in1 rgb
+  out1 rgb
+  fromInput2 {{0} B}
+  mappings "3 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2"
+  name Shuffle1
+  label "B : \[value in1] to \[value out1]\nA : \[value in2] to \[value out2]"
+  xpos -581
+  ypos -386
+ }
+ Dot {
+  name Dot14
+  xpos -547
+  ypos -295
+ }
+set N3fd1ac00 [stack 0]
+ EXPTool {
+  mode Stops
+  name EXPTool1
+  xpos -462
+  ypos -298
+ }
+ Dot {
+  name Dot19
+  xpos -216
+  ypos -295
+ }
+ Dot {
+  name Dot33
+  xpos -216
+  ypos -241
+ }
+set N3fd1a000 [stack 0]
+ Dot {
+  name Dot24
+  xpos -275
+  ypos -241
+ }
+set Nb5261c00 [stack 0]
+ Dot {
+  name Dot25
+  xpos -431
+  ypos -241
+ }
+set Nb5261800 [stack 0]
+ Dot {
+  name Dot28
+  xpos -612
+  ypos -241
+ }
+ Dot {
+  name Dot29
+  xpos -612
+  ypos -185
+ }
+ Dot {
+  name Dot30
+  xpos -612
+  ypos -62
+ }
+ Dot {
+  name Dot31
+  xpos -612
+  ypos 80
+ }
+ Dot {
+  name Dot32
+  xpos 19
+  ypos 80
+ }
+push $Nb5261800
+ Expression {
+  expr0 r*(1+r*(burn**2))/(1+r)
+  expr1 g*(1+g*(burn**2))/(1+g)
+  expr2 b*(1+b*(burn**2))/(1+b)
+  name Expression_Vray
+  xpos -465
+  ypos -147
+  addUserKnob {20 User}
+  addUserKnob {7 burn l Burn}
+  burn 0.25
+ }
+set Nb5260000 [stack 0]
+ Dot {
+  name Dot26
+  xpos -431
+  ypos -47
+ }
+ Dot {
+  name Dot5
+  xpos -431
+  ypos 59
+ }
+ Dot {
+  name Dot17
+  xpos 29
+  ypos 59
+ }
+push $Nb5261c00
+ EXPTool {
+  mode Stops
+  red 1.8
+  green 1.8
+  blue 1.8
+  name EXPTool2
+  xpos -306
+  ypos -173
+ }
+ Grade {
+  black {{parent.Grade1_black.r} {parent.Grade1_black.g} {parent.Grade1_black.b} {parent.Grade1_black.a}}
+  name Grade1
+  xpos -306
+  ypos -138
+  addUserKnob {20 User}
+ }
+ Expression {
+  temp_name0 tNtD
+  temp_expr0 toeNum/toeDen
+  temp_name1 tStD
+  temp_expr1 toeStr*toeDen
+  temp_name2 tStN
+  temp_expr2 toeStr*toeNum
+  temp_name3 lAlS
+  temp_expr3 linAngle*linStr
+  expr0 ((r*(shoulderStr*r+lAlS)+tStN)/(r*(shoulderStr*r+linStr)+tStD))-tNtD
+  expr1 ((g*(shoulderStr*g+lAlS)+tStN)/(g*(shoulderStr*g+linStr)+tStD))-tNtD
+  expr2 ((b*(shoulderStr*b+lAlS)+tStN)/(b*(shoulderStr*b+linStr)+tStD))-tNtD
+  name Expression_Filmic
+  xpos -306
+  ypos -95
+  addUserKnob {20 User}
+  addUserKnob {7 shoulderStr l "Shoulder Str."}
+  shoulderStr 0.5
+  addUserKnob {7 linStr l "Linear Str."}
+  linStr 0.8
+  addUserKnob {7 linAngle l "Linear Angle"}
+  linAngle 0.2
+  addUserKnob {7 toeStr l "Toe Str."}
+  toeStr 0.9
+  addUserKnob {7 toeNum l "Toe Num." R 0 0.1}
+  toeNum 0.065
+  addUserKnob {7 toeDen l "Toe Denum."}
+  toeDen 0.9
+  addUserKnob {7 whitepoint l "White point" R 0 50}
+  addUserKnob {7 whitepointExp}
+  whitepointExp {{((whitepoint*(shoulderStr*whitepoint+linAngle*linStr)+toeStr*toeNum)/(whitepoint*(shoulderStr*whitepoint+linStr)+toeStr*toeDen))-(toeNum/toeDen)}}
+ }
+ Dot {
+  name Dot22
+  xpos -275
+  ypos -52
+ }
+ Dot {
+  name Dot15
+  xpos -275
+  ypos 42
+ }
+ Dot {
+  name Dot9
+  xpos 47
+  ypos 42
+ }
+push $N3fd1a000
+ Dot {
+  name Dot21
+  xpos -151
+  ypos -241
+ }
+set N8f391800 [stack 0]
+ Dot {
+  name Dot2
+  xpos -151
+  ypos -176
+ }
+set N8f391400 [stack 0]
+ Dot {
+  name Dot3
+  xpos -151
+  ypos -134
+ }
+set N8f391000 [stack 0]
+ Dot {
+  name Dot20
+  xpos -151
+  ypos -105
+ }
+push $N8f391000
+push $N8f391400
+ Saturation {
+  saturation 0
+  name Saturation1
+  xpos -103
+  ypos -179
+ }
+ Add {
+  value 1
+  name modo_add
+  xpos -4
+  ypos -185
+ }
+ Merge2 {
+  inputs 2
+  operation divide
+  Bchannels rgb
+  name modo_Divide
+  xpos -4
+  ypos -137
+ }
+ Merge2 {
+  inputs 2
+  operation copy
+  name Reinhard_Merge
+  xpos -4
+  ypos -108
+ }
+ set C7a9f3c00 [stack 0]
+ Dot {
+  name Dot8
+  xpos 69
+  ypos -53
+ }
+ Dot {
+  name Dot4
+  xpos 69
+  ypos 34
+ }
+push $N8f391800
+ Dot {
+  name Dot1
+  xpos 122
+  ypos -241
+ }
+ Dot {
+  name Dot12
+  xpos 122
+  ypos -174
+ }
+set N7a9f2c00 [stack 0]
+ Dot {
+  name Dot13
+  xpos 122
+  ypos -128
+ }
+set N7a9f2800 [stack 0]
+ Dot {
+  name Dot18
+  xpos 122
+  ypos -85
+ }
+push $N7a9f2800
+push $N7a9f2c00
+ Add {
+  value 1
+  name Reinhard_Add
+  xpos 222
+  ypos -183
+ }
+ Merge2 {
+  inputs 2
+  operation divide
+  Bchannels rgb
+  name Reinhard_Divide
+  xpos 222
+  ypos -131
+ }
+clone $C7a9f3c00 {
+  inputs 2
+  xpos 222
+  ypos -88
+  selected false
+ }
+ Dot {
+  name Dot23
+  xpos 256
+  ypos -47
+ }
+ Dot {
+  name Dot16
+  xpos 256
+  ypos 42
+ }
+ Dot {
+  name Dot7
+  xpos 90
+  ypos 42
+ }
+ Switch {
+  inputs 5
+  which {{operator}}
+  name Switch1
+  xpos 38
+  ypos 112
+  addUserKnob {20 User}
+  addUserKnob {4 operator l Operator M {Reinhard "Exponential luma" Filmic V-Ray ""}}
+ }
+ Clamp {
+  maximum_enable false
+  name Clamp1
+  xpos 38
+  ypos 153
+ }
+push $N3fd1ac00
+ Dot {
+  name Dot27
+  xpos -777
+  ypos -295
+ }
+ Dot {
+  name Dot6
+  xpos -777
+  ypos 218
+ }
+ Merge2 {
+  inputs 2+1
+  operation copy
+  name Merge1
+  xpos 38
+  ypos 215
+ }
+ Shuffle2 {
+  inputs 2
+  fromInput1 {{0} B A}
+  out1 rgb
+  fromInput2 {{1} B A}
+  in2 alpha
+  mappings "3 rgba.red 0 0 rgba.red 0 0 rgba.green 0 1 rgba.green 0 1 rgba.blue 0 2 rgba.blue 0 2"
+  name Shuffle2
+  label "B : \[value in1] to \[value out1]\nA : \[value in2] to \[value out2]"
+  selected true
+  xpos 38
+  ypos 290
+ }
+ Output {
+  name Output1
+  xpos 38
+  ypos 386
+ }
+push $Nb5260000
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  xpos -1002
+  ypos 29
+ }
+end_group

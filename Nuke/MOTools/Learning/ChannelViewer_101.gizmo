@@ -1,0 +1,137 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -389
+  ypos -215
+ }
+ Dot {
+  name GetHeight
+  xpos -355
+  ypos -140
+ }
+set Na6da7800 [stack 0]
+ Expression {
+  channel0 rgb
+  expr0 a
+  channel1 none
+  expr1 0
+  channel2 none
+  expr2 0
+  name Expression4
+  xpos -247
+  ypos -65
+ }
+ Expression {
+  channel0 {rgba.red rgba.green rgba.blue none}
+  expr0 "y < height/10 ? 1:a"
+  name Expression8
+  xpos -251
+  ypos -23
+ }
+push $Na6da7800
+ Expression {
+  expr0 0
+  expr1 0
+  expr2 b
+  expr3 0
+  name Expression3
+  xpos -343
+  ypos -66
+ }
+ Expression {
+  channel0 {-rgba.red -rgba.green rgba.blue none}
+  expr0 "y < height/10 ? 1:b"
+  name Expression7
+  xpos -343
+  ypos -23
+ }
+push $Na6da7800
+ Expression {
+  expr0 0
+  expr1 g
+  expr2 0
+  expr3 0
+  name Expression2
+  xpos -438
+  ypos -66
+ }
+ Expression {
+  channel0 {-rgba.red rgba.green -rgba.blue none}
+  expr0 "y < height/10 ? 1:g"
+  name Expression6
+  xpos -438
+  ypos -23
+ }
+push $Na6da7800
+ Expression {
+  expr0 r
+  expr1 0
+  expr2 0
+  expr3 0
+  name Expression1
+  xpos -528
+  ypos -66
+ }
+ Expression {
+  expr0 "y < height/10 ? 1:r"
+  name Expression5
+  xpos -528
+  ypos -23
+ }
+ ContactSheet {
+  inputs 4
+  width {{(this.width*this.columns)/2}}
+  height {{(this.height*rows)/2}}
+  rows 2
+  columns 2
+  roworder TopBottom
+  name ContactSheet2
+  selected true
+  xpos -389
+  ypos 32
+ }
+ Expression {
+  channel0 alpha
+  expr0 0
+  channel1 none
+  channel2 none
+  name Expression9
+  xpos -389
+  ypos 79
+ }
+push $Na6da7800
+ Dot {
+  name Dot2
+  xpos -575
+  ypos -140
+ }
+ Dot {
+  name Dot1
+  xpos -575
+  ypos 142
+ }
+ ContactSheet {
+  inputs 2
+  width {{this.width*this.columns}}
+  height {{this.height*this.rows}}
+  rows 1
+  columns 2
+  name ContactSheet1
+  xpos -389
+  ypos 139
+ }
+ Output {
+  name Output1
+  xpos -389
+  ypos 186
+ }
+ Output {
+  name Output1
+  xpos -389
+  ypos 286
+ }
+end_group

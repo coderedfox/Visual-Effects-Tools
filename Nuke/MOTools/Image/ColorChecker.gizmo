@@ -1,0 +1,1582 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+Gizmo {
+ inputs 0
+}
+ Constant {
+  inputs 0
+  color {0.03137207031 0.03149414063 0.03231811523 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant37
+  xpos -588
+  ypos -295
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 50\nG : 50\nB : 50\n\nblack 2 ( 1.5 D )"
+  old_message {{82 71 66 10 82 32 58 32 48 46 48 51 49 51 55 50 49 10 71 32 58 32 48 46 48 51 49 52 57 52 49 10 66 32 58 32 48 46 48 51 50 51 49 56 49 10 10 115 82 71 66 10 82 32 58 32 53 48 10 71 32 58 32 53 48 10 66 32 58 32 53 48 10 10 98 108 97 99 107 32 50 32 40 32 49 46 53 32 68 32 41}
+    }
+  old_expression_markers {{8 16 22 30 36 44}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 165
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text39
+  xpos -588
+  ypos -223
+ }
+ Constant {
+  inputs 0
+  color {0.0859375 0.08874511719 0.08978271484 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant38
+  xpos -698
+  ypos -295
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 83\nG : 84\nB : 85\n\nneutral 3.5 ( 1.05 D )"
+  old_message {{82 71 66 10 82 32 58 32 48 46 48 56 53 57 51 55 53 10 71 32 58 32 48 46 48 56 56 55 52 53 49 10 66 32 58 32 48 46 48 56 57 55 56 50 55 10 10 115 82 71 66 10 82 32 58 32 56 51 10 71 32 58 32 56 52 10 66 32 58 32 56 53 10 10 110 101 117 116 114 97 108 32 51 46 53 32 40 32 49 46 48 53 32 68 32 41}
+    }
+  old_expression_markers {{8 16 22 30 36 44}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 151
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text40
+  xpos -698
+  ypos -223
+ }
+ Constant {
+  inputs 0
+  color {0.1900634766 0.1909179688 0.1898193359 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant39
+  xpos -808
+  ypos -295
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 121\nG : 121\nB : 121\n\nneutral 5 ( .70 D )"
+  old_message {{82 71 66 10 82 32 58 32 48 46 49 57 48 48 54 51 10 71 32 58 32 48 46 49 57 48 57 49 56 10 66 32 58 32 48 46 49 56 57 56 49 57 10 10 115 82 71 66 10 82 32 58 32 49 50 49 10 71 32 58 32 49 50 49 10 66 32 58 32 49 50 49 10 10 110 101 117 116 114 97 108 32 53 32 40 32 46 55 48 32 68 32 41}
+    }
+  old_expression_markers {{8 15 21 28 34 41}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 152
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text41
+  xpos -808
+  ypos -223
+ }
+ Constant {
+  inputs 0
+  color {0.3576660156 0.3669433594 0.365234375 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant40
+  xpos -918
+  ypos -295
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 161\nG : 163\nB : 163\n\nneutral 6.5 ( .44 D )"
+  old_message {{82 71 66 10 82 32 58 32 48 46 51 53 55 54 54 54 10 71 32 58 32 48 46 51 54 54 57 52 51 10 66 32 58 32 48 46 51 54 53 50 51 52 10 10 115 82 71 66 10 82 32 58 32 49 54 49 10 71 32 58 32 49 54 51 10 66 32 58 32 49 54 51 10 10 110 101 117 116 114 97 108 32 54 46 53 32 40 32 46 52 52 32 68 32 41}
+    }
+  old_expression_markers {{8 15 21 28 34 41}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 152
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  color {0 0 0 1}
+  color_panelDropped true
+  enable_shadows true
+  name Text42
+  xpos -918
+  ypos -223
+ }
+ Constant {
+  inputs 0
+  color {0.5844726563 0.5922851563 0.5844726563 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant41
+  xpos -1028
+  ypos -295
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 201\nG : 202\nB : 201\n\nneutral 8 ( .23 D )"
+  old_message {{82 71 66 10 82 32 58 32 48 46 53 56 52 52 55 51 10 71 32 58 32 48 46 53 57 50 50 56 53 10 66 32 58 32 48 46 53 56 52 52 55 51 10 10 115 82 71 66 10 82 32 58 32 50 48 49 10 71 32 58 32 50 48 50 10 66 32 58 32 50 48 49 10 10 110 101 117 116 114 97 108 32 56 32 40 32 46 50 51 32 68 32 41}
+    }
+  old_expression_markers {{8 15 21 28 34 41}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 168
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  color {0 0 0 1}
+  color_panelDropped true
+  enable_shadows true
+  name Text43
+  xpos -1028
+  ypos -223
+ }
+ Constant {
+  inputs 0
+  color {0.8793945313 0.884765625 0.8349609375 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant42
+  xpos -1138
+  ypos -295
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 241\nG : 242\nB : 236\n\nwhite 9.5 ( .05 D )"
+  old_message {{82 71 66 10 82 32 58 32 48 46 56 55 57 51 57 53 10 71 32 58 32 48 46 56 56 52 55 54 54 10 66 32 58 32 48 46 56 51 52 57 54 49 10 10 115 82 71 66 10 82 32 58 32 50 52 49 10 71 32 58 32 50 52 50 10 66 32 58 32 50 51 54 10 10 119 104 105 116 101 32 57 46 53 32 40 32 46 48 53 32 68 32 41}
+    }
+  old_expression_markers {{8 15 21 28 34 41}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 168
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  color {0 0 0 1}
+  color_panelDropped true
+  enable_shadows true
+  name Text44
+  xpos -1138
+  ypos -223
+ }
+ ContactSheet {
+  inputs 6
+  width {{width*6+(gap*6)}}
+  height {{height+gap}}
+  rows 1
+  columns 6
+  gap 20
+  center true
+  roworder TopBottom
+  name ContactSheet8
+  xpos -918
+  ypos -151
+ }
+ Constant {
+  inputs 0
+  color {0 0.5 0.5 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant43
+  xpos -588
+  ypos -559
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 0\nG : 188\nB : 188\n\ncyan gray"
+  old_message {{82 71 66 10 82 32 58 32 48 10 71 32 58 32 48 46 53 10 66 32 58 32 48 46 53 10 10 115 82 71 66 10 82 32 58 32 48 10 71 32 58 32 49 56 56 10 66 32 58 32 49 56 56 10 10 99 121 97 110 32 103 114 97 121}
+    }
+  old_expression_markers {{8 8 14 16 22 24}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 166
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text45
+  xpos -588
+  ypos -487
+ }
+ Constant {
+  inputs 0
+  color {0.5 0 0.5 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant44
+  xpos -698
+  ypos -559
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 188\nG : 0\nB : 188\n\nmagenta gray"
+  old_message {{82 71 66 10 82 32 58 32 48 46 53 10 71 32 58 32 48 10 66 32 58 32 48 46 53 10 10 115 82 71 66 10 82 32 58 32 49 56 56 10 71 32 58 32 48 10 66 32 58 32 49 56 56 10 10 109 97 103 101 110 116 97 32 103 114 97 121}
+    }
+  old_expression_markers {{8 10 16 16 22 24}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text46
+  xpos -698
+  ypos -487
+ }
+ Constant {
+  inputs 0
+  color {0.5 0.5 0 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant45
+  xpos -808
+  ypos -559
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 188\nG : 188\nB : 0\n\nyellow gray"
+  old_message {{82 71 66 10 82 32 58 32 48 46 53 10 71 32 58 32 48 46 53 10 66 32 58 32 48 10 10 115 82 71 66 10 82 32 58 32 49 56 56 10 71 32 58 32 49 56 56 10 66 32 58 32 48 10 10 121 101 108 108 111 119 32 103 114 97 121}
+    }
+  old_expression_markers {{8 10 16 18 24 24}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text47
+  xpos -808
+  ypos -487
+ }
+ Constant {
+  inputs 0
+  color {0.5 0 0 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant46
+  xpos -918
+  ypos -559
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 188\nG : 0\nB : 0\n\nred gray"
+  old_message {{82 71 66 10 82 32 58 32 48 46 53 10 71 32 58 32 48 10 66 32 58 32 48 10 10 115 82 71 66 10 82 32 58 32 49 56 56 10 71 32 58 32 48 10 66 32 58 32 48 10 10 114 101 100 32 103 114 97 121}
+    }
+  old_expression_markers {{8 10 16 16 22 22}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 164
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text48
+  xpos -918
+  ypos -487
+ }
+ Constant {
+  inputs 0
+  color {0 0.5 0 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant47
+  xpos -1028
+  ypos -559
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 0\nG : 188\nB : 0\n\ngreen gray"
+  old_message {{82 71 66 10 82 32 58 32 48 10 71 32 58 32 48 46 53 10 66 32 58 32 48 10 10 115 82 71 66 10 82 32 58 32 48 10 71 32 58 32 49 56 56 10 66 32 58 32 48 10 10 103 114 101 101 110 32 103 114 97 121}
+    }
+  old_expression_markers {{8 8 14 16 22 22}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 164
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text49
+  xpos -1028
+  ypos -487
+ }
+ Constant {
+  inputs 0
+  color {0 0 0.5 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant48
+  xpos -1138
+  ypos -559
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 0\nG : 0\nB : 188\n\nblue gray"
+  old_message {{82 71 66 10 82 32 58 32 48 10 71 32 58 32 48 10 66 32 58 32 48 46 53 10 10 115 82 71 66 10 82 32 58 32 48 10 71 32 58 32 48 10 66 32 58 32 49 56 56 10 10 98 108 117 101 32 103 114 97 121}
+    }
+  old_expression_markers {{8 8 14 14 20 22}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 156
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text50
+  xpos -1138
+  ypos -487
+ }
+ ContactSheet {
+  inputs 6
+  width {{width*6+(gap*6)}}
+  height {{height+gap}}
+  rows 1
+  columns 6
+  gap 20
+  center true
+  roworder TopBottom
+  name ContactSheet9
+  xpos -918
+  ypos -415
+ }
+ Constant {
+  inputs 0
+  color {-0.04309082031 0.2341308594 0.375 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant49
+  xpos -588
+  ypos -797
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 0\nG : 133\nB : 165\n\ncyan"
+  old_message {{82 71 66 10 82 32 58 32 45 48 46 48 52 51 48 57 48 56 10 71 32 58 32 48 46 50 51 52 49 51 49 10 66 32 58 32 48 46 51 55 53 10 10 115 82 71 66 10 82 32 58 32 48 10 71 32 58 32 49 51 51 10 66 32 58 32 49 54 53 10 10 99 121 97 110}
+    }
+  old_expression_markers {{8 17 23 30 36 40}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 166
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text51
+  xpos -588
+  ypos -679
+ }
+ Constant {
+  inputs 0
+  color {0.5239257813 0.07922363281 0.2866210938 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant50
+  xpos -698
+  ypos -797
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 191\nG : 80\nB : 146\n\nmagenta"
+  old_message {{82 71 66 10 82 32 58 32 48 46 53 50 51 57 50 54 10 71 32 58 32 48 46 48 55 57 50 50 51 54 10 66 32 58 32 48 46 50 56 54 54 50 49 10 10 115 82 71 66 10 82 32 58 32 49 57 49 10 71 32 58 32 56 48 10 66 32 58 32 49 52 54 10 10 109 97 103 101 110 116 97}
+    }
+  old_expression_markers {{8 15 21 29 35 42}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text52
+  xpos -698
+  ypos -679
+ }
+ Constant {
+  inputs 0
+  color {0.837890625 0.5717773438 0.01273345947 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant51
+  xpos -808
+  ypos -797
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 236\nG : 199\nB : 30\n\nyellow"
+  old_message {{82 71 66 10 82 32 58 32 48 46 56 51 55 56 57 49 10 71 32 58 32 48 46 53 55 49 55 55 55 10 66 32 58 32 48 46 48 49 50 55 51 51 53 10 10 115 82 71 66 10 82 32 58 32 50 51 54 10 71 32 58 32 49 57 57 10 66 32 58 32 51 48 10 10 121 101 108 108 111 119}
+    }
+  old_expression_markers {{8 15 21 28 34 42}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text53
+  xpos -808
+  ypos -679
+ }
+ Constant {
+  inputs 0
+  color {0.4462890625 0.03677368164 0.04067993164 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant52
+  xpos -918
+  ypos -797
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 178\nG : 54\nB : 57\n\nred"
+  old_message {{82 71 66 10 82 32 58 32 48 46 52 52 54 50 56 57 10 71 32 58 32 48 46 48 51 54 55 55 51 55 10 66 32 58 32 48 46 48 52 48 54 55 57 57 10 10 115 82 71 66 10 82 32 58 32 49 55 56 10 71 32 58 32 53 52 10 66 32 58 32 53 55 10 10 114 101 100}
+    }
+  old_expression_markers {{8 15 21 29 35 43}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text54
+  xpos -918
+  ypos -679
+ }
+ Constant {
+  inputs 0
+  color {0.04443359375 0.2907714844 0.06457519531 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant53
+  xpos -1028
+  ypos -797
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 59\nG : 147\nB : 72\n\ngreen"
+  old_message {{82 71 66 10 82 32 58 32 48 46 48 52 52 52 51 51 54 10 71 32 58 32 48 46 50 57 48 55 55 49 10 66 32 58 32 48 46 48 54 52 53 55 53 50 10 10 115 82 71 66 10 82 32 58 32 53 57 10 71 32 58 32 49 52 55 10 66 32 58 32 55 50 10 10 103 114 101 101 110}
+    }
+  old_expression_markers {{8 16 22 29 35 43}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text55
+  xpos -1028
+  ypos -679
+ }
+ Constant {
+  inputs 0
+  color {0.02250671387 0.04870605469 0.2807617188 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant54
+  xpos -1138
+  ypos -797
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 41\nG : 62\nB : 144\n\nblue"
+  old_message {{82 71 66 10 82 32 58 32 48 46 48 50 50 53 48 54 55 10 71 32 58 32 48 46 48 52 56 55 48 54 49 10 66 32 58 32 48 46 50 56 48 55 54 50 10 10 115 82 71 66 10 82 32 58 32 52 49 10 71 32 58 32 54 50 10 66 32 58 32 49 52 52 10 10 98 108 117 101}
+    }
+  old_expression_markers {{8 16 22 30 36 43}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text56
+  xpos -1138
+  ypos -679
+ }
+ ContactSheet {
+  inputs 6
+  width {{width*6+(gap*6)}}
+  height {{height+gap}}
+  rows 1
+  columns 6
+  gap 20
+  center true
+  roworder TopBottom
+  name ContactSheet10
+  xpos -918
+  ypos -607
+ }
+ Constant {
+  inputs 0
+  color {0.7690429688 0.3564453125 0.02534484863 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant55
+  xpos -588
+  ypos -1051
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 227\nG : 161\nB : 44\n\norange yellow"
+  old_message {{82 71 66 10 82 32 58 32 48 46 55 54 57 48 52 51 10 71 32 58 32 48 46 51 53 54 52 52 53 10 66 32 58 32 48 46 48 50 53 51 52 52 56 10 10 115 82 71 66 10 82 32 58 32 50 50 55 10 71 32 58 32 49 54 49 10 66 32 58 32 52 52 10 10 111 114 97 110 103 101 32 121 101 108 108 111 119}
+    }
+  old_expression_markers {{8 15 21 28 34 42}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 167
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text57
+  xpos -588
+  ypos -919
+ }
+ Constant {
+  inputs 0
+  color {0.3295898438 0.4948730469 0.04885864258 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant56
+  xpos -698
+  ypos -1051
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 155\nG : 187\nB : 62\n\nyellow green"
+  old_message {{82 71 66 10 82 32 58 32 48 46 51 50 57 53 57 10 71 32 58 32 48 46 52 57 52 56 55 51 10 66 32 58 32 48 46 48 52 56 56 53 56 54 10 10 115 82 71 66 10 82 32 58 32 49 53 53 10 71 32 58 32 49 56 55 10 66 32 58 32 54 50 10 10 121 101 108 108 111 119 32 103 114 101 101 110}
+    }
+  old_expression_markers {{8 14 20 27 33 41}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text58
+  xpos -698
+  ypos -919
+ }
+ Constant {
+  inputs 0
+  color {0.1098022461 0.04254150391 0.1368408203 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant57
+  xpos -808
+  ypos -1051
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 93\nG : 58\nB : 103\n\npurple"
+  old_message {{82 71 66 10 82 32 58 32 48 46 49 48 57 56 48 50 10 71 32 58 32 48 46 48 52 50 53 52 49 53 10 66 32 58 32 48 46 49 51 54 56 52 49 10 10 115 82 71 66 10 82 32 58 32 57 51 10 71 32 58 32 53 56 10 66 32 58 32 49 48 51 10 10 112 117 114 112 108 101}
+    }
+  old_expression_markers {{8 15 21 29 35 42}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text59
+  xpos -808
+  ypos -919
+ }
+ Constant {
+  inputs 0
+  color {0.560546875 0.08074951172 0.1143188477 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant58
+  xpos -918
+  ypos -1051
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 197\nG : 80\nB : 95\n\nmoderate red"
+  old_message {{82 71 66 10 82 32 58 32 48 46 53 54 48 53 52 55 10 71 32 58 32 48 46 48 56 48 55 52 57 53 10 66 32 58 32 48 46 49 49 52 51 49 57 10 10 115 82 71 66 10 82 32 58 32 49 57 55 10 71 32 58 32 56 48 10 66 32 58 32 57 53 10 10 109 111 100 101 114 97 116 101 32 114 101 100}
+    }
+  old_expression_markers {{8 15 21 29 35 42}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text60
+  xpos -918
+  ypos -919
+ }
+ Constant {
+  inputs 0
+  color {0.06060791016 0.1026000977 0.3837890625 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant59
+  xpos -1028
+  ypos -1051
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 70\nG : 90\nB : 166\n\npurple blue"
+  old_message {{82 71 66 10 82 32 58 32 48 46 48 54 48 54 48 55 57 10 71 32 58 32 48 46 49 48 50 54 10 66 32 58 32 48 46 51 56 51 55 56 57 10 10 115 82 71 66 10 82 32 58 32 55 48 10 71 32 58 32 57 48 10 66 32 58 32 49 54 54 10 10 112 117 114 112 108 101 32 98 108 117 101}
+    }
+  old_expression_markers {{8 16 22 27 33 40}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text61
+  xpos -1028
+  ypos -919
+ }
+ Constant {
+  inputs 0
+  color {0.7451171875 0.2016601563 0.03253173828 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant60
+  xpos -1138
+  ypos -1051
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 224\nG : 124\nB : 51\n\norange"
+  old_message {{82 71 66 10 82 32 58 32 48 46 55 52 53 49 49 55 10 71 32 58 32 48 46 50 48 49 54 54 10 66 32 58 32 48 46 48 51 50 53 51 49 55 10 10 115 82 71 66 10 82 32 58 32 50 50 52 10 71 32 58 32 49 50 52 10 66 32 58 32 53 49 10 10 111 114 97 110 103 101}
+    }
+  old_expression_markers {{8 15 21 27 33 41}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text62
+  xpos -1138
+  ypos -919
+ }
+ ContactSheet {
+  inputs 6
+  width {{width*6+(gap*6)}}
+  height {{height+gap}}
+  rows 1
+  columns 6
+  gap 20
+  center true
+  roworder TopBottom
+  name ContactSheet11
+  xpos -918
+  ypos -847
+ }
+ Constant {
+  inputs 0
+  color {0.1145019531 0.5068359375 0.4123535156 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant61
+  xpos -588
+  ypos -1270
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 95\nG : 189\nB : 172\n\nbluish green"
+  old_message {{82 71 66 10 82 32 58 32 48 46 49 49 52 53 48 50 10 71 32 58 32 48 46 53 48 54 56 51 54 10 66 32 58 32 48 46 52 49 50 51 53 52 10 10 115 82 71 66 10 82 32 58 32 57 53 10 71 32 58 32 49 56 57 10 66 32 58 32 49 55 50 10 10 98 108 117 105 115 104 32 103 114 101 101 110}
+    }
+  old_expression_markers {{8 15 21 28 34 41}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 167
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text63
+  xpos -588
+  ypos -1159
+ }
+ Constant {
+  inputs 0
+  color {0.2288818359 0.2135009766 0.4235839844 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant62
+  xpos -698
+  ypos -1270
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 132\nG : 127\nB : 174\n\nblue flower"
+  old_message {{82 71 66 10 82 32 58 32 48 46 50 50 56 56 56 50 10 71 32 58 32 48 46 50 49 51 53 48 49 10 66 32 58 32 48 46 52 50 51 53 56 52 10 10 115 82 71 66 10 82 32 58 32 49 51 50 10 71 32 58 32 49 50 55 10 66 32 58 32 49 55 52 10 10 98 108 117 101 32 102 108 111 119 101 114}
+    }
+  old_expression_markers {{8 15 21 28 34 41}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text64
+  xpos -698
+  ypos -1159
+ }
+ Constant {
+  inputs 0
+  color {0.1050415039 0.1502685547 0.05221557617 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant63
+  xpos -808
+  ypos -1270
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 91\nG : 108\nB : 65\n\nfoliage"
+  old_message {{82 71 66 10 82 32 58 32 48 46 49 48 53 48 52 50 10 71 32 58 32 48 46 49 53 48 50 54 57 10 66 32 58 32 48 46 48 53 50 50 49 53 54 10 10 115 82 71 66 10 82 32 58 32 57 49 10 71 32 58 32 49 48 56 10 66 32 58 32 54 53 10 10 102 111 108 105 97 103 101}
+    }
+  old_expression_markers {{8 15 21 28 34 42}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text65
+  xpos -808
+  ypos -1159
+ }
+ Constant {
+  inputs 0
+  color {0.1051025391 0.1895751953 0.3269042969 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant64
+  xpos -918
+  ypos -1270
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 91\nG : 121\nB : 155\n\nblue sky"
+  old_message {{82 71 66 10 82 32 58 32 48 46 49 48 53 49 48 51 10 71 32 58 32 48 46 49 56 57 53 55 53 10 66 32 58 32 48 46 51 50 54 57 48 52 10 10 115 82 71 66 10 82 32 58 32 57 49 10 71 32 58 32 49 50 49 10 66 32 58 32 49 53 53 10 10 98 108 117 101 32 115 107 121}
+    }
+  old_expression_markers {{8 15 21 28 34 41}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text66
+  xpos -918
+  ypos -1159
+ }
+ Constant {
+  inputs 0
+  color {0.5595703125 0.27734375 0.2119140625 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant65
+  xpos -1028
+  ypos -1270
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 197\nG : 144\nB : 127\n\nlight skin"
+  old_message {{82 71 66 10 82 32 58 32 48 46 53 53 57 53 55 10 71 32 58 32 48 46 50 55 55 51 52 52 10 66 32 58 32 48 46 50 49 49 57 49 52 10 10 115 82 71 66 10 82 32 58 32 49 57 55 10 71 32 58 32 49 52 52 10 66 32 58 32 49 50 55 10 10 108 105 103 104 116 32 115 107 105 110}
+    }
+  old_expression_markers {{8 14 20 27 33 40}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text67
+  xpos -1028
+  ypos -1159
+ }
+ Constant {
+  inputs 0
+  color {0.1735839844 0.07873535156 0.05325317383 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant66
+  xpos -1138
+  ypos -1270
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 116\nG : 79\nB : 65\n\ndark skin"
+  old_message {{82 71 66 10 82 32 58 32 48 46 49 55 51 53 56 52 10 71 32 58 32 48 46 48 55 56 55 51 53 52 10 66 32 58 32 48 46 48 53 51 50 53 51 50 10 10 115 82 71 66 10 82 32 58 32 49 49 54 10 71 32 58 32 55 57 10 66 32 58 32 54 53 10 10 100 97 114 107 32 115 107 105 110}
+    }
+  old_expression_markers {{8 15 21 29 35 43}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 3
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text68
+  xpos -1138
+  ypos -1159
+ }
+ ContactSheet {
+  inputs 6
+  width {{width*6+(gap*6)}}
+  height {{height+gap}}
+  rows 1
+  columns 6
+  gap 20
+  center true
+  roworder TopBottom
+  name ContactSheet12
+  xpos -918
+  ypos -1087
+ }
+ Constant {
+  inputs 0
+  color {1.25 1.25 1.25 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant67
+  xpos -588
+  ypos -1526
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this red this.box.r this.box.t]\nB : \[sample this red this.box.r this.box.t]\n\nsRGB\nR : 281 n/a\nG : 281 n/a\nB : 281 n/a\n\n125%"
+  old_message {{82 71 66 10 82 32 58 32 49 46 50 53 10 71 32 58 32 49 46 50 53 10 66 32 58 32 49 46 50 53 10 10 115 82 71 66 10 82 32 58 32 50 56 49 32 110 47 97 10 71 32 58 32 50 56 49 32 110 47 97 10 66 32 58 32 50 56 49 32 110 47 97 10 10 49 50 53 37}
+    }
+  old_expression_markers {{8 11 17 20 26 29}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 177
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  color {0 0 0 1}
+  color_panelDropped true
+  enable_shadows true
+  name Text69
+  xpos -588
+  ypos -1375
+ }
+ Constant {
+  inputs 0
+  color {1 1 1 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant68
+  xpos -698
+  ypos -1521
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this red this.box.r this.box.t]\nB : \[sample this red this.box.r this.box.t]\n\nsRGB\nR : 255\nG : 255\nB : 255\n\n100%"
+  old_message {{82 71 66 10 82 32 58 32 49 10 71 32 58 32 49 10 66 32 58 32 49 10 10 115 82 71 66 10 82 32 58 32 50 53 53 10 71 32 58 32 50 53 53 10 66 32 58 32 50 53 53 10 10 49 48 48 37}
+    }
+  old_expression_markers {{8 8 14 14 20 20}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 165
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  color {0 0 0 1}
+  color_panelDropped true
+  enable_shadows true
+  name Text70
+  xpos -698
+  ypos -1375
+ }
+ Constant {
+  inputs 0
+  color {0.75 0.75 0.75 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant69
+  xpos -808
+  ypos -1517
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this red this.box.r this.box.t]\nB : \[sample this red this.box.r this.box.t]\n\nsRGB\nR : 225\nG : 225\nB : 225\n\n75%"
+  old_message {{82 71 66 10 82 32 58 32 48 46 55 53 10 71 32 58 32 48 46 55 53 10 66 32 58 32 48 46 55 53 10 10 115 82 71 66 10 82 32 58 32 50 50 53 10 71 32 58 32 50 50 53 10 66 32 58 32 50 50 53 10 10 55 53 37}
+    }
+  old_expression_markers {{8 11 17 20 26 29}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 165
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  color {0 0 0 1}
+  color_panelDropped true
+  enable_shadows true
+  name Text71
+  xpos -808
+  ypos -1375
+ }
+ Constant {
+  inputs 0
+  color {0.5 0.5 0.5 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant70
+  xpos -918
+  ypos -1517
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this red this.box.r this.box.t]\nB : \[sample this red this.box.r this.box.t]\n\nsRGB\nR : 188\nG : 188\nB : 188\n\n50%"
+  old_message {{82 71 66 10 82 32 58 32 48 46 53 10 71 32 58 32 48 46 53 10 66 32 58 32 48 46 53 10 10 115 82 71 66 10 82 32 58 32 49 56 56 10 71 32 58 32 49 56 56 10 66 32 58 32 49 56 56 10 10 53 48 37}
+    }
+  old_expression_markers {{8 10 16 18 24 26}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 165
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text72
+  xpos -918
+  ypos -1375
+ }
+ Constant {
+  inputs 0
+  color {0.25 0.25 0.25 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant71
+  xpos -1028
+  ypos -1517
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this red this.box.r this.box.t]\nB : \[sample this red this.box.r this.box.t]\n\nsRGB\nR : 137\nG : 137\nB : 137\n\n25%"
+  old_message {{82 71 66 10 82 32 58 32 48 46 50 53 10 71 32 58 32 48 46 50 53 10 66 32 58 32 48 46 50 53 10 10 115 82 71 66 10 82 32 58 32 49 51 55 10 71 32 58 32 49 51 55 10 66 32 58 32 49 51 55 10 10 50 53 37}
+    }
+  old_expression_markers {{8 11 17 20 26 29}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 165
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text73
+  xpos -1028
+  ypos -1375
+ }
+ Constant {
+  inputs 0
+  color {0 0 0 1}
+  format "512 512 0 0 512 512 1 square_512"
+  name Constant72
+  xpos -1138
+  ypos -1517
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "RGB\nR : \[sample this red this.box.r this.box.t]\nG : \[sample this green this.box.r this.box.t]\nB : \[sample this blue this.box.r this.box.t]\n\nsRGB\nR : 0\nG : 0\nB : 0\n\nZero"
+  old_message {{82 71 66 10 82 32 58 32 48 10 71 32 58 32 48 10 66 32 58 32 48 10 10 115 82 71 66 10 82 32 58 32 48 10 71 32 58 32 48 10 66 32 58 32 48 10 10 90 101 114 111}
+    }
+  old_expression_markers {{8 8 14 14 20 20}
+    }
+  box {{bbox.x} {bbox.y} {bbox.r} {bbox.t}}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 162
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/1300}}
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text74
+  xpos -1138
+  ypos -1375
+ }
+ ContactSheet {
+  inputs 6
+  width {{width*6+(gap*6)}}
+  height {{height+gap}}
+  rows 1
+  columns 6
+  gap 20
+  center true
+  roworder TopBottom
+  name ContactSheet13
+  xpos -918
+  ypos -1303
+ }
+ ContactSheet {
+  inputs 6
+  width {{width}}
+  height {{height*rows+gap}}
+  rows 6
+  columns 1
+  center true
+  roworder TopBottom
+  name ContactSheet14
+  xpos -164
+  ypos -701
+ }
+set N55a74000 [stack 0]
+push $N55a74000
+ Remove {
+  name Remove2
+  xpos -164
+  ypos -758
+ }
+ Expression {
+  channel0 rgb
+  expr0 0.014999
+  channel1 alpha
+  expr1 1
+  name Expression2
+  xpos -54
+  ypos -758
+ }
+ Merge2 {
+  inputs 2
+  name Merge2
+  label "A : \[value Achannels]\nB : \[value Bchannels]\nOut : \[value Bchannels]"
+  xpos -54
+  ypos -701
+ }
+ Crop {
+  box {{bbox.x-200 x1 -200} {bbox.y-200 x1 -200} {bbox.r+200 x1 23100} {bbox.t+200 x1 3392}}
+  reformat true
+  name Crop1
+  xpos -54
+  ypos -653
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  baseline_toolbar -50
+  message "Based on sRGB - X-Rite ColorChecker Classic - 2014"
+  old_message {{66 97 115 101 100 32 111 110 32 115 82 71 66 32 45 32 88 45 82 105 116 101 32 67 111 108 111 114 67 104 101 99 107 101 114 32 67 108 97 115 115 105 99 32 45 32 50 48 49 52}
+    }
+  box {{this.x} {this.y} {width} {height}}
+  xjustify center
+  transforms {{0 2}
+    }
+  baseline_values {{0 -50 1 -50 2 -50 3 -50 4 -50 5 -50 6 -50 7 -50 8 -50 9 -50 10 -50 11 -50 12 -50 13 -50 14 -50 15 -50 16 -50 17 -50 18 -50 19 -50 20 -50 21 -50 22 -50 23 -50 24 -50 25 -50 26 -50 27 -50 28 -50 29 -50 30 -50 31 -50 32 -50 33 -50 34 -50 35 -50 36 -50 37 -50 38 -50 39 -50 40 -50 41 -50 42 -50 43 -50 44 -50 45 -50 46 -50 47 -50 48 -50 49 -50 0 -0.4 5 -0.4 9 -0.4 10 -0.4 11 -0.4 12 -0.4}
+    }
+  cursor_position 9
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/3500}}
+  baseline_shift -50
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  color_panelDropped true
+  enable_shadows true
+  name Text75
+  selected true
+  xpos -54
+  ypos -620
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  baseline_toolbar 50
+  message "RGB Linear and sRGB 2.2"
+  old_message {{82 71 66 32 76 105 110 101 97 114 32 97 110 100 32 115 82 71 66 32 50 46 50}
+    }
+  box {{this.x} {this.y} {width} {height}}
+  xjustify center
+  yjustify bottom
+  transforms {{0 2}
+    }
+  baseline_values {{0 50 1 50 2 50 3 50 4 50 5 50 6 50 7 50 8 50 9 50 10 50 11 50 12 50 13 50 14 50 15 50 16 50 17 50 18 50 19 50 20 50 21 50 22 50}
+    }
+  cursor_position 10
+  font {{ Arial : Regular : arial.ttf : 0 }}
+  global_font_scale {{width/3500}}
+  baseline_shift 50
+  center {256 256}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 512}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 256 256 0 0 1 1 0 0 0 0}
+    }
+  enable_shadows true
+  name Text76
+  xpos -54
+  ypos -589
+ }
+ Output {
+  name Output1
+  xpos -54
+  ypos -561
+ }
+ Viewer {
+  frame_range 1-100
+  name Viewer1
+  xpos 214
+  ypos -488
+ }
+end_group

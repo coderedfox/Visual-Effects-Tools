@@ -1,0 +1,292 @@
+#! C:/Program Files/Nuke12.1v1/nuke-12.1.1.dll -nx
+version 12.1 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="3839" y="-6" w="1920" h="1058" maximized="1" screen="1">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1374" stretch="1"/>
+            <splitter orientation="2">
+                <split size="198"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="822"/>
+                <dock id="" activePageId="DAG.1" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="498"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name //gun3/Assets/4_Software/Nuke/plugins/plugins/MOTools/Comp/Rebuild_Vray_Basic.nk
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Lighting6
+ tile_color 0x7171c600
+ label "Vray Lighting\n"
+ note_font_size 42
+ selected true
+ xpos -3513
+ ypos -251
+ bdwidth 447
+ bdheight 757
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Reflect1
+ tile_color 0xaaaaaa00
+ label "Vray Reflect & Refraction\n"
+ note_font_size 42
+ selected true
+ xpos -3042
+ ypos -251
+ bdwidth 640
+ bdheight 759
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_SelfIllumination1
+ tile_color 0x71c67100
+ label "Vray Self Illumination\n"
+ note_font_size 42
+ selected true
+ xpos -1970
+ ypos -252
+ bdwidth 455
+ bdheight 757
+}
+BackdropNode {
+ inputs 0
+ name BackdropNode_Specular1
+ tile_color 0x8e8e3800
+ label "Vray Specular"
+ note_font_size 42
+ selected true
+ xpos -2379
+ ypos -252
+ bdwidth 385
+ bdheight 755
+}
+Viewer {
+ inputs 0
+ frame_range 1-100
+ fps 30
+ viewerProcess None
+ name Viewer1
+ xpos -2510
+ ypos 809
+}
+Dot {
+ inputs 0
+ name Dot5
+ label "File Input\n"
+ selected true
+ xpos -3600
+ ypos -171
+}
+Dot {
+ name Dot7
+ selected true
+ xpos -3392
+ ypos -171
+}
+set N5a6acc00 [stack 0]
+Dot {
+ name Dot9
+ selected true
+ xpos -3196
+ ypos -171
+}
+set N5a6ac800 [stack 0]
+Dot {
+ name Dot11
+ selected true
+ xpos -2866
+ ypos -171
+}
+set N5a6ac400 [stack 0]
+Dot {
+ name Dot23
+ selected true
+ xpos -2647
+ ypos -172
+}
+set N5a6ac000 [stack 0]
+Dot {
+ name Dot24
+ selected true
+ xpos -2206
+ ypos -172
+}
+set N5a6d7c00 [stack 0]
+Dot {
+ name Dot25
+ selected true
+ xpos -1766
+ ypos -172
+}
+set N5a6d7800 [stack 0]
+Dot {
+ name Dot26
+ selected true
+ xpos -1436
+ ypos -172
+}
+push $N5a6d7800
+add_layer {Element_SelfIllumination Element_SelfIllumination.red Element_SelfIllumination.green Element_SelfIllumination.blue}
+Shuffle {
+ in Element_SelfIllumination
+ in2 alpha
+ alpha red2
+ name SelfIllumination1
+ selected true
+ xpos -1799
+ ypos -154
+}
+push $N5a6d7c00
+add_layer {Element_Specular Element_Specular.red Element_Specular.green Element_Specular.blue Element_Specular.alpha}
+Shuffle {
+ in Element_Specular
+ in2 alpha
+ alpha red2
+ name Specular1
+ selected true
+ xpos -2240
+ ypos -154
+}
+push $N5a6ac000
+add_layer {Element_Refraction Element_Refraction.red Element_Refraction.green Element_Refraction.blue}
+Shuffle {
+ in Element_Refraction
+ in2 alpha
+ alpha red2
+ name Refraction
+ selected true
+ xpos -2681
+ ypos -154
+}
+push $N5a6ac400
+add_layer {Element_Reflection Element_Reflection.red Element_Reflection.green Element_Reflection.blue}
+Shuffle {
+ in Element_Reflection
+ in2 alpha
+ alpha red2
+ name Reflection
+ selected true
+ xpos -2900
+ ypos -153
+}
+push $N5a6ac800
+add_layer {Element_Lighting Element_Lighting.red Element_Lighting.green Element_Lighting.blue}
+Shuffle {
+ in Element_Lighting
+ in2 alpha
+ alpha red2
+ name Lighting
+ selected true
+ xpos -3230
+ ypos -153
+}
+push $N5a6acc00
+add_layer {Element_GlobalIllumination Element_GlobalIllumination.red Element_GlobalIllumination.green Element_GlobalIllumination.blue}
+Shuffle {
+ in Element_GlobalIllumination
+ in2 alpha
+ alpha red2
+ name GI
+ selected true
+ xpos -3426
+ ypos -153
+}
+Dot {
+ name Dot27
+ selected true
+ xpos -3392
+ ypos 414
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge2
+ selected true
+ xpos -3230
+ ypos 410
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge4
+ selected true
+ xpos -2900
+ ypos 410
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge5
+ selected true
+ xpos -2681
+ ypos 410
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge9
+ selected true
+ xpos -2240
+ ypos 410
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge10
+ selected true
+ xpos -1799
+ ypos 410
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Apply_Alpha2
+ selected true
+ xpos -1470
+ ypos 404
+}
+Premult {
+ name Premult3
+ selected true
+ xpos -1470
+ ypos 453
+}
+Dot {
+ name Dot28
+ selected true
+ xpos -1261
+ ypos 457
+}
