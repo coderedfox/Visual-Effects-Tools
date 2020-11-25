@@ -1,7 +1,7 @@
 # Visual-Effects-Tools
 
 ### What is this repository for? ###
-* Tool sI have creted over the years to help in the VFX world
+* Tools I have created or copied over the years to help in the VFX world
 
 ### How do I get set up? ###
 
