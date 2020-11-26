@@ -12,6 +12,11 @@
 * entering Maya for example will return everything with Maya in the name.
 * Miscellaneous State: Global Enabed, Opt-in, Disabled.
 
+### Returns ###
+
+* Will return as SOFTWARE : VERSION
+* Does not report software it cant not find.
+
 ### Contribution guidelines ###
 
 * Feel free to make any changes

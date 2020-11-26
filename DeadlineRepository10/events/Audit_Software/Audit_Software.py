@@ -89,6 +89,6 @@ class ConfigSlaveEventListener (DeadlineEventListener):
         for found in software_name:
             found_software = (found_software + found + " ")
             print  ("found_software : " + found )
-        return ( found_software )
+        return ( "SOFTWARE : VERSION | " + found_software )
 
 print ("Starting software Audit")

@@ -15,12 +15,11 @@ Label=Extra Info Number
 Default=1
 Description=Picks which extra info to use
 
-[Server List]
+[Software List]
 Type=String
 Category=Configuration
 CategoryOrder=1
 CategoryIndex=0
-Label=Servers
-Default=127.0.0.1
-Description=Reports on server status
-
+Label=Software Title
+Default=Autodesk Maya 2020,MtoA for Maya 2020,Nuke,Houdini Launcher
+Description=Which software title whose version we should report. As seen in the 'Add/remove programs' list. ex Autodesk Maya,Nuke

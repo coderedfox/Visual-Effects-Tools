@@ -11,6 +11,11 @@
 * Add servers with a comma to seperate them ex: myserver01,myserver02
 * Miscellaneous State: Global Enabed, Opt-in, Disabled
 
+### Returns ###
+
+* PASSED: All Servers Connected
+* NOT CONNECTED: Will return server names that cannot connect
+
 ### Contribution guidelines ###
 
 * Feel free to make any changes

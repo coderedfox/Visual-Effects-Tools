@@ -60,5 +60,5 @@ class ConfigSlaveEventListener (DeadlineEventListener):
         if missing_server=='':
             missing_server = "PASSED: All Servers Connected"
         else:
-            missing_server = "NOT CONNECTED: " + missing_server
+            missing_server = "FAILED: " + missing_server
         return ( missing_server )
