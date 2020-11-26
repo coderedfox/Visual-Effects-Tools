@@ -5,7 +5,7 @@
 
 * Preforms a software audit
 
-### How do I get set up? ###
+### Options ###
 
 * Set the Extra Info Number where you want this to list to.
 * Add software titles with a comma to seperate them ex: Autodesk Maya 2020,Nuke.
@@ -14,8 +14,7 @@
 
 ### Contribution guidelines ###
 
-* Read Only Please
-* Feel free to edit to you liking
+* Feel free to make any changes
 
 ### Who do I talk to? ###
 

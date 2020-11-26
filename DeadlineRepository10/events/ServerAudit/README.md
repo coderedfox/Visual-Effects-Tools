@@ -5,7 +5,7 @@
 
 * Preforms a server audit
 
-### How do I get set up? ###
+### Options ###
 
 * Set the Extra Info Number where you want this to list to
 * Add servers with a comma to seperate them ex: myserver01,myserver02
@@ -13,8 +13,7 @@
 
 ### Contribution guidelines ###
 
-* Read Only Please
-* Feel free to edit to you liking
+* Feel free to make any changes
 
 ### Who do I talk to? ###
 
