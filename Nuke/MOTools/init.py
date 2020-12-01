@@ -4,4 +4,5 @@
 # 2020-02-19
 #
 
-import MOTools    
+import MOTools
+MOTools.setup_MOTools()

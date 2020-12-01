@@ -5,4 +5,4 @@
 #
 
 import MOTools
-MOTools.setup_MOTools()
+MOTools.setup_MOTools_UI()

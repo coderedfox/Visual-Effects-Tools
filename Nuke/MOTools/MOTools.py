@@ -13,33 +13,48 @@ import os, nuke, re, inspect, time, datetime, math, platform
 # Variables      
 infoScript = os.path.basename(inspect.getfile(inspect.currentframe()))
 infoContact = "MikeOakley.com"
-__version__ = "1.2.19"
+__version__ = "1.2.24"
 PythonVersion = platform.python_version()
 
 thisFile = inspect.getfile(inspect.currentframe())
 thisFolder = os.path.dirname(thisFile)  
 thisName = os.path.basename(thisFolder)
-
-icon_folder = thisFolder+"/icons/"
+gizmoList = []
 
 # Main UI set up
 def setup_MOTools():
-    # Search Folders for Files
     for (path, dirs, files) in os.walk('%s' % thisFolder):
-        starttime = time.time()
-        nuke.pluginAddPath(os.path.basename(path)) 
+        nuke.pluginAddPath(os.path.basename(path))
 
-    # This adds a global trigger to update the autowrite node when something changes.
-    nuke.addUpdateUI(update_AutoWrite, nodeClass='Write')
-        
+def setup_MOTools_UI():
     if nuke.GUI:
         toolbar = nuke.menu('Nodes')   
-        menu = toolbar.addMenu("MOTools", icon_folder+'MOTools.png',index=-1)        
+        menu = toolbar.addMenu("MOTools", 'MOTools.png',index=-1) 
+
+        # Auto Add Menu Items
         
+        # Search Folders for Files
+        for (path, dirs, files) in os.walk('%s' % (thisFolder)):
+            categories = path.replace(thisFolder,'').replace('\\','/').title()
+            categories = categories[1:] 
+            path = path.replace('\\','/')
+
+            menu.addMenu(categories,categories+'.png')            
+            
+            for curFile in files:
+                nodeName = os.path.splitext(curFile)[0]
+                if os.path.splitext(curFile)[1].lower() == '.gizmo': 
+                    menu.addCommand('%s/%s' % (categories, nodeName) , 'nuke.createNode("%s")' % (nodeName), icon=(nodeName+'.png') )
+                    print ("\t GIZMO : " + categories + " / " + nodeName)
+                if os.path.splitext(curFile)[1].lower() == '.nk': 
+                    menu.addCommand('%s/%s' % (categories, nodeName) , 'nuke.nodePaste("/%s/%s.nk")' % (path,nodeName), icon=(nodeName+'.png'))                    
+                    print ("\t NK : " + categories + " / " + nodeName)
+                
+
         #Accesibility
         
         #Automation
-        menu = toolbar.addMenu("MOTools/Automation", icon_folder+'Automation.png',index=-1) 
+        menu = toolbar.addMenu("MOTools/Automation", 'Automation.png',index=-1) 
         menu.addCommand("AutoWrite", 'MOTools.create_AutoWrite()', icon='AutoWrite.png')
         menu.addCommand("AutoExtract", 'MOTools.autoExtractEXR()', icon='AutoExtract.png')
         menu.addCommand("ManualExtract", 'MOTools.manualExtractEXR()', icon='ManualExtract.png')
@@ -48,78 +63,60 @@ def setup_MOTools():
         menu.addCommand("Contactsheet: Set resolution to inputs", 'MOTools.Auto_ContactSheet( )', icon='CroptoBbox.png')
         
         # Camera
-        menu = toolbar.addMenu("MOTools/Camera", icon_folder+'Camera.png',index=-1)
+        menu = toolbar.addMenu("MOTools/Camera", 'Camera.png',index=-1)
         menu.addCommand("EXR Maya to Nuke", 'MOTools.createCam_Cam_MayatoNuke( )', icon='Cam_MayatoNuke_EXR.png')
         menu.addCommand("EXR VRay to Nuke", 'MOTools.createCam_Cam_VraytoNuke( )', icon='Cam_VraytoNuke_EXR.png')
         
         # Enviroments
-        menu = toolbar.addMenu("MOTools/Enviroments", icon_folder+'Enviroments.png',index=-1)
+        menu = toolbar.addMenu("MOTools/Enviroments", 'Enviroments.png',index=-1)
         
         # FX
-        menu = toolbar.addMenu("MOTools/FX", icon_folder+'FX.png',index=-1)
+        menu = toolbar.addMenu("MOTools/FX", 'FX.png',index=-1)
         
         # Help
-        menu = toolbar.addMenu("MOTools/Help", icon_folder+'Help.png',index=-1)
+        menu = toolbar.addMenu("MOTools/Help", 'Help.png',index=-1)
         menu.addCommand("HELP Online at MikeOakey.com", 'nukescripts.start ("https://www.mikeoakley.com/wiki/motools-for-nuke/")', icon='Help.png')
                 
         
         # Hidden
-        menu = toolbar.addMenu("MOTools/Hidden", icon_folder+'Hidden.png',index=-1)
+        menu = toolbar.addMenu("MOTools/Hidden", 'Hidden.png',index=-1)
         
         # Image
-        menu = toolbar.addMenu("MOTools/Image", icon_folder+'Image.png',index=-1)
+        menu = toolbar.addMenu("MOTools/Image", 'Image.png',index=-1)
         
         # IO
-        menu = toolbar.addMenu("MOTools/IO", icon_folder+'Image.png',index=-1)
+        menu = toolbar.addMenu("MOTools/IO", 'Image.png',index=-1)
 
         # Learning
-        menu = toolbar.addMenu("MOTools/Learning", icon_folder+'help.png',index=-1)
+        menu = toolbar.addMenu("MOTools/Learning", 'Help.png',index=-1)
         
         # Lens
-        menu = toolbar.addMenu("MOTools/Lens", icon_folder+'Lens.png',index=-1)
+        menu = toolbar.addMenu("MOTools/Lens", 'Lens.png',index=-1)
         
         # Mattes
-        menu = toolbar.addMenu("MOTools/Mattes", icon_folder+'Mattes.png',index=-1)
+        menu = toolbar.addMenu("MOTools/Mattes", 'Mattes.png',index=-1)
         
         # QC
-        menu = toolbar.addMenu("MOTools/QC", icon_folder+'QC.png',index=-1)
+        menu = toolbar.addMenu("MOTools/QC", 'QC.png',index=-1)
         
         # Rebuilds
-        menu = toolbar.addMenu("MOTools/Rebuilds", icon_folder+'Rebuilds.png',index=-1)
+        menu = toolbar.addMenu("MOTools/Rebuilds", 'Rebuilds.png',index=-1)
         
         # Vr
-        menu = toolbar.addMenu("MOTools/Vr", icon_folder+'Vr.png',index=-1)
+        menu = toolbar.addMenu("MOTools/Vr", 'Vr.png',index=-1)
         
         # Zebug
-        menu = toolbar.addMenu("MOTools/Zebug", icon_folder+'Zebug.png',index=-1)
+        menu = toolbar.addMenu("MOTools/Zebug", 'Zebug.png',index=-1)
         menu.addCommand("Postage Stamps ALL On", 'MOTools.PostageStamps_On()', icon='Zebug.png')
         menu.addCommand("Postage Stamps ALL Off", 'MOTools.PostageStamps_Off()', icon='Zebug.png')
         menu.addCommand("Postage Stamps ALL On Selected", 'MOTools.PostageStamps_Selected_On()', icon='Zebug.png')
         menu.addCommand("Postage Stamps ALL Off Selected", 'MOTools.PostageStamps_Selected_Off()', icon='Zebug.png')
 
         menu.addCommand("Preformance Timers On", 'nuke.startPerformanceTimers()', icon='Zebug.png')
-        menu.addCommand("Preformance Timers Off", 'nuke.stopPerformanceTimers()', icon='Zebug.png') 
+        menu.addCommand("Preformance Timers Off", 'nuke.stopPerformanceTimers()', icon='Zebug.png')
 
-        
-        # set ups Node names
-        toolbar = nuke.menu('Nodes')   
-        menu = toolbar.addMenu(thisName, thisName+'.png',index=-1)  
-
-        # Search Folders for Files
-        for (path, dirs, files) in os.walk('%s' % (thisFolder)):
-            categories = path.replace(thisFolder,'').replace('\\','/').title()
-            categories = categories[1:] 
-            path = path.replace('\\','/')
-
-            menu.addMenu(categories,categories+'.png')
-            
-            for curFile in files:
-                if os.path.splitext(curFile)[1].lower() == '.gizmo' or os.path.splitext(curFile)[1].lower() == '.nk':
-                    starttime = time.time()
-                    nodeName = os.path.splitext(curFile)[0]
-
-                    if os.path.splitext(curFile)[1].lower() == '.gizmo': menu.addCommand('%s/%s' % (categories, nodeName) , 'nuke.createNode("%s")' % (nodeName), icon=(nodeName+'.png') )
-                    if os.path.splitext(curFile)[1].lower() == '.nk': menu.addCommand('%s/%s' % (categories, nodeName) , 'nuke.nodePaste("/%s/%s.nk")' % (path,nodeName), icon=(nodeName+'.png'))
+        # This adds a global trigger to update the autowrite node when something changes.
+        nuke.addUpdateUI(update_AutoWrite, nodeClass='Write')
 
 
 # update the format code for autowrite
