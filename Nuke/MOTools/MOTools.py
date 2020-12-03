@@ -75,7 +75,7 @@ def setup_MOTools_UI():
         
         # Help
         menu = toolbar.addMenu("MOTools/Help", 'Help.png',index=-1)
-        menu.addCommand("HELP Online at MikeOakey.com", 'nukescripts.start ("https://www.mikeoakley.com/wiki/motools-for-nuke/")', icon='Help.png')
+        menu.addCommand("Help online at MikeOakey.com", 'nukescripts.start ("https://www.mikeoakley.com/wiki/motools-for-nuke/")', icon='Help.png')
                 
         
         # Hidden
@@ -106,17 +106,25 @@ def setup_MOTools_UI():
         menu = toolbar.addMenu("MOTools/Vr", 'Vr.png',index=-1)
         
         # Zebug
-        menu = toolbar.addMenu("MOTools/Zebug", 'Zebug.png',index=-1)
-        menu.addCommand("Postage Stamps ALL On", 'MOTools.PostageStamps_On()', icon='Zebug.png')
-        menu.addCommand("Postage Stamps ALL Off", 'MOTools.PostageStamps_Off()', icon='Zebug.png')
-        menu.addCommand("Postage Stamps ALL On Selected", 'MOTools.PostageStamps_Selected_On()', icon='Zebug.png')
-        menu.addCommand("Postage Stamps ALL Off Selected", 'MOTools.PostageStamps_Selected_Off()', icon='Zebug.png')
+        menu = toolbar.addMenu("MOTools/Debug", 'Zebug.png',index=999)
+        menu.addCommand("Postage Stamps/Postage Stamps ALL On", 'MOTools.PostageStamps_On()', icon='')
+        menu.addCommand("Postage Stamps/Postage Stamps ALL Off", 'MOTools.PostageStamps_Off()', icon='')
+        menu.addCommand("Postage Stamps/Postage Stamps ALL On Selected", 'MOTools.PostageStamps_Selected_On()', icon='')
+        menu.addCommand("Postage Stamps/Postage Stamps ALL Off Selected", 'MOTools.PostageStamps_Selected_Off()', icon='')
+        
+        menu.addCommand("Preformance Timers/Preformance Timers On", 'nuke.startPerformanceTimers()', icon='')
+        menu.addCommand("Preformance Timers/Preformance Timers Off", 'nuke.stopPerformanceTimers()', icon='')
 
-        menu.addCommand("Preformance Timers On", 'nuke.startPerformanceTimers()', icon='Zebug.png')
-        menu.addCommand("Preformance Timers Off", 'nuke.stopPerformanceTimers()', icon='Zebug.png')
-
+        menu.addCommand("System/Return OS", 'nuke.stopPerformanceTimers()', icon='')
+        menu.addCommand("System/Return HD Space", 'nuke.stopPerformanceTimers()', icon='')
+        
         # This adds a global trigger to update the autowrite node when something changes.
         nuke.addUpdateUI(update_AutoWrite, nodeClass='Write')
+
+def info_returnOS():
+    print ("info_returnOS")
+
+
 
 
 # update the format code for autowrite
