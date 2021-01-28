@@ -2,8 +2,8 @@
 # MOTools.py
 # www.MikeOakley.com
 #
-# MEL python("execfile('//bluefox/dev/git_repos/Maya/MOTools/MOTools.py')");
-# Python execfile('//bluefox/dev/git_repos/Mike-Oakley-VFX/Maya/MOTools/MOTools.py')
+# MEL: python("execfile('//bluefox/dev/git_repos/Maya/MOTools/MOTools.py')");
+# Python: execfile('//bluefox/dev/git_repos/Mike-Oakley-VFX/Maya/MOTools/MOTools.py')
 
 import maya.cmds as mc, mtoa.aovs as aovs ,os, inspect, sys, platform
 

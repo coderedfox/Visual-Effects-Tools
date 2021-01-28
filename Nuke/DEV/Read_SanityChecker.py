@@ -2,9 +2,12 @@
 # import Read_SanityChecker
 # nuke.menu( 'Nuke' ).addCommand( 'TGD/DEV/Add Read Info', 'write_sanitychecker.dataview_Update()' )
 # nuke.menu( 'Nuke' ).addCommand( 'TGD/DEV/Remove Read Info', 'write_sanitychecker.dataview_Remove()' )
+# nuke.pluginAddPath('//bluefox/dev/Visual-Effects-Tools/Nuke/DEV/' ) #  DEV Custom tools
+
 
 import nuke
 
+# var
 __version__ = "1.8"
 
 set_Tab = 'Sanity Check'
@@ -29,6 +32,7 @@ set_values = [
     ['SC_FileSize',        'input/filesize',           'This is in kb']
 ]
 
+# Create the UI
 def SC_Create(CreateNode):
     try:
         print "Creating Sanity Checker"
@@ -40,9 +44,12 @@ def SC_Create(CreateNode):
     except:
         pass
 
+# Remove the UI
 def SC_Remove(RemoveNode):
     print "SC_Remove"
 
+
+# Update UI
 def SC_Update(UpdateNodes):
     for UpdateNode in UpdateNodes:
         try:

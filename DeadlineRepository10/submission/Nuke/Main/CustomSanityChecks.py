@@ -1,7 +1,7 @@
 import nuke
 import DeadlineGlobals
 
-# TGD Customs
+# CSC Customs
 def RunSanityCheck():
     # Sets the Nuke group name
     DeadlineGlobals.initGroup = "nuke"

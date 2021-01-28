@@ -1,8 +1,8 @@
-// TGD Custom Sanity Checks
+// CSC Custom Sanity Checks
 
 
-proc TGD_Custom_Deadline_Check(){
-	// TGD Custom Deadline Check
+proc CSC_Custom_Deadline_Check(){
+	// CSC Custom Deadline Check
 
 	// Set Department
 	AddStringAttribute( "deadlineDepartment" );	setAttr defaultRenderGlobals.deadlineDepartment -type "string" "CG Production";
@@ -29,69 +29,69 @@ proc TGD_Custom_Deadline_Check(){
 	AddLongAttribute( "deadlineIgnoreDefaultCameras" );	setAttr defaultRenderGlobals.deadlineIgnoreDefaultCameras 1;
 }
 
-proc TGD_Custom_Sanity_Check(){
-	// TGD Custom Sanity Check - This checks the scene
+proc CSC_Custom_Sanity_Check(){
+	// CSC Custom Sanity Check - This checks the scene
 
-	string $tgd_sanitycheck[3] = {"PASSED     : ","WARNING    : ","FAILED     : ","INFO       : "};
+	string $CSC_sanitycheck[3] = {"PASSED     : ","WARNING    : ","FAILED     : ","INFO       : "};
 
 	print ("-------------------------------- \n");
-	print ("Beginning of the TGD Sanity check \n");
+	print ("Beginning of the CSC Sanity check \n");
 	print ("\n");
-	print ($tgd_sanitycheck[0] + "Good to Submit \n");
-	print ($tgd_sanitycheck[1] + "This might be wrong \n");
-	print ($tgd_sanitycheck[2] + "Settings is wrong \n");
-	print ($tgd_sanitycheck[3] + "Settings might be custom \n");
+	print ($CSC_sanitycheck[0] + "Good to Submit \n");
+	print ($CSC_sanitycheck[1] + "This might be wrong \n");
+	print ($CSC_sanitycheck[2] + "Settings is wrong \n");
+	print ($CSC_sanitycheck[3] + "Settings might be custom \n");
 	print ("\n");
 	print ("-------------------------------- \n");
 
 	// Check if render is set to Arnold
 	if( GetCurrentRenderer() == "arnold" )
 	{
-		print( $tgd_sanitycheck[0]+ "Render set to " + GetCurrentRenderer() + "\n" );
+		print( $CSC_sanitycheck[0]+ "Render set to " + GetCurrentRenderer() + "\n" );
 		// Check on EXR file type
 		if( getAttr( "defaultArnoldDriver.ai_translator") == "exr" )
-			print($tgd_sanitycheck[0]+ "Image Format is EXR \n");
+			print($CSC_sanitycheck[0]+ "Image Format is EXR \n");
 
-			if (getAttr( "defaultArnoldDriver.exrCompression" ) == 2 ) print($tgd_sanitycheck[0]+ "EXR Compression is ZIPs \n" );
-			else print( $tgd_sanitycheck[1] + "EXR Compression is NOT ZIPs \n");
+			if (getAttr( "defaultArnoldDriver.exrCompression" ) == 2 ) print($CSC_sanitycheck[0]+ "EXR Compression is ZIPs \n" );
+			else print( $CSC_sanitycheck[1] + "EXR Compression is NOT ZIPs \n");
 
-			if (getAttr( "defaultArnoldDriver.halfPrecision" ) == 0 ) print( $tgd_sanitycheck[3] + "EXR is set to full float \n" );
-			else print( $tgd_sanitycheck[3] + "EXR is set to half float \n");
+			if (getAttr( "defaultArnoldDriver.halfPrecision" ) == 0 ) print( $CSC_sanitycheck[3] + "EXR is set to full float \n" );
+			else print( $CSC_sanitycheck[3] + "EXR is set to half float \n");
 			
-			if (getAttr( "defaultArnoldDriver.exrTiled" ) == 0 ) print( $tgd_sanitycheck[0]+ "EXR Tited is Scan Lines \n" );
-			else print( $tgd_sanitycheck[2] + "EXR Tited is on. This is not prefered in compositing programs \n");
+			if (getAttr( "defaultArnoldDriver.exrTiled" ) == 0 ) print( $CSC_sanitycheck[0]+ "EXR Tited is Scan Lines \n" );
+			else print( $CSC_sanitycheck[2] + "EXR Tited is on. This is not prefered in compositing programs \n");
 			
-			if (getAttr( "defaultArnoldDriver.autocrop" ) == 1 ) print( $tgd_sanitycheck[0]+ "EXR AutoCrop is on \n" );
-			else print( $tgd_sanitycheck[1] + "EXR AutoCrop is off \n");
+			if (getAttr( "defaultArnoldDriver.autocrop" ) == 1 ) print( $CSC_sanitycheck[0]+ "EXR AutoCrop is on \n" );
+			else print( $CSC_sanitycheck[1] + "EXR AutoCrop is off \n");
 			
-			if (getAttr( "defaultArnoldDriver.mergeAOVs" ) == 1 ) print( $tgd_sanitycheck[0]+ "EXR set to single passes \n" );
-			else print( $tgd_sanitycheck[3] + "EXR set to Merge AOVs \n");
+			if (getAttr( "defaultArnoldDriver.mergeAOVs" ) == 1 ) print( $CSC_sanitycheck[0]+ "EXR set to single passes \n" );
+			else print( $CSC_sanitycheck[3] + "EXR set to Merge AOVs \n");
 	}	
 	else
-		print($tgd_sanitycheck[1]+ "Arnold is not loaded \n" );
+		print($CSC_sanitycheck[1]+ "Arnold is not loaded \n" );
 		
 	// Checks is animation frame padding is correct
-	if(getAttr ("defaultRenderGlobals.extensionPadding") == 4) print( $tgd_sanitycheck[0]+ "Frame padding is set to 4 \n" );
-	else print( $tgd_sanitycheck[1] + "Frame padding is set to "+ getAttr ("defaultRenderGlobals.extensionPadding") + "\n" );
+	if(getAttr ("defaultRenderGlobals.extensionPadding") == 4) print( $CSC_sanitycheck[0]+ "Frame padding is set to 4 \n" );
+	else print( $CSC_sanitycheck[1] + "Frame padding is set to "+ getAttr ("defaultRenderGlobals.extensionPadding") + "\n" );
 
 	// Unsure how to check for MayaSoftwareFrameExt
-	if( getAttr( "defaultRenderGlobals.outFormatControl") == "2" ) print( $tgd_sanitycheck[0]+ "Frame/Animation ext format is correct name.####.ext \n");
-	else print( $tgd_sanitycheck[1] + "Frame/Animation ext format is unusual \n" );
+	if( getAttr( "defaultRenderGlobals.outFormatControl") == "2" ) print( $CSC_sanitycheck[0]+ "Frame/Animation ext format is correct name.####.ext \n");
+	else print( $CSC_sanitycheck[1] + "Frame/Animation ext format is unusual \n" );
 
 	// Check on the render camera. warn about persp, top, front, or side cameras
 
 	// Check pixel aspect rations
-	if( getAttr( "defaultResolution.pixelAspect") == "1" ) print( $tgd_sanitycheck[0]+ "Pixel Aspect is 1 \n");
-	else print($tgd_sanitycheck[1] + "Pixel Aspect is " + getAttr( "defaultResolution.pixelAspect")+ ". This almost always be 1\n");
+	if( getAttr( "defaultResolution.pixelAspect") == "1" ) print( $CSC_sanitycheck[0]+ "Pixel Aspect is 1 \n");
+	else print($CSC_sanitycheck[1] + "Pixel Aspect is " + getAttr( "defaultResolution.pixelAspect")+ ". This almost always be 1\n");
 
 	// Check for AOVs
 	// AOVInterface.getAOVNodes()
 		
 	print ("--------------------------------\n");
-	print ("Finished the TGD Sanity check\n");
+	print ("Finished the CSC Sanity check\n");
 	print ("--------------------------------\n");
 }
 
 
-TGD_Custom_Deadline_Check();
-TGD_Custom_Sanity_Check();
+CSC_Custom_Deadline_Check();
+CSC_Custom_Sanity_Check();
