@@ -2,6 +2,12 @@
 version 12.1 v1
 Gizmo {
  postage_stamp true
+ addUserKnob {20 Settings}
+ addUserKnob {41 format l "output format" T SphericalTransform2.format}
+ addUserKnob {26 _1 l "" +STARTLINE T Rotations}
+ addUserKnob {41 out_rx l rx T SphericalTransform2.out_rx}
+ addUserKnob {41 out_ry l ry T SphericalTransform2.out_ry}
+ addUserKnob {41 out_rz l rz T SphericalTransform2.out_rz}
 }
  BackdropNode {
   inputs 0
@@ -31,7 +37,7 @@ Gizmo {
   xpos -739
   ypos -185
  }
-set N1721c400 [stack 0]
+set Na4827000 [stack 0]
  Dot {
   name Dot12
   xpos -739
@@ -50,7 +56,7 @@ set N1721c400 [stack 0]
   xpos -387
   ypos -30
  }
-push $N1721c400
+push $Na4827000
  Dot {
   name Dot13
   xpos -681
@@ -69,7 +75,7 @@ push $N1721c400
   xpos -479
   ypos -99
  }
-push $N1721c400
+push $Na4827000
  Dot {
   name Dot23
   xpos -682
@@ -88,7 +94,7 @@ push $N1721c400
   xpos -479
   ypos -166
  }
-push $N1721c400
+push $Na4827000
  Dot {
   name Dot22
   xpos -681
@@ -107,7 +113,7 @@ push $N1721c400
   xpos -477
   ypos -226
  }
-push $N1721c400
+push $Na4827000
  Dot {
   name Dot21
   xpos -685
@@ -126,7 +132,7 @@ push $N1721c400
   xpos -471
   ypos -287
  }
-push $N1721c400
+push $Na4827000
  Dot {
   name Dot19
   xpos -739
@@ -149,9 +155,11 @@ push $N1721c400
   inputs 6
   input Cube
   out_rot_order ZYX
+  out_ry 90
   filter Mitchell
   fix true
   name SphericalTransform2
+  selected true
   xpos -421
   ypos -219
  }

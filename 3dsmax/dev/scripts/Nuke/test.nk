@@ -1,0 +1,212 @@
+#! F:/Apps64/Nuke9.0v7/nuke-9.0.7.dll -nx
+version 9.0 v7
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="0" w="1920" h="1160" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1241" stretch="1"/>
+            <splitter orientation="2">
+                <split size="643"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="452"/>
+                <dock id="" activePageId="DAG.2" focus="true">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                    <page id="DAG.2"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name Z:/Projects/MOTools/Nuke/test.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+}
+Read {
+ inputs 0
+ file Z:/Projects/MOTools/Nuke/TEST.0000.exr
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ origset true
+ name Read1
+ xpos -85
+ ypos -320
+}
+set N108ac800 [stack 0]
+Viewer {
+ frame_range 1-100
+ name Viewer1
+ xpos -151
+ ypos 116
+}
+push $N108ac800
+add_layer {Element_GlobalIllumination Element_GlobalIllumination.red Element_GlobalIllumination.green Element_GlobalIllumination.blue}
+add_layer {Element_Reflection Element_Reflection.red Element_Reflection.green Element_Reflection.blue}
+add_layer {Element_Refraction Element_Refraction.red Element_Refraction.green Element_Refraction.blue}
+add_layer {Element_Specular Element_Specular.red Element_Specular.green Element_Specular.blue}
+add_layer {Element_SelfIllumination Element_SelfIllumination.red Element_SelfIllumination.green Element_SelfIllumination.blue}
+Group {
+ name Group1
+ xpos -85
+ ypos -187
+ addUserKnob {20 User}
+ addUserKnob {41 GlobalIllumination T Shuffle_Lighting.in}
+ addUserKnob {41 Lighting T Shuffle_Lighting.in}
+ addUserKnob {41 Reflection T Shuffle_Reflection.in}
+ addUserKnob {41 Refraction T Shuffle_Refraction.in}
+ addUserKnob {41 Specular T Shuffle_Specular.in}
+ addUserKnob {41 SelfIllumination l Self_Illumination T Shuffle_SelfIllumination.in}
+}
+ Input {
+  inputs 0
+  name EXR_Input
+  xpos -399
+  ypos -242
+ }
+ Dot {
+  name Dot1
+  xpos -365
+  ypos -114
+ }
+set N3813c00 [stack 0]
+ Dot {
+  name Dot3
+  xpos -484
+  ypos -114
+ }
+set N3812000 [stack 0]
+ Shuffle {
+  in Element_GlobalIllumination
+  name Shuffle_Lighting
+  xpos -518
+  ypos -39
+ }
+push $N3813c00
+ Shuffle {
+  in Element_Refraction
+  name Shuffle_Refraction
+  xpos -399
+  ypos -39
+ }
+push $N3813c00
+ Dot {
+  name Dot4
+  xpos -238
+  ypos -114
+ }
+set N3812c00 [stack 0]
+ Shuffle {
+  in Element_Reflection
+  name Shuffle_Reflection
+  xpos -272
+  ypos -41
+ }
+push $N3812c00
+ Dot {
+  name Dot5
+  xpos -116
+  ypos -114
+ }
+set N3813400 [stack 0]
+ Shuffle {
+  in Element_Specular
+  name Shuffle_Specular
+  xpos -150
+  ypos -41
+ }
+push $N3813400
+ Dot {
+  name Dot6
+  xpos 4
+  ypos -114
+ }
+set N108ad800 [stack 0]
+ Shuffle {
+  in Element_SelfIllumination
+  name Shuffle_SelfIllumination
+  xpos -30
+  ypos -38
+ }
+push $N108ad800
+ Dot {
+  name Dot7
+  xpos 135
+  ypos -114
+ }
+ Shuffle {
+  name Shuffle_Shadow
+  xpos 101
+  ypos -43
+ }
+push $N3812000
+ Dot {
+  name Dot2
+  xpos -609
+  ypos -114
+ }
+ Shuffle {
+  name Shuffle_GI
+  xpos -643
+  ypos -38
+ }
+ Output {
+  name Output_GI
+  xpos -643
+  ypos 70
+ }
+ Output {
+  inputs 0
+  name Lighting
+  xpos -518
+  ypos 67
+ }
+ Output {
+  inputs 0
+  name Refraction
+  xpos -398
+  ypos 69
+ }
+ Output {
+  inputs 0
+  name Reflection
+  xpos -272
+  ypos 69
+ }
+ Output {
+  inputs 0
+  name Specular
+  xpos -150
+  ypos 71
+ }
+ Output {
+  inputs 0
+  name SelfIllumination
+  xpos -30
+  ypos 67
+ }
+ Output {
+  inputs 0
+  name Shadow
+  xpos 101
+  ypos 68
+ }
+end_group
+Dot {
+ name Dot1
+ xpos -161
+ ypos -34
+}

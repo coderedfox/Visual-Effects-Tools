@@ -1,0 +1,168 @@
+#! /Applications/Nuke6.2v1/NukeX6.2v1.app/../Nuke6.2v1.app/Contents/MacOS/Nuke6.2v1 -nx
+version 6.2 v1
+Gizmo {
+ help "PAF_PS_Levels\nPedro A. Flores\nwww.creativerocket.net\n\n- This is a simple gizmos that imitates the levels tool in photoshop.\n\n- Each RGBA channel is extracted from the image. The we apply a histogram to each, then we put them back together to rebuild the image. A final histogram is used to set the master level.\n"
+ tile_color 0x2dccffff
+ gl_color 0x2dccffff
+ label "PAF 4/10 v01"
+ note_font "Verdana Bold Bold Bold Bold Bold Bold Bold"
+ addUserKnob {20 MasterChan l "Master RGB"}
+ addUserKnob {41 hist l Histogram T Master.hist}
+ addUserKnob {41 in l "input range" T Master.in}
+ addUserKnob {41 out l "output range" T Master.out}
+ addUserKnob {26 "" l mask}
+ addUserKnob {41 unpremult l "(un)premult by" T Master.unpremult}
+ addUserKnob {41 invert_unpremult l invert T Master.invert_unpremult}
+ addUserKnob {41 mix T Master.mix}
+ addUserKnob {20 RedChan l Red}
+ addUserKnob {41 hist_1 l Histogram T Red_Chan.hist}
+ addUserKnob {41 in_1 l "input range" T Red_Chan.in}
+ addUserKnob {41 out_1 l "output range" T Red_Chan.out}
+ addUserKnob {20 GreenChan l Green}
+ addUserKnob {41 hist_2 l Histogram T Green_Chan.hist}
+ addUserKnob {41 in_2 l "input range" T Green_Chan.in}
+ addUserKnob {41 out_2 l "output range" T Green_Chan.out}
+ addUserKnob {20 BlueChan l Blue t "Color correct Levels on blue chan"}
+ addUserKnob {41 hist_3 l Histogram T Blue_Chan.hist}
+ addUserKnob {41 in_3 l "input range" T Blue_Chan.in}
+ addUserKnob {41 out_3 l "output range" T Blue_Chan.out}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 647
+  ypos -369
+ }
+ Dot {
+  name Dot6
+  xpos 681
+  ypos -260
+ }
+set N22b417a0 [stack 0]
+ Dot {
+  name Dot1
+  xpos 681
+  ypos -155
+ }
+set N22b44310 [stack 0]
+ Dot {
+  name Dot2
+  xpos 572
+  ypos -155
+ }
+set N22b46d80 [stack 0]
+ Dot {
+  name Dot3
+  xpos 457
+  ypos -155
+ }
+ Shuffle {
+  red blue
+  green blue
+  name Blue
+  tile_color 0xffff
+  label "\[value in]"
+  xpos 423
+  ypos 7
+ }
+ Histogram {
+  maskChannelInput {{{parent.Master.maskChannelInput}}}
+  inject {{parent.Master.inject}}
+  invert_mask {{parent.Master.invert_mask}}
+  fringe {{parent.Master.fringe}}
+  unpremult {{{parent.Master.unpremult}}}
+  invert_unpremult {{parent.Master.invert_unpremult}}
+  mix {{parent.Master.mix}}
+  name Blue_Chan
+  xpos 423
+  ypos 54
+ }
+push $N22b46d80
+ Shuffle {
+  red green
+  blue green
+  name Green
+  tile_color 0xff00ff
+  label "\[value in]"
+  xpos 538
+  ypos -55
+ }
+ Histogram {
+  maskChannelInput {{{parent.Master.maskChannelInput}}}
+  inject {{parent.Master.inject i}}
+  invert_mask {{parent.Master.invert_mask i}}
+  fringe {{parent.Master.fringe i}}
+  unpremult {{{parent.Master.unpremult}}}
+  invert_unpremult {{parent.Master.invert_unpremult i}}
+  mix {{parent.Master.mix i}}
+  name Green_Chan
+  xpos 538
+  ypos -15
+ }
+push $N22b44310
+ Shuffle {
+  green red
+  blue red
+  name Red
+  tile_color 0xff0000ff
+  label "\[value in]"
+  xpos 647
+  ypos -123
+ }
+ Histogram {
+  maskChannelInput {{{parent.Master.maskChannelInput}}}
+  inject {{parent.Master.inject i}}
+  invert_mask {{parent.Master.invert_mask i}}
+  fringe {{parent.Master.fringe i}}
+  unpremult {{{parent.Master.unpremult}}}
+  invert_unpremult {{parent.Master.invert_unpremult i}}
+  mix {{parent.Master.mix i}}
+  name Red_Chan
+  xpos 647
+  ypos -89
+ }
+push $N22b417a0
+ Dot {
+  name Dot5
+  xpos 790
+  ypos -260
+ }
+ Copy {
+  inputs 2
+  from0 rgba.red
+  to0 rgba.red
+  name Set_Red
+  tile_color 0xff0000ff
+  xpos 754
+  ypos -94
+ }
+ Copy {
+  inputs 2
+  from0 rgba.green
+  to0 rgba.green
+  name Set_Green
+  tile_color 0xff00ff
+  xpos 754
+  ypos -20
+ }
+ Copy {
+  inputs 2
+  from0 rgba.blue
+  to0 rgba.blue
+  name Set_Blue
+  tile_color 0xffff
+  xpos 754
+  ypos 49
+ }
+ Histogram {
+  name Master
+  selected true
+  xpos 754
+  ypos 111
+ }
+ Output {
+  name Output1
+  xpos 756
+  ypos 231
+ }
+end_group

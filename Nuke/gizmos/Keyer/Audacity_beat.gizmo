@@ -1,0 +1,41 @@
+#! C:/Program Files/Nuke8.0v4/nuke-8.0.v4.dll -nx
+version 8.0 v4
+Gizmo {
+tile_color 0xff00ff
+label "import txt file exported from Audacity\naudacity -> analyze -> beat finder"
+note_font_size 8
+addUserKnob {20 User}
+addUserKnob {2 file}
+file C:/beats.txt
+addUserKnob {3 offset l "offset (f)"}
+addUserKnob {3 offset_1 l "offset (s)" -STARTLINE}
+addUserKnob {6 onepoints l "1 point curves" -STARTLINE}
+onepoints true
+addUserKnob {22 Import T "nuke.thisNode()\['Beat'].setAnimated()\nnuke.thisNode()\['Hihat'].setAnimated()\n\nif nuke.thisNode()\['offset'].getValue() == 0:\n offset =  int(round(float(nuke.thisNode()\['offset_1'].getValue()*25)))\nelse:\n offset = nuke.thisNode()\['offset'].getValue()\n\n#file = open(\"P:\\\\projects\\\\jukka\\\\jukka_game_musavideo\\\\doc\\\\tracklabels_iskut_testi.txt\")\nfile = open(str(nuke.thisNode()\['file'].getValue()).replace('\\\\','/'))\n\nwhile 1:\n line = file.readline()\n if not line:\n  break\n a = line.split('\\t');\n b = a.pop(1).replace(',','.')\n c = a.pop(1).replace(',','.')\n math = int(round(float(b)*25))\n if str(c)\[:1] == \"B\":\n  nuke.thisNode()\['Beat'].setValueAt( 1, math-offset )\n  if nuke.thisNode()\['onepoints'].getValue()==0:\n   nuke.thisNode()\['Beat'].setValueAt( 0, math-offset+1 )\n   nuke.thisNode()\['Beat'].setValueAt( 0, math-offset-1 )\n if str(c)\[:1] == \"H\":\n  nuke.thisNode()\['Hihat'].setValueAt( 0.65, math-offset )\n  if nuke.thisNode()\['onepoints'].getValue()==0:\n   nuke.thisNode()\['Hihat'].setValueAt( 0, math-offset+1 )\n   nuke.thisNode()\['Hihat'].setValueAt( 0, math-offset-1 )" +STARTLINE}
+addUserKnob {22 clear l Clear -STARTLINE T "nuke.thisNode()\['Beat'].clearAnimated()\nnuke.thisNode()\['Hihat'].clearAnimated()"}
+addUserKnob {7 Beat l B}
+Beat 1
+addUserKnob {7 Hihat l H}
+}
+Input {
+inputs 0
+name Input1
+xpos 175
+ypos 212
+}
+Dot {
+name Dot19
+xpos 209
+ypos 252
+}
+Dot {
+name Dot27
+xpos 207
+ypos 337
+}
+Output {
+name Output1
+xpos 207
+ypos 437
+}
+end_group

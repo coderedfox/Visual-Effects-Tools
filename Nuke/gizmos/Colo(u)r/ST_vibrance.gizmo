@@ -1,0 +1,102 @@
+#! D:/Program Files/Nuke7.0v5/Nuke7.0.exe -nx
+version 7.0 v5
+Gizmo {
+ help "  Adds \"vibrance\" to an image by boosting saturation in less-saturated areas. Adjust vibrance & mix sliders to taste to give your final images a little 'kick'.\n\n--shrike--\n\n"
+ addUserKnob {20 User}
+ addUserKnob {26 ST_vibrance l "" +STARTLINE T "ST_Vibrance v1.0"}
+ addUserKnob {26 ""}
+ addUserKnob {7 threshold l Threshold t "Controls the saturation range that is to be boosted." R 0 2}
+ threshold 0.333
+ addUserKnob {26 ""}
+ addUserKnob {7 vibrance l Vibrance t "Controls amount of boosted saturation" R 0 2}
+ vibrance 1.8
+ addUserKnob {26 ""}
+ addUserKnob {7 mix l Mix t "Mixes the effect in & out"}
+ mix 0.3
+ addUserKnob {26 ""}
+ addUserKnob {7 recovery l Recovery t "Controls recovery of lost brightness" R 1 1.5}
+ recovery 1.1
+ addUserKnob {26 ""}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 828
+  ypos -197
+ }
+ Dot {
+  name Dot11
+  xpos 862
+  ypos -157
+ }
+set N2f12a1c0 [stack 0]
+ Dot {
+  name Dot12
+  xpos 752
+  ypos -157
+ }
+ Saturation {
+  saturation {{parent.threshold}}
+  name Saturation3
+  xpos 718
+  ypos -37
+ }
+set N2f12a8a0 [stack 0]
+push $N2f12a1c0
+ Merge2 {
+  inputs 2
+  operation exclusion
+  name Merge6
+  xpos 828
+  ypos -37
+ }
+set N2f12ac10 [stack 0]
+ Saturation {
+  saturation {{parent.vibrance}}
+  name Saturation4
+  xpos 828
+  ypos 6
+ }
+ Dot {
+  name Dot10
+  xpos 862
+  ypos 65
+ }
+push $N2f12a1c0
+ Dot {
+  name Dot13
+  xpos 963
+  ypos -157
+ }
+ Merge2 {
+  inputs 2
+  operation soft-light
+  mix {{parent.mix}}
+  name Merge7
+  xpos 929
+  ypos 62
+ }
+ ColorCorrect {
+  shadows.gain {{parent.recovery*1.1}}
+  midtones.gain {{parent.recovery}}
+  name ColorCorrect1
+  selected true
+  xpos 929
+  ypos 129
+ }
+ Output {
+  name Output1
+  xpos 929
+  ypos 216
+ }
+push $N2f12ac10
+push $N2f12a8a0
+ Viewer {
+  inputs 2
+  input_number 1
+  input_process false
+  name Viewer1
+  xpos 664
+  ypos 309
+ }
+end_group

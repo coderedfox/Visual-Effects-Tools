@@ -1,0 +1,175 @@
+set cut_paste_input [stack 0]
+version 8.0 v5
+push $cut_paste_input
+Gizmo {
+ name Check_Matte
+ help "Check your matte against a color.\nYou can also use a border.\n\n�Copyright:\nJonas Almeida.\n jgadpp.com \n2014""
+ selected true
+ xpos 70
+ ypos -35
+ addUserKnob {20 CheckMatte l "Check Matte v2"}
+ addUserKnob {6 Color_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ addUserKnob {26 FillColour l "Fill Colour"}
+ addUserKnob {41 color_1 l color T Fill.color}
+ addUserKnob {26 Edge_txt l INVISIBLE -STARTLINE +INVISIBLE}
+ addUserKnob {6 edges l Edge +STARTLINE}
+ edges true
+ addUserKnob {41 colour l Colour T Edge.color}
+ addUserKnob {7 edgextent l INVISIBLE +INVISIBLE R 0 10}
+ edgextent 2
+}
+ Input {
+  inputs 0
+  name Alpha
+  xpos -150
+  ypos -57
+ }
+ Dot {
+  name Dot1
+  xpos -116
+  ypos -6
+ }
+set N1de8dd70 [stack 0]
+ Dot {
+  name Dot8
+  xpos -336
+  ypos -6
+ }
+set N1de8e0e0 [stack 0]
+ Erode {
+  channels alpha
+  size {{edgextent*-1}}
+  name Erode2
+  xpos -370
+  ypos 159
+ }
+ Dot {
+  name Dot3
+  xpos -337
+  ypos 213
+ }
+push $N1de8e0e0
+ Dot {
+  name Dot4
+  xpos -556
+  ypos -6
+ }
+set N1de8eb30 [stack 0]
+ Dot {
+  name Dot6
+  xpos -666
+  ypos -6
+ }
+ Invert {
+  channels alpha
+  name Invert1
+  xpos -700
+  ypos 155
+ }
+ Dot {
+  name Dot7
+  xpos -666
+  ypos 210
+ }
+push $N1de8eb30
+ EdgeDetectWrapper {
+  edgedetector prewitt
+  channels alpha
+  erodesize -3
+  name EdgeDetect1
+  xpos -590
+  ypos 35
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle2
+  xpos -590
+  ypos 87
+ }
+ Dot {
+  name Dot5
+  xpos -556
+  ypos 138
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  color {0 1 0 1}
+  name Edge
+  xpos -480
+  ypos 39
+ }
+ Merge2 {
+  inputs 2
+  operation mask
+  name Merge3
+  xpos -480
+  ypos 135
+ }
+ Copy {
+  inputs 2+1
+  from0 rgba.alpha
+  to0 rgba.alpha
+  name Copy1
+  xpos -480
+  ypos 203
+ }
+ Premult {
+  name Premult2
+  xpos -480
+  ypos 255
+ }
+ Dot {
+  name Dot2
+  xpos -446
+  ypos 330
+ }
+ Constant {
+  inputs 0
+  color {1 0 0 1}
+  name Fill
+  xpos -260
+  ypos 87
+ }
+ Dot {
+  name Dot9
+  xpos -227
+  ypos 187
+ }
+push $N1de8dd70
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle1
+  xpos -150
+  ypos 87
+ }
+ Premult {
+  name Premult1
+  xpos -150
+  ypos 135
+ }
+ Merge2 {
+  inputs 2
+  operation in
+  name Merge1
+  xpos -150
+  ypos 183
+ }
+ Merge2 {
+  inputs 2
+  operation disjoint-over
+  name Merge2
+  xpos -150
+  ypos 327
+  disable {{-2+(edges+1)}}
+ }
+ Output {
+  name Output1
+  xpos -150
+  ypos 399
+ }
+end_group

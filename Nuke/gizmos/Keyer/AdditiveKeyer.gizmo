@@ -1,0 +1,265 @@
+#! /Applications/Nuke8.0v1/Nuke8.0v1.app/Contents/MacOS/libnuke-8.0.v1.dylib -nx
+version 8.0 v1
+Gizmo {
+ inputs 3
+ help "This is not a keyer, as it does not create a matte that is of use. It is more of a 'relative mixer'. It is very good for separating translucent fine details (such as motion blur, dust or hair) that a keyers with mattes might have difficulties extracting.\n\nTo get it to work requires a lot of prep work on the screen and reference to work with uneven screens. It is used in combination with normal keyer that provides the main core of the comp and the additive keyer generates only the subtle soft edges."
+ addUserKnob {20 User}
+ addUserKnob {41 UserColor l "User Color" t "Optional. Uses a defined color instead of luminance." T Constant1.color}
+ addUserKnob {41 UseColor l "Enable Color" t Activate T Controls.UseColor}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 Multiply_hi l "High Pass" t "A multiplier only for the positive pixel values" T Controls.Multiply_hi}
+ addUserKnob {41 Multiply_lo l "Low Pass" t "A multiplier only for the subzero pixel values" T Controls.Multiply_lo}
+ addUserKnob {41 Enable l "Enable LoPass" t "Enables the low pass control" T Controls.Enable}
+ addUserKnob {26 ""}
+ addUserKnob {20 adjBG l "Adjust Background" n 1}
+ adjBG 0
+ addUserKnob {41 blackpoint T bg_tweak.blackpoint}
+ addUserKnob {41 blackpoint_panelDropped l "panel dropped state" T bg_tweak.blackpoint_panelDropped}
+ addUserKnob {41 whitepoint T bg_tweak.whitepoint}
+ addUserKnob {41 whitepoint_panelDropped l "panel dropped state" T bg_tweak.whitepoint_panelDropped}
+ addUserKnob {41 black l lift T bg_tweak.black}
+ addUserKnob {41 black_panelDropped l "panel dropped state" T bg_tweak.black_panelDropped}
+ addUserKnob {41 white_1 l gain T bg_tweak.white}
+ addUserKnob {41 white_panelDropped l "panel dropped state" T bg_tweak.white_panelDropped}
+ addUserKnob {41 multiply T bg_tweak.multiply}
+ addUserKnob {41 multiply_panelDropped l "panel dropped state" T bg_tweak.multiply_panelDropped}
+ addUserKnob {41 add l offset T bg_tweak.add}
+ addUserKnob {41 add_panelDropped l "panel dropped state" T bg_tweak.add_panelDropped}
+ addUserKnob {41 gamma T bg_tweak.gamma}
+ addUserKnob {41 gamma_panelDropped l "panel dropped state" T bg_tweak.gamma_panelDropped}
+ addUserKnob {41 white_clamp l "white clamp" T bg_tweak.white_clamp}
+ addUserKnob {41 black_clamp l "black clamp" -STARTLINE T bg_tweak.black_clamp}
+ addUserKnob {41 mix_luminance l "Mix Luminance" T bg_tweak.mix_luminance}
+ addUserKnob {41 mix T bg_tweak.mix}
+ addUserKnob {20 endGroup n -1}
+ addUserKnob {26 ""}
+ addUserKnob {41 white l "Overall Gain" t "A gain at the end of the process, ideally to restore values from the original background. " T Grade7.white}
+ addUserKnob {26 ""}
+ addUserKnob {41 EnableMask l "Use Mask" T Controls.EnableMask}
+ addUserKnob {41 InvertMask l "Invert Mask" -STARTLINE T Controls.InvertMask}
+}
+ Input {
+  inputs 0
+  name Mask
+  xpos -258
+  ypos 561
+  number 2
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle1
+  xpos -258
+  ypos 615
+ }
+ Invert {
+  name Invert1
+  xpos -258
+  ypos 666
+  disable {{Controls.InvertMask}}
+ }
+ Input {
+  inputs 0
+  name BG
+  xpos -458
+  ypos -80
+  number 1
+ }
+ Dot {
+  name Dot2
+  xpos -424
+  ypos 377
+ }
+set N20e04ff0 [stack 0]
+ Grade {
+  name bg_tweak
+  xpos -653
+  ypos 374
+ }
+ Dot {
+  name Dot8
+  xpos -844
+  ypos 377
+ }
+set N20e148a0 [stack 0]
+ Input {
+  inputs 0
+  name FG
+  xpos -871
+  ypos -85
+ }
+set N20e18600 [stack 0]
+ Dot {
+  name Dot1
+  xpos -750
+  ypos -18
+ }
+ Dot {
+  name Dot3
+  xpos -750
+  ypos 76
+ }
+ Constant {
+  inputs 0
+  channels rgb
+  name Constant1
+  xpos -1089
+  ypos -156
+ }
+ Reformat {
+  type "to box"
+  format "640 480 0 0 640 480 1 PC_Video"
+  box_width {{FG.width}}
+  box_height {{FG.height}}
+  box_fixed true
+  scale {{FG.width} 1}
+  name Reformat1
+  xpos -1089
+  ypos -84
+ }
+push $N20e18600
+ Saturation {
+  saturation 0
+  mode Average
+  name Saturation1
+  xpos -941
+  ypos -17
+ }
+ Blur {
+  size 100
+  quality 5
+  name Blur4
+  xpos -941
+  ypos 7
+ }
+ Switch {
+  inputs 2
+  which {{Controls.UseColor}}
+  name Switch1
+  xpos -1021
+  ypos 77
+ }
+ Merge2 {
+  inputs 2
+  operation minus
+  name Merge12
+  xpos -877
+  ypos 149
+ }
+ Saturation {
+  saturation 0
+  mode Maximum
+  name Saturation5
+  xpos -877
+  ypos 259
+ }
+set N20e3efd0 [stack 0]
+ Clamp {
+  channels rgb
+  minimum -1000
+  maximum 0
+  name Clamp3
+  xpos -821
+  ypos 326
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  name Merge13
+  xpos -821
+  ypos 422
+ }
+ Grade {
+  multiply {{Controls.Multiply_lo}}
+  black_clamp false
+  name Grade7_Lo1
+  xpos -821
+  ypos 492
+ }
+push $N20e148a0
+push $N20e3efd0
+ Clamp {
+  channels rgb
+  maximum 1000
+  name Clamp4
+  xpos -931
+  ypos 326
+ }
+ Merge2 {
+  inputs 2
+  operation multiply
+  name Merge14
+  xpos -931
+  ypos 421
+ }
+ Grade {
+  multiply {{Controls.Multiply_hi}}
+  black_clamp false
+  name Grade6_Hi1
+  xpos -931
+  ypos 492
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge15
+  xpos -872
+  ypos 598
+  disable {{1-Controls.Enable}}
+ }
+push $N20e04ff0
+ Dot {
+  name Dot14
+  xpos -424
+  ypos 599
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge16
+  xpos -672
+  ypos 799
+ }
+ Grade {
+  white {{1-Multiply_hi/10}}
+  name BG_Compensation
+  xpos -672
+  ypos 880
+ }
+ Grade {
+  name Grade7
+  xpos -672
+  ypos 904
+ }
+ Merge2 {
+  inputs 2
+  operation stencil
+  name Merge1
+  xpos -672
+  ypos 1032
+  disable {{1-Controls.EnableMask}}
+ }
+ Output {
+  name Output1
+  xpos -672
+  ypos 1163
+ }
+ NoOp {
+  inputs 0
+  name Controls
+  xpos -863
+  ypos 1165
+  hide_input true
+  addUserKnob {20 User}
+  addUserKnob {7 Multiply_hi l Multiply R 0 10}
+  Multiply_hi 5
+  addUserKnob {7 Multiply_lo l Multiply R 0 10}
+  Multiply_lo 4
+  addUserKnob {6 Enable l "Enable LoPass" +STARTLINE}
+  Enable true
+  addUserKnob {6 EnableMask l "Use Mask" +STARTLINE}
+  addUserKnob {6 InvertMask l "Invert Mask" +STARTLINE}
+  addUserKnob {6 UseColor l "Use Color" t "Uses a defined color to subtract from the FG instead of luminance." +STARTLINE}
+ }
+end_group

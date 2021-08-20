@@ -1,0 +1,9 @@
+name "Mikes Everyday Tools - MOTools"
+version 1.0
+
+extract to $temp\MOTools
+
+run MikesEverydayTools_Launcher.ms
+drop MikesEverydayTools_Launcher.ms
+
+clear temp on MAX exit

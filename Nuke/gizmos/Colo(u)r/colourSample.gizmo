@@ -1,0 +1,176 @@
+#! /Applications/Nuke8.0v5/NukeX8.0v5.app/../Nuke8.0v5.app/Contents/MacOS/libnuke-8.0.v5.dylib -nx
+version 8.0 v5
+Gizmo {
+inputs 2
+tile_color 0xff9100ff
+addUserKnob {20 colourSample}
+addUserKnob {26 ""}
+addUserKnob {26 howto l "" +STARTLINE T "Paste tracker data in for mask center point\n"}
+addUserKnob {12 maskPos l "Mask Position" t "Copy position data here"}
+addUserKnob {7 maskRot l "Mask Rotation" t "Copy rotation data here" R -180 180}
+addUserKnob {7 maskScale l "Mask Scale" t "Copy scale data here" R 0.1 10}
+maskScale 1
+addUserKnob {7 maskSkewX l "Mask Skew X" t "Copy skew X data here" R -1 1}
+addUserKnob {7 maskSkewY l "Mask Skew Y" t "Copy skew Y data here" R -1 1}
+addUserKnob {12 maskCenter l "Mask Center" t "Copy center data here"}
+addUserKnob {26 ""}
+addUserKnob {26 gettext l "" +STARTLINE T "Click to get average colour of selected area\n"}
+addUserKnob {22 colourGet l "Get Colour!" T "nuke.toNode(\"autoCrop\").knob(\"go\").execute()\nnuke.toNode(\"cSample\").knob(\"go\").execute()" +STARTLINE}
+addUserKnob {19 sampledColour l "Sampled Colour"}
+sampledColour {{cSample.intensitydata.r} {cSample.intensitydata.g} {cSample.intensitydata.b} {cSample.intensitydata.a}}
+addUserKnob {6 sampledColour_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+addUserKnob {4 outputType l Output M {Input "Masked View" "Constant Colour"}}
+outputType "Constant Colour"
+addUserKnob {26 help_1 l "" +STARTLINE T "\nColourSample will take Src alpha as sample area.\n\nAdding an alpha to Sample input will overwrite Src alpha input."}
+}
+Constant {
+inputs 0
+channels rgb
+color {{cSample.intensitydata.r} {cSample.intensitydata.g} {cSample.intensitydata.b} {cSample.intensitydata.a}}
+name Constant2
+xpos 290
+ypos 375
+}
+Dot {
+name Dot7
+xpos 324
+ypos 450
+}
+Input {
+inputs 0
+name Sample
+xpos 180
+ypos -9
+number 1
+}
+Dot {
+name Dot4
+xpos 214
+ypos 66
+}
+Input {
+inputs 0
+name Src
+xpos -150
+ypos -9
+}
+Dot {
+name Dot5
+xpos -116
+ypos 66
+}
+set N8c41d960 [stack 0]
+Copy {
+inputs 2
+from0 rgba.alpha
+channels alpha
+name Copy1
+xpos 70
+ypos 54
+}
+Dot {
+name Dot1
+xpos 104
+ypos 114
+}
+set N8c42b630 [stack 0]
+Remove {
+operation keep
+channels alpha
+name Remove1
+xpos 180
+ypos 107
+}
+Transform {
+translate {{maskPos.x} {maskPos.y}}
+rotate {{maskRot}}
+scale {{maskScale}}
+skewX {{maskSkewX}}
+skewY {{maskSkewY}}
+center {{maskCenter.x} {maskCenter.y}}
+name Transform_MatchMove
+xpos 180
+ypos 159
+addUserKnob {20 User}
+addUserKnob {4 transform M {stabilize match-move}}
+addUserKnob {4 src_transform l "src transform" M {none stabilize "stabilize 1-pt" match-move "match-move 1-pt" "remove jitter"}}
+addUserKnob {6 invert -STARTLINE}
+}
+push $N8c42b630
+Copy {
+inputs 2
+from0 rgba.alpha
+to0 rgba.alpha
+name Copy2
+xpos 70
+ypos 155
+}
+Premult {
+name Premult1
+xpos 70
+ypos 207
+}
+set N8c44bcf0 [stack 0]
+CurveTool {
+ROI {{autoCrop.autocropdata.x} {autoCrop.autocropdata.y} {autoCrop.autocropdata.r} {autoCrop.autocropdata.t}}
+autocropdata {0 0 1024 1024}
+intensitydata {0 0 0 0}
+name cSample
+xpos 70
+ypos 351
+}
+push $N8c41d960
+Dot {
+name Dot6
+xpos -116
+ypos 162
+}
+Dot {
+name Dot2
+xpos -116
+ypos 450
+}
+Switch {
+inputs 3
+which {{parent.outputType}}
+name Switch2
+xpos 70
+ypos 447
+}
+set N8c463e50 [stack 0]
+Output {
+name Output1
+xpos 70
+ypos 495
+}
+Tracker4 {
+inputs 0
+transform match-move
+center {512 512}
+name Tracker1
+xpos 380
+ypos 128
+}
+push $N8c463e50
+Viewer {
+input_process false
+name Viewer1
+xpos 400
+ypos 303
+}
+push $N8c44bcf0
+Dot {
+name Dot3
+xpos -6
+ypos 210
+}
+CurveTool {
+operation "Auto Crop"
+ROI {0 0 1024 1024}
+autocropdata {{curve x1 395 399 405 413 424 436 449 463 479 495 511 528 545 561 578 594 609 624 637 650 661 671 680 688 694 699 702 704 704 703 700 696 690 683 674 663 652 638 624 608 590 572 552 531 510 487 464 441 417 393 370 351 334 319 307 297 290 284 280 279 278 280 283 287 293 299 307 316 325 335 346 357 369 381 393 405 417 428 439 450 460 470 478 486 492 498 502 505 506 506 504 501 495 487 478 466 452 435 415 393 x240490 873 x240491 878 886 891 892 894 896 897 898 898 896 894 892 890 888 885 883 882 880 878 875 872 869 863} {curve x1 681 691 701 709 716 722 726 729 729 729 726 722 716 709 699 689 676 662 647 630 612 593 573 551 529 507 484 460 436 413 390 370 353 339 327 317 309 304 300 299 299 300 303 308 314 321 329 338 347 358 369 380 392 403 415 427 439 450 461 472 482 492 500 508 515 521 525 528 530 530 528 525 519 512 502 490 475 458 438 415 391 368 344 322 299 278 258 238 220 202 186 171 158 146 135 126 118 112 107 104 x240490 311 x240491 313 315 318 321 324 327 329 331 333 334 334 333 331 330 329 328 328 329 328 328 328 328 326} {curve x1 635 640 646 654 665 677 690 704 720 736 752 769 786 802 819 835 850 865 878 891 902 912 921 929 935 940 943 945 945 944 941 937 931 924 915 904 893 879 865 848 831 813 793 772 751 728 705 682 658 634 611 592 575 560 548 538 531 525 521 520 519 521 524 528 534 540 548 557 566 576 587 598 610 622 634 646 658 669 680 691 701 711 719 727 733 739 743 746 747 747 745 742 736 728 719 707 692 676 656 634 x240490 1131 x240491 1137 1145 1150 1151 1153 1155 1156 1157 1157 1155 1153 1151 1149 1147 1144 1142 1141 1139 1137 1134 1131 1128 1122} {curve x1 853 864 874 882 889 895 899 902 902 902 899 895 889 882 872 862 849 835 820 803 785 766 745 724 702 680 657 633 609 586 563 543 526 512 500 490 482 477 473 472 472 473 476 481 487 494 502 511 520 531 542 553 565 576 588 600 612 623 634 645 655 665 673 681 688 694 698 701 703 703 701 698 692 685 675 663 648 631 611 588 564 541 517 495 472 451 431 411 392 375 359 344 331 319 308 299 291 285 280 277 x240490 529 x240491 532 534 537 540 543 546 548 550 552 553 553 552 550 549 548 547 547 548 547 547 547 547 545}}
+intensitydata {{curve x240490 0.06137435987 0.06162777346 0.06140395497 0.06234529526 0.06248072719 0.06269399348 0.06293442133 0.06359575975 0.06337119039 0.06313986398 0.0634011613 0.06359035297 0.06357961953 0.06351807396 0.06309560392 0.06253784374 0.06283417357 0.06241626683 0.06239956661 0.06196901727 0.06150297185 0.0611970656 0.06076180904 0.06048413687} {curve x240490 0.01985009861 0.01994040024 0.01986629942 0.02014376159 0.02020997056 0.02025461189 0.02029846792 0.02049244937 0.02038060855 0.02026770308 0.02030264384 0.02047562471 0.02061955103 0.02064993032 0.02060470673 0.0205179504 0.02066047745 0.02061008256 0.02053943043 0.02044023286 0.02028203863 0.02008610345 0.01992622725 0.01976001016} {curve x240490 0.001894756903 0.001909741699 0.001918984095 0.001943433631 0.001974099791 0.001981970577 0.001933311897 0.00204279571 0.001973931236 0.001931936402 0.001894075654 0.001984147146 0.001966280151 0.001940802559 0.001922090593 0.001897114511 0.001849114849 0.001835368179 0.001780358492 0.001796387358 0.001867697365 0.001760531168 0.001781463662 0.001706182182} {curve x240490 0.06137435987}}
+name autoCrop
+xpos -40
+ypos 327
+}
+end_group

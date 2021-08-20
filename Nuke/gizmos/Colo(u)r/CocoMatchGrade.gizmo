@@ -1,0 +1,78 @@
+Gizmo {
+ inputs 2
+ help "COCO_MatchGrade 1.1\ncreated by Nicolas Leu\n© Nicolas Leu - 2016\nwww.nicolasleu.com\nmail@nicolasleu.com"
+ tile_color 0x5babffff
+ addUserKnob {20 Coco_MatchGrade l CocoMatchGrade}
+ addUserKnob {41 targetGain l "target gain" T ColorPickers.targetGain}
+ addUserKnob {41 sourceGain l "source gain" T ColorPickers.sourceGain}
+ addUserKnob {41 setGain l "set gain" T Switch1.setGain}
+ addUserKnob {26 ""}
+ addUserKnob {41 reverse T Grade1.reverse}
+ addUserKnob {41 black_clamp l "black clamp" -STARTLINE T Grade1.black_clamp}
+ addUserKnob {41 white_clamp l "white clamp" -STARTLINE T Grade1.white_clamp}
+ addUserKnob {41 maskChannelInput l INVISIBLE +INVISIBLE T Grade1.maskChannelInput}
+ addUserKnob {41 maskChannelMask l mask T Grade1.maskChannelMask}
+ addUserKnob {41 inject -STARTLINE T Grade1.inject}
+ addUserKnob {41 invert_mask l invert -STARTLINE T Grade1.invert_mask}
+ addUserKnob {41 fringe -STARTLINE T Grade1.fringe}
+ addUserKnob {41 unpremult l "(un)premult by" T Grade1.unpremult}
+ addUserKnob {41 invert_unpremult l invert -STARTLINE T Grade1.invert_unpremult}
+ addUserKnob {41 mix T Grade1.mix}
+}
+ Input {
+  inputs 0
+  name Mask
+  xpos 880
+  ypos 50
+  number 1
+ }
+ Input {
+  inputs 0
+  name Input
+  xpos 657
+  ypos 54
+ }
+set N246010 [stack 0]
+ Grade {
+  inputs 1+1
+  white {{parent.ColorPickers.targetGain.r/parent.ColorPickers.sourceGain.r} {parent.ColorPickers.targetGain.g/parent.ColorPickers.sourceGain.g} {parent.ColorPickers.targetGain.b/parent.ColorPickers.sourceGain.b} 0}
+  name Grade1
+  selected true
+  xpos 712
+  ypos 151
+ }
+push $N246010
+ Dot {
+  name Dot3
+  xpos 619
+  ypos 148
+ }
+ Switch {
+  inputs 2
+  which {{"\[python -execlocal ret\\ =\\ nuke.thisNode().knob('setGain').value()]"}}
+  name Switch1
+  xpos 657
+  ypos 228
+  addUserKnob {20 User}
+  addUserKnob {6 setGain l "set gain" +STARTLINE}
+  setGain true
+ }
+ Output {
+  name Output1
+  xpos 657
+  ypos 320
+ }
+push $N246010
+ NoOp {
+  name ColorPickers
+  xpos 513
+  ypos 54
+  addUserKnob {20 User}
+  addUserKnob {18 sourceGain l "source gain"}
+  sourceGain {1 1 1}
+  addUserKnob {6 sourceGain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+  addUserKnob {18 targetGain l "target gain"}
+  targetGain {1 1 1}
+  addUserKnob {6 targetGain_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+ }
+end_group

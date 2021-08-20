@@ -1,0 +1,33 @@
+#! C:/Program Files/Nuke8.0v3/nuke-8.0.v3.dll -nx
+version 8.0 v3
+Gizmo {
+ addUserKnob {20 User}
+ addUserKnob {41 blackpoint l "Threshold Level" T Grade1.blackpoint}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -90
+  ypos 42
+ }
+ Expression {
+  expr0 "(min(r,g,b) + max(r,g,b))/2"
+  expr1 "(min(r,g,b) + max(r,g,b))/2"
+  expr2 "(min(r,g,b) + max(r,g,b))/2"
+  name Expression1
+  xpos -90
+  ypos 82
+ }
+ Grade {
+  blackpoint 0.5
+  whitepoint {{blackpoint}}
+  name Grade1
+  xpos -90
+  ypos 127
+ }
+ Output {
+  name Output1
+  xpos -90
+  ypos 227
+ }
+end_group
